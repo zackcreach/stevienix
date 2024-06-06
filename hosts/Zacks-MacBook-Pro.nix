@@ -1,4 +1,8 @@
-{self, ...}: {
+{
+  self,
+  pkgs,
+  ...
+}: {
   # List packages installed in system profile. To search by name, run:
   # Auto upgrade nix package and the daemon service.
   services.nix-daemon.enable = true;
@@ -30,4 +34,36 @@
   users.users.zack.home = "/Users/zack";
 
   security.pam.enableSudoTouchIdAuth = true;
+
+  fonts = {
+    fontDir.enable = true;
+    fonts = [
+      (pkgs.stdenvNoCC.mkDerivation {
+        pname = "roboto-mono-lig";
+        version = "0826cad";
+
+        src = pkgs.fetchFromGitHub {
+          repo = "fonts";
+          owner = "guoguojin";
+          rev = "0826cad84e4a703a28add59d32c4600d68f1b426";
+          sha256 = "sha256-gP5NQx01KhISU8RYdzn1qAkIfMsY9H5Wxj7KWmBtV1I=";
+        };
+
+        installPhase = ''
+          mkdir -p $out/share/fonts/truetype
+          cp LigaRobotoMono-*.ttf $out/share/fonts/truetype
+        '';
+      })
+    ];
+  };
+
+  nix.gc = {
+    automatic = true;
+    interval = {
+      # 0 indexed from Sunday, 3 is Wednesday
+      Weekday = 3;
+      Hour = 11;
+    };
+    options = "--delete-older-than 1w";
+  };
 }

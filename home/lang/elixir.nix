@@ -16,7 +16,17 @@
 
   home.packages = with pkgs; [
     postgresql
-    elixir_1_16
-    erlang_27
+    beam.packages.erlang_26.elixir_1_16
   ];
+
+  programs.zsh.shellAliases = {
+    ips = "iex -S mix phx.server";
+    mco = "mix coveralls";
+    mcoh = "mix coveralls.html";
+    mdl = "mix dialyzer";
+    mcr = "mix credo --strict";
+    mdc = "mix deps.compile";
+    mdg = "mix deps.get";
+    mes = "mix ecto.setup";
+  };
 }

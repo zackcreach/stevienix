@@ -1,4 +1,8 @@
 {pkgs, ...}: {
+  home.packages = [
+    (pkgs.nerdfonts.override {fonts = ["RobotoMono"];})
+  ];
+
   programs.kitty = {
     enable = true;
 
@@ -23,15 +27,6 @@
     font = {
       name = "Liga Roboto Mono";
       size = 16.0;
-      # TODO: this sucks can we just commit the fonts we need to a fonts folder inside nix?
-      package =
-        pkgs.fetchFromGitHub
-        {
-          repo = "fonts";
-          owner = "guoguojin";
-          rev = "0826cad84e4a703a28add59d32c4600d68f1b426";
-          sha256 = "sha256-gP5NQx01KhISU8RYdzn1qAkIfMsY9H5Wxj7KWmBtV1I=";
-        };
     };
 
     shellIntegration.enableZshIntegration = true;
