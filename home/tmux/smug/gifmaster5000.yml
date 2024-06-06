@@ -1,0 +1,12 @@
+session: GIFMASTER
+root: ~/dev/gifmaster5000/
+
+windows:
+  - name: " "
+    commands:
+      - nvim
+  - name: " "
+    panes:
+      - type: horizontal
+        commands:
+          - ips
