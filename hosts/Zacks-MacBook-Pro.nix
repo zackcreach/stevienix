@@ -33,7 +33,14 @@
 
   users.users.zack.home = "/Users/zack";
 
-  security.pam.enableSudoTouchIdAuth = true;
+  # https://write.rog.gr/writing/using-touchid-with-tmux/#creating-a-etcpamdsudo_local-file-using-nix-darwin
+  # https://github.com/LnL7/nix-darwin/pull/787
+  # security.pam.enableSudoTouchIdAuth = true;
+  environment.etc."pam.d/sudo_local".text = ''
+    # Managed by Nix Darwin
+    auth       optional       ${pkgs.pam-reattach}/lib/pam/pam_reattach.so ignore_ssh
+    auth       sufficient     pam_tid.so
+  '';
 
   fonts = {
     fontDir.enable = true;
