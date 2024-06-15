@@ -1,8 +1,8 @@
-{pkgs, ... }:
+{ pkgs, ... }:
 
 pkgs.writeShellScriptBin "rally" ''
   set -eu
-  TARGET=$(ls -d ~/dev/* ~/dotfiles/* ~/notes/* | ${pkgs.fzf}/bin/fzf --header-first --header="Launch Project" --prompt="🔮 " --preview '${pkgs.eza}/bin/eza --tree --icons --color=always --level 4 --git-ignore {}')
+  TARGET=$(ls -d ~/dev/* | ${pkgs.fzf}/bin/fzf --header-first --header="Launch Project" --prompt="🔮 " --preview '${pkgs.eza}/bin/eza --tree --icons --color=always --level 4 --git-ignore {}')
   NAME=$(basename $TARGET)
   SESSION_NAME=$(echo $NAME | tr [:lower:] [:upper:])
 
