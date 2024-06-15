@@ -5,7 +5,8 @@
     ./lang/elixir.nix
     ./lang/nix.nix
     ./lang/node.nix
-    ./shell.nix
+    ./lang/lua.nix
+    ./shell
     ./cloud/gcloud.nix
     ./tmux
     ./kitty

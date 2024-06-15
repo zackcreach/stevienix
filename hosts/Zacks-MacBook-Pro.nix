@@ -1,7 +1,6 @@
-{
-  self,
-  pkgs,
-  ...
+{ self
+, pkgs
+, ...
 }: {
   # List packages installed in system profile. To search by name, run:
   # Auto upgrade nix package and the daemon service.
@@ -24,12 +23,30 @@
     hostPlatform = "aarch64-darwin";
   };
 
-  # Set Git commit hash for darwin-version.
-  system.configurationRevision = self.rev or self.dirtyRev or null;
+  system = {
+    # Set Git commit hash for darwin-version.
+    configurationRevision = self.rev or self.dirtyRev or null;
 
-  # Used for backwards compatibility, please read the changelog before changing.
-  # $ darwin-rebuild changelog
-  system.stateVersion = 4;
+    # Used for backwards compatibility, please read the changelog before changing.
+    # $ darwin-rebuild changelog
+    stateVersion = 4;
+
+    # https://medium.com/@zmre/nix-darwin-quick-tip-activate-your-preferences-f69942a93236
+    activationScripts.postUserActivation.text = ''
+      # Following line should allow us to avoid a logout/login cycle
+      /System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u
+    '';
+
+    defaults = {
+      dock.autohide = true;
+      trackpad.Clicking = true;
+      trackpad.TrackpadThreeFingerDrag = false;
+      finder.ShowPathbar = true;
+      finder.ShowStatusBar = true;
+      loginwindow.GuestEnabled = false;
+      loginwindow.autoLoginUser = "zack";
+    };
+  };
 
   users.users.zack.home = "/Users/zack";
 

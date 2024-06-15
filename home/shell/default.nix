@@ -1,7 +1,6 @@
-{
-  pkgs,
-  config,
-  ...
+{ pkgs
+, config
+, ...
 }: {
   # relocate to scoped modules
   home.sessionVariables = {
@@ -77,7 +76,7 @@
     enable = true;
     enableZshIntegration = true;
     defaultCommand = "rg --files --hidden -g !.git";
-    defaultOptions = ["--reverse" "--ansi" "--color=bg+:-1,fg:15,fg+:-1,prompt:6,header:5,pointer:2,hl:3,hl+:3,spinner:05,info:15,border:15"];
+    defaultOptions = [ "--reverse" "--ansi" "--color=bg+:-1,fg:15,fg+:-1,prompt:6,header:5,pointer:2,hl:3,hl+:3,spinner:05,info:15,border:15" ];
   };
 
   programs.bat.enable = true;
@@ -128,4 +127,3 @@
 # # The next line updates PATH for the Google Cloud SDK.
 # if [ -f '/Users/zack/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/zack/google-cloud-sdk/path.zsh.inc'; fi
 # eval "$(/opt/homebrew/bin/brew shellenv)"
-
