@@ -2,10 +2,10 @@ session: OZONE
 root: ~/dev/ozone/
 
 windows:
-  - name: " "
+  - name: ' '
     commands:
-      - nvim "+NvimTreeToggle"
-  - name: " "
+      - nvim
+  - name: ' '
     panes:
       - type: horizontal
         commands:

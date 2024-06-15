@@ -1,6 +1,6 @@
-{pkgs, ...}: {
+{ pkgs, ... }: {
   home.packages = [
-    (pkgs.nerdfonts.override {fonts = ["RobotoMono"];})
+    (pkgs.nerdfonts.override { fonts = [ "RobotoMono" ]; })
   ];
 
   programs.kitty = {
@@ -8,7 +8,7 @@
 
     keybindings = {
       "cmd+r" = "send_text all rally\r";
-      "cmd+k" = "send_text terminal,application \x63\x6C\x65\x61\x72\x0A";
+      "cmd+k" = "send_text terminal,application clear\r";
       "cmd+t" = "no_op";
       "cmd+a" = "no_op";
       "cmd+s" = "no_op";

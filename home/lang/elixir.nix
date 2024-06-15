@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{ pkgs, ... }: {
   home.sessionVariables = {
     ERL_AFLAGS = "-kernel shell_history enabled";
   };
@@ -12,11 +12,12 @@
           )
   '';
 
-  programs.git.ignores = [".lexical" "creachpad.ex" ".elixir-ls"];
+  programs.git.ignores = [ ".lexical" "creachpad.ex" ".elixir-ls" ];
 
   home.packages = with pkgs; [
     postgresql
     beam.packages.erlang_26.elixir_1_16
+    lexical
   ];
 
   programs.zsh.shellAliases = {
