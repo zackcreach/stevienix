@@ -2,6 +2,10 @@
 , config
 , ...
 }: {
+  home.packages = with pkgs; [
+    entr
+  ];
+
   # relocate to scoped modules
   home.sessionVariables = {
     ERL_AFLAGS = "-kernel shell_history enabled";
@@ -80,6 +84,8 @@
   };
 
   programs.bat.enable = true;
+
+  programs.fd.enable = true;
 
   programs.direnv = {
     enable = true;
