@@ -87,7 +87,6 @@ return {
 		event = { "VeryLazy" },
 		build = ":TSUpdate",
 		opts = {
-			ensure_installed = "all",
 			auto_install = false,
 			highlight = {
 				enable = true,
