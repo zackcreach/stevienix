@@ -43,7 +43,6 @@
       D = "echo -e '\n// Removing deps/';rm -rf deps/";
       grep = "history | grep --color=auto";
       cat = "bat --paging=never";
-      stevie = "darwin-rebuild switch --flake ~/.config/nix-darwin";
     };
     history = {
       path = "${config.xdg.dataHome}/zsh/zsh_history";
@@ -125,11 +124,3 @@
     };
   };
 }
-# TODO
-# source $ZSH/plugins/elixir/elixir.plugin.zsh
-#
-# # The next line enables shell command completion for gcloud.
-# if [ -f '/Users/zack/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/zack/google-cloud-sdk/completion.zsh.inc'; fi
-# # The next line updates PATH for the Google Cloud SDK.
-# if [ -f '/Users/zack/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/zack/google-cloud-sdk/path.zsh.inc'; fi
-# eval "$(/opt/homebrew/bin/brew shellenv)"

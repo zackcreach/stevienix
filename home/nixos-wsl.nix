@@ -7,12 +7,14 @@
     ./lang/node.nix
     ./lang/lua.nix
     ./shell
-    ./cloud/gcloud.nix
     ./tmux
-    ./kitty
   ];
 
-  home.stateVersion = "24.05";
+  home = {
+    stateVersion = "24.05";
+    username = "zack";
+    homeDirectory = "/home/zack";
+  };
   programs.home-manager.enable = true;
-  programs.zsh.shellAliases.stevie = "darwin-rebuild switch --flake ~/.config/nix-darwin";
+  programs.zsh.shellAliases.stevie = "sudo nixos-rebuild switch";
 }
