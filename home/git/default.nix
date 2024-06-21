@@ -7,10 +7,6 @@
 
     ignores = [ ".DS_Store" "creachqueries" "creachpad*" ".direnv/*" ];
 
-    signing = {
-      signByDefault = true;
-    };
-
     aliases = {
       su = "!git branch --set-upstream-to=origin/`git symbolic-ref --short HEAD`";
       s = "status";

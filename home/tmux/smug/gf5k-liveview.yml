@@ -1,12 +1,5 @@
-session: PORTAL
-root: ~/dev/portal/
-
-before_start:
-  - docker compose up -d
-  - docker compose --project-directory ~/dev/devops/local-dev --profile portal up -d
-
-stop:
-  - docker compose down
+session: GIFMASTER
+root: ~/dev/gf5k-liveview/
 
 windows:
   - name: ' '
