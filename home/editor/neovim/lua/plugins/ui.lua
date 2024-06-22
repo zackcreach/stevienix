@@ -118,6 +118,4 @@ return {
 			vim.g.tmux_navigator_disable_when_zoomed = true
 		end,
 	},
-	-- Github Copilot
-	"github/copilot.vim",
 }

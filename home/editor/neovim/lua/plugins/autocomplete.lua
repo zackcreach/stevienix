@@ -4,6 +4,7 @@ return {
 		lazy = true,
 		event = { "VeryLazy" },
 		dependencies = {
+			"Exafunction/codeium.nvim",
 			"nvim-lspconfig",
 			"hrsh7th/cmp-nvim-lsp",
 			"hrsh7th/cmp-buffer",
@@ -17,6 +18,8 @@ return {
 			local cmp = require("cmp")
 			local lspkind = require("lspkind")
 			local luasnip = require("luasnip")
+
+			require("codeium").setup({})
 
 			local has_words_before = function()
 				local line, col = unpack(vim.api.nvim_win_get_cursor(0))
@@ -68,11 +71,12 @@ return {
 						-- Kind icons
 						vim_item.kind = kind_icons[vim_item.kind]
 						vim_item.menu = ({
-							buffer = "[Buffer]",
-							nvim_lsp = "[LSP]",
-							luasnip = "[LuaSnip]",
-							nvim_lua = "[Lua]",
-							path = "[Path]",
+							codeium = "󰚩",
+							buffer = "",
+							nvim_lsp = "󰡦",
+							luasnip = "󰢱",
+							nvim_lua = "󰢱",
+							path = "",
 						})[entry.source.name]
 						return vim_item
 					end,
@@ -108,6 +112,7 @@ return {
 					end, { "i", "s" }),
 				},
 				sources = cmp.config.sources({
+					{ name = "codeium" },
 					{ name = "nvim_lsp" },
 					{ name = "luasnip" },
 					{ name = "path" },
