@@ -1,12 +1,11 @@
-{
-  pkgs,
-  config,
-  lib,
-  ...
+{ pkgs
+, config
+, lib
+, ...
 }: {
   home.packages = [
     pkgs.smug
-    (import ./rally.nix {inherit pkgs;})
+    (import ./rally.nix { inherit pkgs; })
   ];
 
   programs.tmux = {
@@ -51,14 +50,23 @@
       set -g renumber-windows on
       set -g allow-rename off
       set -g set-clipboard external
+      set -g popup-border-style fg=#67738C
+      set -g popup-border-lines rounded
+			set -g pane-border-style fg=#434C5E
+ 			set -g pane-active-border-style fg=#67738C
+			set -g pane-border-indicators both 
+			set -g pane-border-lines heavy
+      set -g menu-border-style fg=#67738C
+      set -g menu-border-lines rounded
+			set -g menu-selected-style fg=#EBCB8B,bold
 
       bind ! kill-server
       bind | split-window -h
       bind - split-window -v
-      bind > display-popup -E -w 50% -h 50%
       bind BSpace switch-client -l
-      bind s display-popup -E -w 80% -h 70% rally
-      bind S display-popup -E 'tmux switch-client -t "$(tmux list-sessions -F "#{session_name}"| fzf)"'
+      bind > display-popup -E -w 80% -h 80%
+      bind s display-popup -E -w 50% -h 50% rally
+      bind S display-popup -E -w 50% -h 50% 'tmux switch-client -t "$(tmux list-sessions -F "#{session_name}"| fzf)"'
       bind Escape copy-mode
       bind-key p paste-buffer
       bind-key -T copy-mode-vi v send-keys -X begin-selection
