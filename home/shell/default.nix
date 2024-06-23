@@ -117,9 +117,9 @@
       };
 
       character = {
-        success_symbol = "[󰱫 ](green)";
-        error_symbol = "[󰱶 ](yellow)";
-        vicmd_symbol = "[󰱱 ](blue)";
+        success_symbol = "[󰱫](green)";
+        error_symbol = "[󰱶](yellow)";
+        vicmd_symbol = "[󰱱](blue)";
       };
     };
   };
