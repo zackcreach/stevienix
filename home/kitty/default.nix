@@ -3,6 +3,10 @@
     (pkgs.nerdfonts.override { fonts = [ "RobotoMono" ]; })
   ];
 
+  home.sessionVariables = {
+    TERMINAL = "kitty";
+  };
+
   programs.kitty = {
     enable = true;
 

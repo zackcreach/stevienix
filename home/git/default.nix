@@ -5,6 +5,11 @@
     userName = "Zack Creach";
     userEmail = "zackcreach@gmail.com";
 
+    signing = {
+      key = "64E36B881E7F93F5";
+      signByDefault = true;
+    };
+
     ignores = [ ".DS_Store" "creachqueries" "creachpad*" ".direnv/*" ];
 
     aliases = {
