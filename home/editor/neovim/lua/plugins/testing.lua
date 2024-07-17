@@ -42,6 +42,10 @@ return {
 				vim.cmd("call VimuxRunCommand(@v)")
 			end
 
+			g.VimuxRunnerQuery = {
+				window = "󰆣 ",
+			}
+
 			g.VimuxOrientation = "h"
 			g.VimuxHeight = "30"
 			g.VimuxCloseOnExit = true
@@ -75,6 +79,15 @@ return {
 			map("n", "<leader>tS", "<CMD>TestSuite -strategy=vimux_watch<CR>")
 			map("n", "<leader>tc", "<CMD>VimuxCloseRunner<CR>")
 			map({ "n", "v" }, "<C-c><C-c>", send_to_tmux)
+
+			map("n", "<leader>ru", function()
+				if vim.g.VimuxRunnerType == "window" then
+					vim.g.VimuxRunnerType = "pane"
+					vim.g.VimuxCloseOnExit = true
+				else
+					vim.g.VimuxRunnerType = "window"
+				end
+			end)
 		end,
 	},
 }

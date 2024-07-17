@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{ pkgs, ... }: {
   home.sessionVariables = {
     USE_GKE_GCLOUD_AUTH_PLUGIN = "True";
   };

@@ -15,6 +15,10 @@
 
   programs.ripgrep = {
     enable = true;
+    arguments = [
+      "--colors=match:bg:blue"
+      "--colors=match:fg:black"
+    ];
   };
 
   programs.btop = {

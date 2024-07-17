@@ -50,15 +50,15 @@
       set -g renumber-windows on
       set -g allow-rename off
       set -g set-clipboard external
-      set -g popup-border-style fg=#67738C
+      set -g popup-border-style 'fg=#67738C'
       set -g popup-border-lines rounded
-			set -g pane-border-style fg=#434C5E
- 			set -g pane-active-border-style fg=#67738C
-			set -g pane-border-indicators both 
-			set -g pane-border-lines heavy
-      set -g menu-border-style fg=#67738C
+      set -g pane-border-style 'fg=#434C5E'
+      set -g pane-active-border-style 'fg=#67738C'
+      set -g pane-border-indicators both 
+      set -g pane-border-lines heavy
+      set -g menu-border-style 'fg=#67738C'
       set -g menu-border-lines rounded
-			set -g menu-selected-style fg=#EBCB8B,bold
+      set -g menu-selected-style 'fg=#EBCB8B,bold'
 
       bind ! kill-server
       bind | split-window -h
