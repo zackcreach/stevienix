@@ -10,7 +10,7 @@
       signByDefault = true;
     };
 
-    ignores = [ ".DS_Store" "creachqueries" "creachpad*" ".direnv/*" ];
+    ignores = [ ".DS_Store" "creachqueries" "creachpad*" ".direnv/*" ".envrc" ];
 
     aliases = {
       su = "!git branch --set-upstream-to=origin/`git symbolic-ref --short HEAD`";
