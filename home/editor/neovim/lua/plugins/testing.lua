@@ -67,16 +67,13 @@ return {
 				end,
 			}
 
-			map("n", "<leader>tt", "<CMD>TestFile<CR>")
-			map("n", "<leader>tT", "<CMD>TestFile -strategy=vimux_watch<CR>")
-			map("n", "<leader>tn", "<CMD>TestNearest<CR>")
-			map("n", "<leader>tN", "<CMD>TestNearest -strategy=vimux_watch<CR>")
+			map("n", "<leader>tt", "<CMD>TestFile -strategy=vimux_watch<CR>")
+			map("n", "<leader>tn", "<CMD>TestNearest -strategy=vimux_watch<CR>")
 			map("n", "<leader>t.", "<CMD>TestLast<CR>")
 			map("n", "<leader>tv", "<CMD>TestVisit<CR>zz")
 			map("n", "<leader>t<BS>", "<CMD>A<CR>")
 			map("n", "<leader>tV", "<CMD>vsplit+A<CR>")
-			map("n", "<leader>ts", "<CMD>TestSuite<CR>")
-			map("n", "<leader>tS", "<CMD>TestSuite -strategy=vimux_watch<CR>")
+			map("n", "<leader>ts", "<CMD>TestSuite -strategy=vimux_watch<CR>")
 			map("n", "<leader>tc", "<CMD>VimuxCloseRunner<CR>")
 			map({ "n", "v" }, "<C-c><C-c>", send_to_tmux)
 
