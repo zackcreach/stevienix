@@ -6,7 +6,7 @@ pkgs.writeShellScriptBin "rally" ''
   FZF_CONFIG='
 	--color=fg:#e5e9f0,fg+:#e5e9f0,bg:#2E3440,bg+:#2E3440
   --color=hl:#b48dac,hl+:#b48dac,info:#b48dac,marker:#b48dac
-  --color=prompt:#B48EAD,spinner:#b48dac,pointer:#b48dac,header:#b48dac
+  --color=prompt:#81A1C1,spinner:#b48dac,pointer:#b48dac,header:#b48dac
   --color=border:#67738C,label:#aeaeae,query:#d9d9d9
   --border=none --border-label-pos=2 --preview-window=border-rounded
   --padding=1

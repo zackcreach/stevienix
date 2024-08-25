@@ -47,7 +47,7 @@ return {
 			}
 
 			g.VimuxOrientation = "h"
-			g.VimuxHeight = "30"
+			g.VimuxHeight = "30%"
 			g.VimuxCloseOnExit = true
 
 			g["test#preserve_screen"] = false
