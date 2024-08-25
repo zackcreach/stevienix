@@ -58,6 +58,7 @@
       blame = { date = "relative"; };
       rebase = { autosquash = true; };
       merge = { conflictStyle = "diff3"; };
+      core = { autocrlf = "input"; };
       commit = {
         verbose = true;
         template = "~/.config/git/commit-template";

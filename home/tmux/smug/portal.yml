@@ -21,4 +21,4 @@ windows:
           - ips
   - name: '󰪩 '
     commands:
-      - nvim . +DBUI
+      - nvim +DBUI

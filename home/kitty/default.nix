@@ -30,7 +30,7 @@
 
     font = {
       name = "Liga Roboto Mono";
-      size = 16.0;
+      size = 15.0;
     };
 
     shellIntegration.enableZshIntegration = true;
