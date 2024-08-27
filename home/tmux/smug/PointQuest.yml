@@ -17,4 +17,4 @@ windows:
     panes:
       - type: horizontal
         commands:
-          - ips
+          - ids

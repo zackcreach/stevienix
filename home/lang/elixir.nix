@@ -22,7 +22,9 @@
   ];
 
   programs.zsh.shellAliases = {
+    ids = "iex --dbg pry -S mix phx.server";
     ips = "iex -S mix phx.server";
     mdg = "mix deps.get";
+    mem = "mix ecto.migrate";
   };
 }
