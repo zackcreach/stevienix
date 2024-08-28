@@ -32,6 +32,7 @@
       fm = "fetch origin main:main";
       mm = "merge main";
       pf = "push --force-with-lease";
+      pr = "!gh pr create -w";
       sync = "!git fetch origin main:main && git rebase main";
     };
 
@@ -65,6 +66,8 @@
       };
     };
   };
+
+  programs.gh.enable = true;
 
   xdg.configFile."git/commit-template".source = ./commit-template;
 }
