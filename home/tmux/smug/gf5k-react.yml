@@ -1,0 +1,13 @@
+session: GF5K-R
+root: ~/dev/gf5k-react/
+
+windows:
+  - name: ' '
+    commands:
+      - nvim
+  - name: ' '
+    commands:
+      - npm run dev
+  - name: '󰪩 '
+    commands:
+      - nvim +DBUI
