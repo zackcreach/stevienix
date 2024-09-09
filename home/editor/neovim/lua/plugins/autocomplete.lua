@@ -4,6 +4,7 @@ return {
 		lazy = true,
 		event = { "VeryLazy" },
 		dependencies = {
+			"nvim-lua/plenary.nvim",
 			"Exafunction/codeium.nvim",
 			"nvim-lspconfig",
 			"hrsh7th/cmp-nvim-lsp",

@@ -8,10 +8,10 @@ return {
 			"nvim-telescope/telescope-symbols.nvim",
 		},
 		keys = {
-			{ "<leader>p", ":Telescope find_files<CR>" },
-			{ "<leader>P", ":Telescope resume<CR>" },
+			{ "<leader><leader>", ":Telescope find_files<CR>" },
+			{ "<leader><backspace>", ":Telescope buffers<CR>" },
 			{ "<leader>/", ":Telescope live_grep<CR>" },
-			{ "<leader>fb", ":Telescope buffers<CR>" },
+			{ "<leader>f.", ":Telescope resume<CR>" },
 			{ "<leader>fg", ":Telescope git_status<CR>" },
 			{ "<leader>fs", ":Telescope git_stash<CR>" },
 			{ "<leader>fr", ":Telescope registers<CR>" },

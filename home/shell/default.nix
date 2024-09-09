@@ -4,13 +4,12 @@
 }: {
   home.packages = with pkgs; [
     entr
+    yubikey-manager
   ];
 
   # relocate to scoped modules
   home.sessionVariables = {
-    ERL_AFLAGS = "-kernel shell_history enabled";
     MANPAGER = "nvim +Man!";
-    PRETTIERD_DEFAULT_CONFIG = "$HOME/dev/ozone/prettier.config.js";
   };
 
   programs.ripgrep = {
