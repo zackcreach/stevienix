@@ -38,3 +38,9 @@ map("n", "<M-f>", ":silent grep ", { silent = false })
 map("n", "<M-d>", ":G<CR>")
 map("n", "<M-s>", ":Neoformat | :w<CR>")
 map("n", "<M-w>", ":q<CR>")
+
+-- Selection
+map("v", "<", "<gv")
+map("v", ">", ">gv")
+map("v", "p", '"0p')
+map({ "n", "v" }, "gy", '"+y')
