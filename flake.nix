@@ -70,7 +70,8 @@
 
             systemd.services.sshd.wantedBy = pkgs.lib.mkForce [ "multi-user.target" ];
             users.users.root.openssh.authorizedKeys.keys = [
-              "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDjV8sPKVLfZWddqPBv9jfVuLlUYP0PLr+lXvbKoPLe8xX5Nt5Ch0T9GW6D5szQBsZHwQY6OUhhBuAQqcJFXGJjolvVdeTA82N5Wg/DZVG8gS8eAkiQbkj6f6hm4rMie7BUm0HYdZUodygtQFoISQb3G5Tw8KfbWfZHojT1Pdgrof5M2zLewMzBiWmL1iB3IkzMlirltHITe9ukzKqeM/InVecSUJ8BmNiflsF3TXtbLxQGsTLRE1mG50rsUonZogxzGDaKlHEd4raeM1kleyrSpwFGJJGQYz7jckwP0z/VlJeZ0/DYVT/tm8GzRlPknx1d2cCMFaeqqAk4IXcBS2ooYBdn7jQm0/GvAY6no+Cp1NiYoVDegCL2af2EthMNhrgaIvWWEIZXjEqcsjjOSAaoG551yb344+HQVesteg9Gx7+uyAbvMBLko5pC49rV99czPC3btDCLX0z5DhAh4eP0wbMrkutjFmNRe07F5NAeROLJZK5g7lrm76DCZ/lZwBc= zackcreach@gmail.com"
+              # ssh-add -L
+              "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIP0PMZX36AvlE6+w7TWF0Nvg4QBl6rV+xuaffQDR6Mcs cardno:26_329_662"
             ];
           })
         ];

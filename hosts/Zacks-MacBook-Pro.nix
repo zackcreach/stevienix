@@ -49,7 +49,14 @@
     };
   };
 
-  users.users.zack.home = "/Users/zack";
+  users.users.zack = {
+    home = "/Users/zack";
+    openssh.authorizedKeys.keys = [
+      # ssh-add -L
+      # we might need services.ssh.enable = true;
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIP0PMZX36AvlE6+w7TWF0Nvg4QBl6rV+xuaffQDR6Mcs cardno:26_329_662"
+    ];
+  };
 
   # https://write.rog.gr/writing/using-touchid-with-tmux/#creating-a-etcpamdsudo_local-file-using-nix-darwin
   # https://github.com/LnL7/nix-darwin/pull/787
@@ -59,6 +66,11 @@
     auth       optional       ${pkgs.pam-reattach}/lib/pam/pam_reattach.so ignore_ssh
     auth       sufficient     pam_tid.so
   '';
+
+  programs.gnupg = {
+    agent.enable = true;
+    agent.enableSSHSupport = true;
+  };
 
   fonts = {
     fontDir.enable = true;
