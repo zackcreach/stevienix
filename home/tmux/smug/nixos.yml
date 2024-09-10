@@ -1,5 +1,5 @@
 session: NIX
-root: ~/dev/nix-darwin/
+root: ~/dev/nixos/
 
 windows:
   - name: ' '

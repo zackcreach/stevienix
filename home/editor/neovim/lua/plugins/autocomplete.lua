@@ -20,7 +20,7 @@ return {
 			local lspkind = require("lspkind")
 			local luasnip = require("luasnip")
 
-			require("codeium").setup({})
+			-- require("codeium").setup({})
 
 			local has_words_before = function()
 				local line, col = unpack(vim.api.nvim_win_get_cursor(0))

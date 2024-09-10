@@ -2,10 +2,10 @@
   description = "Cool Beans";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
     nix-darwin.url = "github:LnL7/nix-darwin";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
-    home-manager.url = "github:nix-community/home-manager";
+    home-manager.url = "github:nix-community/home-manager/release-24.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     NixOS-WSL = {
       url = "github:nix-community/NixOS-WSL";
@@ -48,6 +48,21 @@
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.users.zack = import ./home/nixos-wsl.nix;
+            home-manager.extraSpecialArgs = { inherit inputs; };
+          }
+        ];
+      };
+
+      nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = { inherit inputs; }; # pass custom arguments into sub module.
+        modules = [
+          ./hosts/nixos
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.zack = import ./home/nixos.nix;
             home-manager.extraSpecialArgs = { inherit inputs; };
           }
         ];

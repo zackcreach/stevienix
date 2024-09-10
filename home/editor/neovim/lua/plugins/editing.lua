@@ -1,6 +1,5 @@
 return {
 	"tpope/vim-surround",
-	"tpope/vim-repeat",
 	{
 		"ggandor/leap.nvim",
 		lazy = true,

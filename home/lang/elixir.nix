@@ -16,7 +16,7 @@
 
   home.packages = with pkgs; [
     postgresql
-    beam.packages.erlang_27.elixir_1_16
+    beam.packages.erlang_26.elixir_1_16
     lexical
     flyctl
   ];

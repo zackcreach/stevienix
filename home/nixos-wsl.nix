@@ -8,6 +8,7 @@
     ./lang/lua.nix
     ./shell
     ./tmux
+    ./passwords.nix
   ];
 
   home = {
