@@ -5,6 +5,7 @@
   home.packages = with pkgs; [
     entr
     yubikey-manager
+    (pkgs.callPackage ./live-grep.nix { })
   ];
 
   # relocate to scoped modules
@@ -46,6 +47,7 @@
       D = "echo -e '\n// Removing deps/';rm -rf deps/";
       grep = "history | grep --color=auto";
       cat = "bat --paging=never";
+      lg = "live-grep";
     };
     history = {
       path = "${config.xdg.dataHome}/zsh/zsh_history";
