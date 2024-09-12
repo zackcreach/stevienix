@@ -15,8 +15,11 @@
     pkgs.grim
     pkgs.grimblast
     pkgs.slurp
-		pkgs.wl-clipboard
+    pkgs.wl-clipboard
+    pkgs.waypaper
   ];
+
+  services.cliphist.enable = true;
 
   wayland.windowManager.hyprland = {
     enable = true;
@@ -35,15 +38,15 @@
         resize_on_border = true;
       };
 
-			monitor = [
-				"DP-1, 2560x1440@144, 0x0, 1, vrr, 1"
-			];
+      monitor = [
+        "DP-1, 2560x1440@144, 0x0, 1, vrr, 1"
+      ];
 
       # window rules to force windows in certain areas
       # run hyprctl clients to see stats
       windowrulev2 = [
         "workspace 2, class:firefox"
-        "float, class:1Password"
+        "workspace 3, class:webcord"
       ];
 
       # only execute these on startup
@@ -53,6 +56,8 @@
         "kitty rally"
         "nm-applet"
         "[workspace 2 silent] firefox"
+        "hyprctl setcursor Bibata-Modern-Ice 22"
+        "[workspace 3 silent] webcord"
       ];
 
       dwindle = {
@@ -103,7 +108,7 @@
 
       "$mainMod" = "SUPER";
       bind = [
-        "$mainMod, w, killactive,"
+        "$mainMod, q, killactive,"
         "$mainMod SHIFT, q, exit,"
 
         "$mainMod, f, fullscreen, 0"
@@ -148,6 +153,8 @@
         "$mainMod ALT, 8, movetoworkspace, 8"
         "$mainMod ALT, 9, movetoworkspace, 9"
         "$mainMod ALT, 0, movetoworkspace, 10"
+
+        "$mainMod SHIFT, v, exec, cliphist list | wofi --dmenu | cliphist decode | wl-copy"
       ];
 
       bindm = [

@@ -18,6 +18,10 @@
   programs.home-manager.enable = true;
   programs.zsh.shellAliases.stevie = "sudo nixos-rebuild switch";
 
+  home.packages = with pkgs; [
+    webcord
+  ];
+
   programs.gpg = {
     enable = true;
     publicKeys = [
