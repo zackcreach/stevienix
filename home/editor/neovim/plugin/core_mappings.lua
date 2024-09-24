@@ -42,5 +42,5 @@ map("n", "<M-w>", ":q<CR>")
 -- Selection
 map("v", "<", "<gv")
 map("v", ">", ">gv")
-map("v", "p", '"0p')
+map("v", "p", '"_c<c-r>0')
 map({ "n", "v" }, "gy", '"+y')

@@ -33,6 +33,7 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " m"
 
 vim.opt.regexpengine = 1
+vim.opt.clipboard = "unnamed"
 vim.opt.errorbells = false
 vim.opt.sw = 2
 vim.opt.smartindent = true

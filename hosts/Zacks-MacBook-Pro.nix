@@ -41,7 +41,8 @@
     defaults = {
       dock.autohide = true;
       trackpad.Clicking = true;
-      trackpad.TrackpadThreeFingerDrag = false;
+      trackpad.TrackpadThreeFingerDrag = true;
+      trackpad.Dragging = true;
       finder.ShowPathbar = true;
       finder.ShowStatusBar = true;
       loginwindow.GuestEnabled = false;

@@ -11,14 +11,14 @@
     enable = true;
 
     keybindings = {
-      "cmd+r" = "send_text all rally\r";
-      "cmd+k" = "send_text terminal,application clear\r";
-      "cmd+t" = "no_op";
-      "cmd+a" = "no_op";
-      "cmd+s" = "no_op";
-      "cmd+w" = "no_op";
-      "cmd+b" = "no_op";
-      "cmd+/" = "no_op";
+      "super+r" = "send_text all rally\r";
+      "super+k" = "send_text terminal,application clear\r";
+      "super+t" = "no_op";
+      "super+a" = "no_op";
+      "super+s" = "no_op";
+      "super+w" = "no_op";
+      "super+b" = "no_op";
+      "super+/" = "no_op";
     };
 
     settings = {
