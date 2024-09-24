@@ -18,7 +18,7 @@ windows:
     panes:
       - type: horizontal
         commands:
-          - ids
+          - ips
   - name: '󰪩 '
     commands:
       - nvim +DBUI
