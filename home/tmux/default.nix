@@ -6,6 +6,7 @@
   home.packages = [
     pkgs.smug
     (import ./rally.nix { inherit pkgs; })
+    (pkgs.callPackage ./tmux-file-paths.nix { })
   ];
 
   programs.tmux = {

@@ -10,7 +10,13 @@
       key = "0x8C49CF77E85B9AE8";
     };
 
-    ignores = [ ".DS_Store" "creachqueries" "creachpad*" ".direnv/*" ".envrc" ];
+    ignores = [
+      ".DS_Store"
+      "creachqueries"
+      "creachpad*"
+      ".direnv/*"
+      ".envrc"
+    ];
 
     aliases = {
       su = "!git branch --set-upstream-to=origin/`git symbolic-ref --short HEAD`";

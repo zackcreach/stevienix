@@ -31,4 +31,8 @@
       }
     '';
   };
+
+  programs.zsh.shellAliases = {
+    D = "echo -e '\n// Removing deps/';rm -rf deps/";
+  };
 }

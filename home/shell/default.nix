@@ -42,9 +42,8 @@
       }
     ];
     shellAliases = {
+      v = "nvim";
       vi = "nvim";
-      I = "echo -e '\n// IEX Phoenix Server';iex -S mix phx.server";
-      D = "echo -e '\n// Removing deps/';rm -rf deps/";
       grep = "history | grep --color=auto";
       cat = "bat --paging=never";
       lg = "live-grep";
