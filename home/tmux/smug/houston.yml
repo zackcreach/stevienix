@@ -1,0 +1,26 @@
+session: HOUSTON
+root: ~/dev/houston/
+
+before_start:
+  - ../devops/local-dev/update-dev-secrets.sh
+  - docker compose up -d
+  - docker compose --project-directory ~/dev/devops/local-dev --profile houston up -d
+
+stop:
+  - docker compose down
+  - docker compose --project-directory ~/dev/devops/local-dev --profile houston down
+
+windows:
+  - name: ' '
+    commands:
+      - nvim
+  - name: ' '
+    commands:
+      - nvim creachpad.ex
+    panes:
+      - type: horizontal
+        commands:
+          - mix start
+  - name: '󰪩 '
+    commands:
+      - nvim +DBUI

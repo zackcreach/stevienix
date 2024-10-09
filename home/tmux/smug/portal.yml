@@ -3,10 +3,13 @@ root: ~/dev/portal/
 
 before_start:
   - docker compose up -d
-  - docker compose --project-directory ~/dev/devops/local-dev --profile portal up -d
+  # houston will run this but it must be launched first
+  # - docker compose --project-directory ~/dev/devops/local-dev --profile portal up -d
 
 stop:
   - docker compose down
+  # houston will run this but it must be launched first
+  # - docker compose --project-directory ~/dev/devops/local-dev --profile portal down
 
 windows:
   - name: ' '

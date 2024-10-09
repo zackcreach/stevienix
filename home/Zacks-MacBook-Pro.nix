@@ -10,7 +10,6 @@
     ./cloud/gcloud.nix
     ./tmux
     ./kitty
-    ./passwords.nix
   ];
 
   home.stateVersion = "24.05";
