@@ -112,12 +112,12 @@
       git_branch = {
         symbol = "󰊢 ";
         style = "purple";
-        format = "on [$symbol$branch]($style) ";
+        format = "on [$symbol$branch]($style)";
       };
 
       directory = {
         style = "blue";
-        format = "[$path]($style) ";
+        format = "[$path]($style)";
       };
 
       character = {

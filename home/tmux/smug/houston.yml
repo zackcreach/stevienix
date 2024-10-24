@@ -6,10 +6,6 @@ before_start:
   - docker compose up -d
   - docker compose --project-directory ~/dev/devops/local-dev --profile houston up -d
 
-stop:
-  - docker compose down
-  - docker compose --project-directory ~/dev/devops/local-dev --profile houston down
-
 windows:
   - name: ' '
     commands:
@@ -20,7 +16,17 @@ windows:
     panes:
       - type: horizontal
         commands:
-          - mix start
+          - ips
+          - clear
+  - name: '󰎙 '
+    commands:
+      - nvim creachpad.ts
+    panes:
+      - type: horizontal
+        commands:
+          - clear
+          - mix kill.vite
+          - npm run --prefix assets dev
   - name: '󰪩 '
     commands:
       - nvim +DBUI

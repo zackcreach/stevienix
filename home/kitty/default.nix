@@ -1,6 +1,8 @@
 { pkgs, ... }: {
   home.packages = [
-    (pkgs.nerdfonts.override { fonts = [ "RobotoMono" ]; })
+    pkgs.jetbrains-mono
+    pkgs.recursive
+    (pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
   ];
 
   home.sessionVariables = {
@@ -29,41 +31,43 @@
     };
 
     font = {
-      name = "Liga Roboto Mono";
+      name = "JetBrains Mono Light";
       size = 15.0;
     };
 
     shellIntegration.enableZshIntegration = true;
 
     extraConfig = ''
-      italic_font Roboto Mono Italic
+      italic_font Rec Mono Semicasual Italic
+      bold_font JetBrains Mono Bold
+      bold_italic_font JetBrains Mono Bold Italic
 
       # Seti
-      symbol_map U+E5FA-U+E631 RobotoMono Nerd Font
+      symbol_map U+E5FA-U+E631 JetBrainsMono Nerd Font
       # Devicons
-      symbol_map U+E700-U+E7C5 RobotoMono Nerd Font
+      symbol_map U+E700-U+E7C5 JetBrainsMono Nerd Font
       # Font Awesome
-      symbol_map U+F000-U+F2E0 RobotoMono Nerd Font
+      symbol_map U+F000-U+F2E0 JetBrainsMono Nerd Font
       # Font Awesome Extension
-      symbol_map U+E200-U+E2A9 RobotoMono Nerd Font
+      symbol_map U+E200-U+E2A9 JetBrainsMono Nerd Font
       # Material Design
-      symbol_map U+F500-U+FD46 RobotoMono Nerd Font
+      symbol_map U+F500-U+FD46 JetBrainsMono Nerd Font
       # Weather
-      symbol_map U+E300-U+E3EB RobotoMono Nerd Font
+      symbol_map U+E300-U+E3EB JetBrainsMono Nerd Font
       # Octicons
-      symbol_map U+F400-U+F4A9,U+2665-U+26A1 RobotoMono Nerd Font
+      symbol_map U+F400-U+F4A9,U+2665-U+26A1 JetBrainsMono Nerd Font
       # Powerline
-      symbol_map U+E0A0-U+E0A2,U+E0B0-U+E0B3 RobotoMono Nerd Font
+      symbol_map U+E0A0-U+E0A2,U+E0B0-U+E0B3 JetBrainsMono Nerd Font
       # Powerline Extras
-      symbol_map U+E0A3,U+E0B4-U+E0C8,U+E0CC-U+E0D4 RobotoMono Nerd Font
+      symbol_map U+E0A3,U+E0B4-U+E0C8,U+E0CC-U+E0D4 JetBrainsMono Nerd Font
       # IEC Power
-      symbol_map U+23FB-U+23FE,U+2B58 RobotoMono Nerd Font
+      symbol_map U+23FB-U+23FE,U+2B58 JetBrainsMono Nerd Font
       # Font Logos
-      symbol_map U+F300-U+F32D RobotoMono Nerd Font
+      symbol_map U+F300-U+F32D JetBrainsMono Nerd Font
       # Pomicons
-      symbol_map U+E000-U+E00A RobotoMono Nerd Font
+      symbol_map U+E000-U+E00A JetBrainsMono Nerd Font
       # Codeicons
-      symbol_map U+EA60-U+EBEB RobotoMono Nerd Font
+      symbol_map U+EA60-U+EBEB JetBrainsMono Nerd Font
 
       include ./themes/nord.conf
     '';
