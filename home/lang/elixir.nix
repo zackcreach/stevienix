@@ -26,5 +26,6 @@
     ips = "iex -S mix phx.server";
     mdg = "mix deps.get";
     mem = "mix ecto.migrate";
+    ms = "mix start";
   };
 }
