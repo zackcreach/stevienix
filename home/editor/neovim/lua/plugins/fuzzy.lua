@@ -17,6 +17,7 @@ return {
 			{ "<leader>fr", ":Telescope registers<CR>" },
 			{ "<leader>fo", ":Telescope lsp_document_symbols<CR>" },
 			{ "<leader>fi", ":Telescope symbols<CR>" },
+			{ "<leader>fd", ":Telescope diagnostics<CR>" },
 		},
 		opts = {
 			defaults = {

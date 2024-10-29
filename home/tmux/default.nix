@@ -9,6 +9,8 @@
     (pkgs.callPackage ./tmux-file-paths.nix { })
   ];
 
+  programs.zsh.shellAliases.ta = "tmux attach";
+
   programs.tmux = {
     enable = true;
 
@@ -61,6 +63,7 @@
       set -g menu-border-lines rounded
       set -g menu-selected-style 'fg=#EBCB8B,bold'
 
+      bind ! kill-server
       bind ! kill-server
       bind | split-window -h
       bind - split-window -v
