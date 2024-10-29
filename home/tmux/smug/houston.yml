@@ -16,17 +16,14 @@ windows:
     panes:
       - type: horizontal
         commands:
-          - ips
-          - clear
+          - mem && mdg && ips
   - name: '󰎙 '
     commands:
       - nvim creachpad.ts
     panes:
       - type: horizontal
         commands:
-          - clear
-          - mix kill.vite
-          - npm run --prefix assets dev
+          - mix kill.vite && npm run --prefix assets dev
   - name: '󰪩 '
     commands:
       - nvim +DBUI

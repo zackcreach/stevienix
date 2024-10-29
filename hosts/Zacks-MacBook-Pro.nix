@@ -73,12 +73,6 @@
     agent.enableSSHSupport = true;
   };
 
-  fonts = {
-    fontDir.enable = true;
-    fonts = [
-    ];
-  };
-
   # garbage collection
   nix.gc = {
     automatic = true;
