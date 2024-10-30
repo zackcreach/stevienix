@@ -44,6 +44,7 @@
     prefix = "C-a";
 
     extraConfig = ''
+      set -g default-command /bin/zsh
       set -g allow-rename off
       set -as terminal-features ',xterm*:RGB'
       set -s escape-time 1
