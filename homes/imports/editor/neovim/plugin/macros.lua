@@ -1,0 +1,7 @@
+-- vim.api.nvim_create_autocmd("RecordingEnter", {
+-- 	pattern = "*",
+-- 	callback = function()
+-- 		local audio_file = vim.loop.os_homedir() .. "/.config/recording-in-progress.mp3"
+-- 		vim.fn.system("afplay " .. audio_file)
+-- 	end,
+-- })

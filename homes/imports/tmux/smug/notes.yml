@@ -1,0 +1,11 @@
+session: NOTES
+root: ~/dev/notes
+
+windows:
+  - name: "Slides"
+    commands:
+      - vi regex.md
+    panes:
+      - type: vertical
+        commands:
+          - slides regex.md

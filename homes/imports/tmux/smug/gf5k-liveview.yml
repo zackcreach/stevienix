@@ -1,0 +1,17 @@
+session: GF5K-LV
+root: ~/dev/gf5k-liveview/
+
+windows:
+  - name: ' '
+    commands:
+      - nvim
+  - name: ' '
+    commands:
+      - nvim creachpad.ex
+    panes:
+      - type: horizontal
+        commands:
+          - ips
+  - name: '󰪩 '
+    commands:
+      - nvim +DBUI

@@ -1,0 +1,10 @@
+session: NIX
+root: ~/dev/nixos/
+
+windows:
+  - name: ' '
+    commands:
+      - nvim
+  - name: ' '
+    commands:
+      - clear

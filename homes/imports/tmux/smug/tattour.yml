@@ -1,0 +1,13 @@
+session: TATTOUR
+root: ~/dev/tattour
+
+windows:
+  - name: " "
+    commands:
+      - nvim "+G"
+  - name: " "
+    panes:
+      - type: horizontal
+        commands:
+          - clear
+          - npm run dev

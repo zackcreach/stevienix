@@ -1,0 +1,20 @@
+session: PQ
+root: ~/dev/PointQuest/
+
+before_start:
+  - docker compose up -d
+
+stop:
+  - docker compose down
+
+windows:
+  - name: ' '
+    commands:
+      - nvim
+  - name: ' '
+    commands:
+      - nvim creachpad.ex
+    panes:
+      - type: horizontal
+        commands:
+          - ids
