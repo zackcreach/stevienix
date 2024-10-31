@@ -51,6 +51,7 @@
   };
 
   users.users.zack = {
+    shell = pkgs.zsh;
     home = "/Users/zack";
     openssh.authorizedKeys.keys = [
       # ssh-add -L
