@@ -1,0 +1,12 @@
+session: OZONE
+root: ~/dev/ozone/
+
+windows:
+  - name: ' '
+    commands:
+      - nvim
+  - name: ' '
+    panes:
+      - type: horizontal
+        commands:
+          - yarn dev

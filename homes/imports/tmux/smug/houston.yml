@@ -1,0 +1,29 @@
+session: HOUSTON
+root: ~/dev/houston/
+
+before_start:
+  - ../devops/local-dev/update-dev-secrets.sh
+  - docker compose up -d
+  - docker compose --project-directory ~/dev/devops/local-dev --profile houston up -d
+
+windows:
+  - name: ' '
+    commands:
+      - nvim
+  - name: ' '
+    commands:
+      - nvim creachpad.ex
+    panes:
+      - type: horizontal
+        commands:
+          - mem && mdg && ips
+  - name: '󰎙 '
+    commands:
+      - nvim creachpad.ts
+    panes:
+      - type: horizontal
+        commands:
+          - mix kill.vite && npm run --prefix assets dev
+  - name: '󰪩 '
+    commands:
+      - nvim +DBUI
