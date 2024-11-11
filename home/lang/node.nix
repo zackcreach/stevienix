@@ -4,10 +4,10 @@
   };
 
   home.packages = with pkgs; [
-    bun
     nodePackages_latest.typescript-language-server
     nodejs_22
     prettierd
+    eslint_d
     tailwindcss-language-server
     yarn
   ];
