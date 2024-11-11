@@ -64,12 +64,16 @@ return {
 
 			lint.linters_by_ft = {
 				elixir = { "credo" },
+				javascript = { "eslint_d" },
+				javascriptreact = { "eslint_d" },
+				typescript = { "eslint_d" },
+				typescriptreact = { "eslint_d" },
 			}
 
 			local group = vim.api.nvim_create_augroup("MyLinter", {})
 
 			vim.api.nvim_create_autocmd({ "BufWritePost", "BufEnter" }, {
-				pattern = { "*.ex", "*.exs" },
+				pattern = { "*.ex*", "*.{js,ts}*" },
 				callback = function()
 					lint.try_lint()
 				end,
