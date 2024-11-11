@@ -38,12 +38,6 @@ return {
 		lazy = true,
 		event = { "VeryLazy" },
 		init = function()
-			-- Format on save
-			-- vim.api.nvim_create_autocmd("BufWritePre", {
-			-- 	group = vim.api.nvim_create_augroup("fmt", { clear = true }),
-			-- 	command = "undojoin | Neoformat",
-			-- })
-
 			-- Force specific formatting engines
 			vim.g.neoformat_enabled_typescript = { "prettierd" }
 			vim.g.neoformat_enabled_javascript = { "prettierd" }
@@ -54,6 +48,14 @@ return {
 			vim.g.neoformat_enabled_svelte = { "prettierd" }
 			vim.g.neoformat_enabled_lua = { "stylua" }
 			vim.g.neoformat_enabled_elixir = { "mixformat" }
+		end,
+		-- Format on save
+		config = function()
+			vim.api.nvim_create_autocmd("BufWritePre", {
+				desc = "Neoformat on save",
+				group = vim.api.nvim_create_augroup("fmt", { clear = true }),
+				command = "silent! undojoin | Neoformat",
+			})
 		end,
 	},
 	-- Linter
