@@ -22,15 +22,15 @@
     , ...
     }: {
       # Build darwin flake using:
-      # $ darwin-rebuild build --flake .#Zacks-MacBook-Pro
-      darwinConfigurations."Zacks-MacBook-Pro" = nix-darwin.lib.darwinSystem {
+      # $ darwin-rebuild build --flake .#centennial
+      darwinConfigurations.centennial = nix-darwin.lib.darwinSystem {
         modules = [
-          ./hosts/Zacks-MacBook-Pro.nix
+          ./hosts/centennial
           home-manager.darwinModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users.zack = import ./home/Zacks-MacBook-Pro.nix;
+            home-manager.users.zack = import ./home/centennial.nix;
             home-manager.extraSpecialArgs = { inherit inputs; };
           }
         ];
@@ -53,23 +53,23 @@
         ];
       };
 
-      nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
+      nixosConfigurations.symphony = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = { inherit inputs; }; # pass custom arguments into sub module.
         modules = [
-          ./hosts/nixos
+          ./hosts/symphony
           home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users.zack = import ./home/nixos.nix;
+            home-manager.users.zack = import ./home/symphony.nix;
             home-manager.extraSpecialArgs = { inherit inputs; };
           }
         ];
       };
 
       # Expose the package set, including overlays, for convenience.
-      darwinPackages = self.darwinConfigurations."Zacks-MacBook-Pro".pkgs;
+      darwinPackages = self.darwinConfigurations.centennial.pkgs;
 
       nixosConfigurations.iso = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
