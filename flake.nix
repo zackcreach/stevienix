@@ -37,17 +37,17 @@
         specialArgs = { inherit inputs self; };
       };
 
-      nixosConfigurations.nixos-wsl = nixpkgs.lib.nixosSystem {
+      nixosConfigurations.tabernacle = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = { inherit inputs; }; # pass custom arguments into sub module.
         modules = [
-          ./hosts/nixos-wsl
+          ./hosts/tabernacle
           NixOS-WSL.nixosModules.wsl
           home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users.zack = import ./home/nixos-wsl.nix;
+            home-manager.users.zack = import ./home/tabernacle.nix;
             home-manager.extraSpecialArgs = { inherit inputs; };
           }
         ];

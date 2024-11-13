@@ -5,7 +5,7 @@
 # NixOS-WSL specific options are documented on the NixOS-WSL repository:
 # https://github.com/nix-community/NixOS-WSL
 
-{ config, lib, pkgs, ... }:
+{ pkgs, ... }:
 
 {
   imports = [ ];
@@ -28,11 +28,9 @@
     initialPassword = "password";
   };
 
-  programs.zsh.enable = true;
+  networking.hostName = "tabernacle";
 
-  networking = {
-    hostName = "nixos-wsl";
-  };
+  programs.zsh.enable = true;
 
   system.stateVersion = "23.11";
 }
