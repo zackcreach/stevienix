@@ -8,7 +8,6 @@
     ./lang/lua.nix
     ./shell
     ./tmux
-    ./passwords.nix
   ];
 
   home = {
@@ -16,6 +15,7 @@
     username = "zack";
     homeDirectory = "/home/zack";
   };
+
   programs.home-manager.enable = true;
   programs.zsh.shellAliases.stevie = "sudo nixos-rebuild switch";
 }
