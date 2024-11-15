@@ -9,18 +9,27 @@
     ./shell
     ./tmux
     ./kitty
-    ./linux-gui.nix
     ./hyprland
-    ./passwords.nix
+    ./security
   ];
 
   home.stateVersion = "24.05";
-  programs.home-manager.enable = true;
-  programs.zsh.shellAliases.stevie = "sudo nixos-rebuild switch";
 
   home.packages = with pkgs; [
     webcord
+    gnome.nautilus
   ];
+
+  home.sessionVariables = {
+    "BROWSER" = "firefox";
+  };
+
+  programs.home-manager.enable = true;
+
+  programs.zsh.shellAliases = {
+    "gpg-refresh" = "gpg-connect-agent 'scd serialno' 'learn --force' /bye";
+    stevie = "sudo nixos-rebuild switch";
+  };
 
   programs.gpg = {
     enable = true;
@@ -41,4 +50,30 @@
     maxCacheTtl = 120;
     sshKeys = [ "EE40AB918DA8A265B8DC51B8CC6B29F7887FBC4F" ];
   };
+
+  gtk = {
+    enable = true;
+
+    theme = {
+      name = "Nordic";
+      package = pkgs.nordic;
+    };
+
+    cursorTheme = {
+      name = "Bibata-Modern-Ice";
+      package = pkgs.bibata-cursors;
+    };
+
+    iconTheme = {
+      name = "Nordzy";
+      package = pkgs.nordzy-icon-theme;
+    };
+  };
+
+  qt = {
+    enable = true;
+    platformTheme.name = "gtk3";
+    style.name = "adwaita-gtk";
+  };
+
 }
