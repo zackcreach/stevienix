@@ -5,6 +5,3 @@ windows:
   - name: ' '
     commands:
       - nvim
-  - name: ' '
-    commands:
-      - clear

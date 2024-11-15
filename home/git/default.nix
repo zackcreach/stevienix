@@ -12,8 +12,7 @@
 
     ignores = [
       ".DS_Store"
-      "creachqueries"
-      "creachpad*"
+      "creachignore"
       ".direnv/*"
       ".envrc"
     ];

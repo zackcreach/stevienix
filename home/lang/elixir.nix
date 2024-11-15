@@ -12,7 +12,7 @@
           )
   '';
 
-  programs.git.ignores = [ ".lexical" "creachpad.ex" ".elixir-ls" ];
+  programs.git.ignores = [ ".lexical" ".elixir-ls" ];
 
   home.packages = with pkgs; [
     postgresql
