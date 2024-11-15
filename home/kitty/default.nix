@@ -18,6 +18,7 @@
       "super+t" = "no_op";
       "super+a" = "no_op";
       "super+s" = "no_op";
+      "super+S" = "no_op";
       "super+w" = "no_op";
       "super+b" = "no_op";
       "super+/" = "no_op";

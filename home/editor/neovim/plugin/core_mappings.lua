@@ -31,13 +31,15 @@ map("n", "<leader>gr", "<CMD>Gread<CR>")
 map({ "n", "v" }, "<leader>gv", "<CMD>GBrowse<CR>")
 map({ "n", "v" }, "<leader>gV", "<CMD>GBrowse!<CR>")
 map("n", "<leader>s", "<CMD>:write<CR>")
+map("n", "<leader>S", "<CMD>:noautocmd write<CR>")
 map("n", "<leader>w", "<CMD>q<CR>")
 
 -- MacOS
-map("n", "<M-f>", ":silent grep ", { silent = false })
-map("n", "<M-d>", ":G<CR>")
-map("n", "<M-s>", "<CMD>:write<CR>")
-map("n", "<M-w>", ":q<CR>")
+map("n", "<D-f>", ":silent grep ", { silent = false })
+map("n", "<D-d>", ":G<CR>")
+map("n", "<D-s>", "<CMD>:write<CR>")
+map("n", "<D-S>", "<CMD>:noautocmd write<CR>")
+map("n", "<D-w>", ":q<CR>")
 
 -- Selection
 map("v", "<", "<gv")

@@ -6,6 +6,7 @@
     ./lang/nix.nix
     ./lang/node.nix
     ./lang/lua.nix
+    ./aerospace
     ./shell
     ./cloud/gcloud.nix
     ./tmux
@@ -18,6 +19,7 @@
 
   home.packages = with pkgs; [
     yubikey-manager
+    hidden-bar
   ];
 
   programs.gpg = {
