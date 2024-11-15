@@ -17,7 +17,7 @@ windows:
       - nvim
   - name: ' '
     commands:
-      - nvim creachpad.ex
+      - nvim creachignore/scratchpad.ex
     panes:
       - type: horizontal
         commands:

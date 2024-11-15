@@ -12,14 +12,14 @@ windows:
       - nvim
   - name: ' '
     commands:
-      - nvim creachpad.ex
+      - nvim creachignore/scratchpad.ex
     panes:
       - type: horizontal
         commands:
           - mem && mdg && ips
   - name: '󰎙 '
     commands:
-      - nvim creachpad.ts
+      - nvim creachignore/scratchpad.ts
     panes:
       - type: horizontal
         commands:
