@@ -18,7 +18,6 @@
     postgresql
     beam.packages.erlang_26.elixir_1_16
     lexical
-    flyctl
   ];
 
   programs.zsh.shellAliases = {
@@ -26,6 +25,7 @@
     ips = "iex -S mix phx.server";
     mdg = "mix deps.get";
     mem = "mix ecto.migrate";
+    mer = "mix ecto.reset";
     ms = "mix start";
   };
 }
