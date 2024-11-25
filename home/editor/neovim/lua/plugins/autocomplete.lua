@@ -11,7 +11,6 @@ return {
 			"hrsh7th/cmp-buffer",
 			"hrsh7th/cmp-path",
 			"hrsh7th/cmp-cmdline",
-			"L3MON4D3/LuaSnip",
 			"hrsh7th/cmp-nvim-lua",
 			"onsails/lspkind-nvim",
 		},
@@ -34,30 +33,30 @@ return {
 
 			local kind_icons = {
 				Text = "",
-				Method = "",
-				Function = "",
-				Constructor = "",
-				Field = "",
-				Variable = "",
-				Class = "ﴯ",
+				Method = "󰆧",
+				Function = "λ",
+				Constructor = " ",
+				Field = "󰇽",
+				Variable = "󰂡",
+				Class = "󰫅 ",
 				Interface = "",
-				Module = "",
-				Property = "ﰠ",
+				Module = "󰫈 ",
+				Property = "󰜢",
 				Unit = "",
-				Value = "",
-				Enum = "",
-				Keyword = "",
+				Value = "󰎠",
+				Enum = " ",
+				Keyword = "󰌋",
 				Snippet = "",
-				Color = "",
-				File = "",
+				Color = " ",
+				File = "󰈙",
 				Reference = "",
-				Folder = "",
-				EnumMember = "",
-				Constant = "",
+				Folder = " ",
+				EnumMember = " ",
+				Constant = "󰏿",
 				Struct = "",
 				Event = "",
-				Operator = "",
-				TypeParameter = "",
+				Operator = "󰆕",
+				TypeParameter = "󰅲",
 			}
 
 			cmp.setup({
@@ -75,7 +74,7 @@ return {
 							codeium = "󰚩",
 							buffer = "",
 							nvim_lsp = "󰡦",
-							luasnip = "󰢱",
+							luasnip = "",
 							nvim_lua = "󰢱",
 							path = "",
 						})[entry.source.name]
@@ -90,23 +89,22 @@ return {
 					}),
 					-- tab to move down list
 					["<c-n>"] = cmp.mapping(function(fallback)
-						if cmp.visible() then
-							cmp.select_next_item()
-						elseif luasnip.expand_or_jumpable() then
+						if luasnip.expand_or_jumpable() then
 							luasnip.expand_or_jump()
+						elseif cmp.visible() then
+							cmp.select_next_item()
 						elseif has_words_before() then
 							cmp.complete()
 						else
 							fallback()
 						end
 					end, { "i", "s" }),
-
 					-- shift tab to move backwards
 					["<c-p>"] = cmp.mapping(function()
-						if cmp.visible() then
-							cmp.select_prev_item()
-						elseif luasnip.jumpable(-1) then
+						if luasnip.jumpable(-1) then
 							luasnip.jump(-1)
+						elseif cmp.visible() then
+							cmp.select_prev_item()
 						else
 							fallback()
 						end
@@ -115,7 +113,11 @@ return {
 				sources = cmp.config.sources({
 					{ name = "codeium" },
 					{ name = "nvim_lsp" },
-					{ name = "luasnip" },
+					{
+						name = "luasnip",
+						priority = 10,
+						option = { show_autosnippets = true, use_show_condition = false },
+					},
 					{ name = "path" },
 					{ name = "buffer", keyword_length = 3 },
 				}),
@@ -152,12 +154,6 @@ return {
 				sources = cmp.config.sources({
 					{ name = "vim-dadbod-completion" },
 					{ name = "buffer" },
-				}),
-			})
-
-			cmp.setup.filetype("lua", {
-				sources = cmp.config.sources({
-					{ name = "nvim_lua" },
 				}),
 			})
 		end,
