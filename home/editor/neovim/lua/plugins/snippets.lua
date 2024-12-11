@@ -22,12 +22,12 @@ return {
 
 			-- Javascript
 			local jssnippets = {
-				s("log", fmt("console.log('----- {} -----', {})", { i(1, "title"), i(2, "variable") })),
+				s("log", fmt("console.log('----- {} -----', {})", { rep(1), i(1, "variable") })),
 				s("imp", fmt("import {{ {} }} from '{}'", { i(2, "variable(s)"), i(1, "dependency") })),
 			}
 
 			local jsxsnippets = {
-				s("log", fmt("console.log('----- {} -----', {})", { i(1, "title"), i(2, "variable") })),
+				s("log", fmt("console.log('----- {} -----', {})", { rep(1), i(1, "variable") })),
 				s("imp", fmt("import {{ {} }} from '{}'", { i(2, "variable(s)"), i(1, "dependency") })),
 				s("cs", fmt("{{/*", {})),
 				s("ce", fmt("*/}}", {})),
