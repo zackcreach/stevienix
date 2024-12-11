@@ -4,6 +4,7 @@ return {
 		init = function()
 			vim.g.projectionist_heuristics = {
 				["*"] = {
+					-- Elixir
 					["*.ex"] = {
 						alternate = {
 							"{}_test.exs",
@@ -13,6 +14,56 @@ return {
 					["*_test.exs"] = {
 						alternate = {
 							"{}.ex",
+						},
+						type = "test",
+					},
+					-- Javascript
+					["*.jsx"] = {
+						alternate = {
+							"{}.test.jsx",
+						},
+						type = "source",
+					},
+					["*.test.jsx"] = {
+						alternate = {
+							"{}.jsx",
+						},
+						type = "test",
+					},
+					["*.js"] = {
+						alternate = {
+							"{}.test.js",
+						},
+						type = "source",
+					},
+					["*.test.js"] = {
+						alternate = {
+							"{}.js",
+						},
+						type = "test",
+					},
+					-- Typescript
+					["*.tsx"] = {
+						alternate = {
+							"{}.test.tsx",
+						},
+						type = "source",
+					},
+					["*.test.tsx"] = {
+						alternate = {
+							"{}.tsx",
+						},
+						type = "test",
+					},
+					["*.ts"] = {
+						alternate = {
+							"{}.test.ts",
+						},
+						type = "source",
+					},
+					["*.test.ts"] = {
+						alternate = {
+							"{}.ts",
 						},
 						type = "test",
 					},
@@ -85,8 +136,15 @@ return {
 				suite = "vimux",
 			}
 			g["test#neovim#term_position"] = "vert"
-			g.dispatch_compilers = { elixir = "exunit" }
-
+			g.dispatch_compilers = {
+				elixir = "exunit",
+				javascript = "vitest",
+			}
+			g["test#echo_command"] = 0
+			g["test#filename_modifier"] = ":p"
+			g["test#javascript#runner"] = "vitest"
+			g["test#javascript#project_root"] = "assets"
+			g["test#javascript#vitest#executable"] = "npm run --prefix assets env -- vitest"
 			g["test#custom_strategies"] = {
 				vimux_watch = function(args)
 					vim.cmd("call VimuxClearTerminalScreen()")
