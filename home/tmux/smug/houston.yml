@@ -2,9 +2,8 @@ session: HOUSTON
 root: ~/dev/houston/
 
 before_start:
-  - ../devops/local-dev/update-dev-secrets.sh
-  - docker compose up -d
-  - docker compose --project-directory ~/dev/devops/local-dev --profile houston up -d
+  - task d:glogin
+  - yes y | task kinit
 
 windows:
   - name: ' '

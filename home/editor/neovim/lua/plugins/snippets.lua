@@ -11,7 +11,7 @@ return {
 			local ls = require("luasnip")
 			local s = ls.snippet
 			local i = ls.insert_node
-			local rep = extras.rep
+			local rep = require("luasnip.extras").rep
 			local fmt = require("luasnip.extras.fmt").fmt
 
 			ls.config.set_config({
