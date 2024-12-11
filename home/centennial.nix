@@ -6,7 +6,7 @@
     ./lang/nix.nix
     ./lang/node.nix
     ./lang/lua.nix
-    ./aerospace
+    # ./aerospace
     ./shell
     ./cloud/gcloud.nix
     ./tmux
