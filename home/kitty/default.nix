@@ -2,7 +2,7 @@
   home.packages = [
     pkgs.jetbrains-mono
     pkgs.recursive
-    (pkgs.nerdfonts.override { fonts = [ "RobotoMono" ]; })
+    pkgs.nerd-fonts.roboto-mono
   ];
 
   home.sessionVariables = {
