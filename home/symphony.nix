@@ -17,7 +17,7 @@
 
   home.packages = with pkgs; [
     webcord
-    gnome.nautilus
+    nautilus
   ];
 
   home.sessionVariables = {
