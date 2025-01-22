@@ -5,6 +5,8 @@ before_start:
   - task d:glogin
   - yes y | task kinit
 
+startup_window: ' '
+
 windows:
   - name: ' '
     commands:
