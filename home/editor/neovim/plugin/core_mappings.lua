@@ -35,6 +35,7 @@ map("n", "<leader>S", "<CMD>:noautocmd write<CR>")
 map("n", "<leader>w", "<CMD>q<CR>")
 map("n", "<leader>c", "<CMD>let @+ = expand('%')<CR>")
 map("n", "<leader>C", "<CMD>let @+ = expand('%:p')<CR>")
+map("n", "<leader>b", "<CMD>:bufdo bd<CR>")
 
 -- MacOS
 map("n", "<M-f>", ":silent grep ", { silent = false })

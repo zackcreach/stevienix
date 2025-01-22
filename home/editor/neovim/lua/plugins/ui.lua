@@ -97,9 +97,13 @@ return {
 		opts = {
 			view = {
 				side = "right",
+				width = 35,
 			},
 			git = {
 				ignore = false,
+			},
+			renderer = {
+				indent_width = 1,
 			},
 		},
 		dependencies = {

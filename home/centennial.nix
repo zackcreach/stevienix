@@ -11,6 +11,7 @@
     ./cloud/gcloud.nix
     ./tmux
     ./kitty
+    ./ghostty
     ./work
   ];
 

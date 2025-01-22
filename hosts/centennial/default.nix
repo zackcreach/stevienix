@@ -21,6 +21,7 @@
     config = {
       allowUnfree = true;
       allowUnsupportedSystems = true;
+      allowBroken = true;
     };
 
     hostPlatform = "aarch64-darwin";
