@@ -24,8 +24,19 @@ return {
 		opts = {
 			defaults = {
 				sorting_strategy = "ascending",
+				layout_strategy = "flex",
 				layout_config = {
+					flip_columns = 190,
 					prompt_position = "top",
+					horizontal = {
+						width = 0.8,
+					},
+					vertical = {
+						width = 0.9,
+						height = 0.9,
+						preview_height = 0.6,
+						mirror = true,
+					},
 				},
 				prompt_prefix = "󰱨 ",
 			},
