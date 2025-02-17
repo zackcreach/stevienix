@@ -17,7 +17,7 @@ windows:
     panes:
       - type: horizontal
         commands:
-          - mem && mdg && ips
+          - mdg && mem && ips
   - name: '󰎙 '
     commands:
       - nvim creachignore/scratchpad.ts

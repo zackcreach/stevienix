@@ -2,12 +2,6 @@
 , pkgs
 , ...
 }: {
-
-  # List packages installed in system profile. To search by name, run:
-  # Auto upgrade nix package and the daemon service.
-  services.nix-daemon.enable = true;
-  # nix.package = pkgs.nix;
-
   # Necessary for using flakes on this system.
   nix.settings.experimental-features = "nix-command flakes";
 
@@ -33,7 +27,7 @@
 
     # Used for backwards compatibility, please read the changelog before changing.
     # $ darwin-rebuild changelog
-    stateVersion = 4;
+    stateVersion = 5;
 
     # https://medium.com/@zmre/nix-darwin-quick-tip-activate-your-preferences-f69942a93236
     activationScripts.postUserActivation.text = ''
