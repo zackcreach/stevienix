@@ -1,0 +1,17 @@
+session: WHITEBOARD
+root: ~/dev/whiteboard/
+
+windows:
+  - name: ' '
+    commands:
+      - nvim
+  - name: ' '
+    commands:
+      - nvim creachignore/scratchpad.ex
+    panes:
+      - type: horizontal
+        commands:
+          - ips
+  - name: '󰪩 '
+    commands:
+      - nvim +DBUI
