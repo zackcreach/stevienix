@@ -12,11 +12,20 @@ map("n", "[d", vim.diagnostic.goto_prev)
 map("n", "]d", vim.diagnostic.goto_next)
 map("n", "<C-g>", vim.diagnostic.open_float)
 
--- Sign Icons
-local signs = { Error = " ", Warn = "󰒡 ", Hint = "󰋼 " }
-
 -- Consigure signs
-for type, icon in pairs(signs) do
-	local highlight = "DiagnosticSign" .. type
-	vim.fn.sign_define(highlight, { text = icon, texthl = highlight })
-end
+vim.diagnostic.config({
+	signs = {
+		text = {
+			[vim.diagnostic.severity.ERROR] = " ",
+			[vim.diagnostic.severity.WARN] = "󰒡 ",
+			[vim.diagnostic.severity.INFO] = "󰋼 ",
+			[vim.diagnostic.severity.HINT] = "󰌵 ",
+		},
+		numhl = {
+			[vim.diagnostic.severity.ERROR] = "",
+			[vim.diagnostic.severity.WARN] = "",
+			[vim.diagnostic.severity.HINT] = "",
+			[vim.diagnostic.severity.INFO] = "",
+		},
+	},
+})

@@ -15,7 +15,7 @@
   programs.git.ignores = [ ".lexical" ".elixir-ls" ];
 
   home.packages = with pkgs; [
-    postgresql
+    postgresql_16
     beam.packages.erlang_26.elixir_1_16
     lexical
   ];

@@ -18,26 +18,26 @@
     ];
 
     aliases = {
-      su = "!git branch --set-upstream-to=origin/`git symbolic-ref --short HEAD`";
-      s = "status";
+      aa = "add .";
+      brD = "branch -D";
+      brc = "!git rev-parse --abbrev-ref HEAD | pbcopy";
+      brd = "branch -d";
+      brn = "!git rev-parse --abbrev-ref HEAD";
+      cm = "commit -m";
       co = "checkout";
       coa = "checkout .";
       cob = "checkout -b";
-      rs = "reset";
-      rsa = "reset .";
       com = "checkout main";
-      brc = "!git rev-parse --abbrev-ref HEAD | pbcopy";
-      brn = "!git rev-parse --abbrev-ref HEAD";
-      brd = "branch -d";
-      brD = "branch -D";
-      cm = "commit -m";
-      aa = "add .";
-      st = "stash --include-untracked";
-      sp = "stash pop";
       fm = "fetch origin main:main";
       mm = "merge main";
       pf = "push --force-with-lease";
       pr = "!gh pr create -w";
+      rs = "reset";
+      rsa = "reset .";
+      s = "status";
+      sp = "stash pop";
+      st = "stash --include-untracked";
+      su = "!git branch --set-upstream-to=origin/`git symbolic-ref --short HEAD`";
       sync = "!git fetch origin main:main && git rebase main";
     };
 
@@ -57,18 +57,16 @@
     };
 
     extraConfig = {
-      init = { defaultBranch = "main"; };
-      push = { default = "current"; autoSetupRemote = true; };
-      pull = { default = "current"; };
-      diff = { algorithm = "histogram"; };
       blame = { date = "relative"; };
-      rebase = { autosquash = true; };
-      merge = { conflictStyle = "diff3"; };
+      commit = { verbose = true; template = "~/.config/git/commit-template"; };
       core = { autocrlf = "input"; };
-      commit = {
-        verbose = true;
-        template = "~/.config/git/commit-template";
-      };
+      diff = { algorithm = "histogram"; };
+      init = { defaultBranch = "main"; };
+      merge = { conflictStyle = "diff3"; };
+      pull = { default = "current"; };
+      push = { default = "current"; autoSetupRemote = true; };
+      rebase = { autosquash = true; };
+      rerere = { enabled = true; };
     };
   };
 
