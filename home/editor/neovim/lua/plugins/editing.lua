@@ -143,4 +143,19 @@ return {
 		opts = {},
 		lazy = false,
 	},
+	{
+		"Wansmer/treesj",
+		dependencies = { "nvim-treesitter/nvim-treesitter" },
+		config = function()
+			local treesj = require("treesj")
+			local map = vim.keymap.set
+
+			treesj.setup({ use_default_keymaps = false, max_join_length = 1000 })
+
+			map("n", "<leader>n", require("treesj").toggle)
+			map("n", "<leader>N", function()
+				treesj.toggle({ split = { recursive = true } })
+			end)
+		end,
+	},
 }
