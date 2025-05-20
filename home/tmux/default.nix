@@ -73,16 +73,28 @@
       bind s display-popup -E -w 50% -h 50% rally
       bind S display-popup -E -w 50% -h 50% 'tmux switch-client -t "$(tmux list-sessions -F "#{session_name}"| fzf)"'
       bind Escape copy-mode
+      bind -n S-Left previous-window
+      bind S-Tab previous-window
+      bind -n S-Right next-window
+      bind S-Tab next-window
       bind-key p paste-buffer
       bind-key -T copy-mode-vi v send-keys -X begin-selection
       bind-key -T copy-mode-vi V send-keys -X select-line
       bind-key -T copy-mode-vi y send-keys -X copy-selection
       bind-key -T copy-mode-vi C-y send-keys -X rectangle-toggle
       bind-key -T copy-mode-vi Escape send-keys -X cancel
-      bind -n S-Left previous-window
-      bind S-Tab previous-window
-      bind -n S-Right next-window
-      bind S-Tab next-window
+      bind-key -T root F1 select-window -t 1
+      bind-key -T root F2 select-window -t 2
+      bind-key -T root F3 select-window -t 3
+      bind-key -T root F4 select-window -t 4
+      bind-key -T root F5 select-window -t 5
+      bind-key -T root F6 select-window -t 6
+      bind-key -T root F7 select-window -t 7
+      bind-key -T root F8 select-window -t 8
+      bind-key -T root F9 select-window -t 9
+      bind-key -T root F10 select-window -t 10
+      bind-key -T root F11 select-window -t 11
+      bind-key -T root F10 select-window -t 12
     '';
   };
 
