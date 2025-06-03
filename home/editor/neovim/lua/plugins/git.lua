@@ -42,6 +42,7 @@ return {
 					map("n", "<leader>g-", gitsigns.undo_stage_hunk, opts)
 					map("n", "<leader>g=", gitsigns.reset_hunk, opts)
 					map("n", "<leader>gp", gitsigns.preview_hunk, opts)
+					map("n", "<leader>gs", "<CMD>Gvdiffsplit<CR>", opts)
 				end,
 			})
 		end,

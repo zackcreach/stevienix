@@ -1,6 +1,7 @@
 { pkgs, ... }: {
   home.sessionVariables = {
     PRETTIERD_DEFAULT_CONFIG = "$HOME/prettier.config.js";
+    BIOME_CONFIG_PATH = "$HOME/biome.json";
   };
 
   home.packages = with pkgs; [
@@ -10,6 +11,7 @@
     eslint_d
     tailwindcss-language-server
     yarn
+    biome
   ];
 
   home.file = {
@@ -28,6 +30,54 @@
         ],
         importOrderSeparation: true,
         importOrderSortSpecifiers: true,
+      }
+    '';
+    "biome.json".text = ''
+      {
+      	"$schema": "https://biomejs.dev/schemas/1.9.4/schema.json",
+      	"vcs": {
+      		"enabled": false,
+      		"clientKind": "git",
+      		"useIgnoreFile": false
+      	},
+      	"files": {
+      		"ignoreUnknown": true,
+      		"ignore": [
+      			"node_modules",
+      			"dist",
+      			"_build",
+      			"coverage",
+      		]
+      	},
+      	"formatter": {
+      		"enabled": true,
+      		"indentStyle": "space"
+      	},
+      	"organizeImports": {
+      		"enabled": true
+      	},
+      	"linter": {
+      		"enabled": true,
+      		"rules": {
+      			"recommended": true,
+      			"suspicious": {
+      				"noConsole": "error"
+      			}
+      		},
+      	},
+      	"javascript": {
+      		"formatter": {
+      			"quoteStyle": "single",
+      			"semicolons": "asNeeded",
+      			"indentStyle": "space",
+      			"trailingCommas": "es5"
+      		}
+      	},
+      	"json": {
+      		"formatter": {
+      			"indentStyle": "space"
+      		}
+      	}
       }
     '';
   };
