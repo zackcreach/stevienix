@@ -24,7 +24,7 @@ windows:
     panes:
       - type: horizontal
         commands:
-          - mix kill.vite && npm run --prefix assets dev
+          - mix kill.vite && pnpm --prefix assets dev
   - name: '󰪩 '
     commands:
       - nvim +DBUI

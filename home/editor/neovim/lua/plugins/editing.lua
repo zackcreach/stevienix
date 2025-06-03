@@ -38,10 +38,18 @@ return {
 		lazy = true,
 		event = { "VeryLazy" },
 		init = function()
+			vim.g.neoformat_run_all_formatters = 1
 			-- Force specific formatting engines
 			vim.g.neoformat_enabled_typescript = { "prettierd" }
+			vim.g.neoformat_enabled_typescript = { "biome" }
+			vim.g.neoformat_enabled_typescriptreact = { "prettierd" }
+			vim.g.neoformat_enabled_typescriptreact = { "biome" }
 			vim.g.neoformat_enabled_javascript = { "prettierd" }
+			vim.g.neoformat_enabled_javascript = { "biome" }
+			vim.g.neoformat_enabled_javascriptreact = { "prettierd" }
+			vim.g.neoformat_enabled_javascriptreact = { "biome" }
 			vim.g.neoformat_enabled_json = { "prettierd" }
+			vim.g.neoformat_enabled_json = { "biome" }
 			vim.g.neoformat_enabled_css = { "prettierd" }
 			vim.g.neoformat_enabled_markdown = { "prettierd" }
 			vim.g.neoformat_enabled_html = { "prettierd" }
@@ -54,7 +62,7 @@ return {
 			vim.api.nvim_create_autocmd("BufWritePre", {
 				desc = "Neoformat on save",
 				group = vim.api.nvim_create_augroup("fmt", { clear = true }),
-				command = "silent! undojoin | Neoformat",
+				command = "undojoin | Neoformat",
 			})
 		end,
 	},
@@ -66,10 +74,10 @@ return {
 
 			lint.linters_by_ft = {
 				elixir = { "credo" },
-				javascript = { "eslint_d" },
-				javascriptreact = { "eslint_d" },
-				typescript = { "eslint_d" },
-				typescriptreact = { "eslint_d" },
+				javascript = { "biomejs" },
+				javascriptreact = { "biomejs" },
+				typescript = { "biomejs" },
+				typescriptreact = { "biomejs" },
 			}
 
 			local group = vim.api.nvim_create_augroup("MyLinter", {})
