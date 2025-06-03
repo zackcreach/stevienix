@@ -34,35 +34,30 @@ return {
 	},
 	-- Auto formatting
 	{
-		"sbdchd/neoformat",
+		"stevearc/conform.nvim",
+		opts = {},
 		lazy = true,
 		event = { "VeryLazy" },
-		init = function()
-			vim.g.neoformat_run_all_formatters = 1
-			-- Force specific formatting engines
-			vim.g.neoformat_enabled_typescript = { "prettierd" }
-			vim.g.neoformat_enabled_typescript = { "biome" }
-			vim.g.neoformat_enabled_typescriptreact = { "prettierd" }
-			vim.g.neoformat_enabled_typescriptreact = { "biome" }
-			vim.g.neoformat_enabled_javascript = { "prettierd" }
-			vim.g.neoformat_enabled_javascript = { "biome" }
-			vim.g.neoformat_enabled_javascriptreact = { "prettierd" }
-			vim.g.neoformat_enabled_javascriptreact = { "biome" }
-			vim.g.neoformat_enabled_json = { "prettierd" }
-			vim.g.neoformat_enabled_json = { "biome" }
-			vim.g.neoformat_enabled_css = { "prettierd" }
-			vim.g.neoformat_enabled_markdown = { "prettierd" }
-			vim.g.neoformat_enabled_html = { "prettierd" }
-			vim.g.neoformat_enabled_svelte = { "prettierd" }
-			vim.g.neoformat_enabled_lua = { "stylua" }
-			vim.g.neoformat_enabled_elixir = { "mixformat" }
-		end,
-		-- Format on save
 		config = function()
-			vim.api.nvim_create_autocmd("BufWritePre", {
-				desc = "Neoformat on save",
-				group = vim.api.nvim_create_augroup("fmt", { clear = true }),
-				command = "undojoin | Neoformat",
+			require("conform").setup({
+				formatters_by_ft = {
+					javascript = { "biome", "biome-organize-imports", "prettierd" },
+					javascriptreact = { "biome", "biome-organize-imports", "prettierd" },
+					typescript = { "biome", "biome-organize-imports", "prettierd" },
+					typescriptreact = { "biome", "biome-organize-imports", "prettierd" },
+					json = { "biome", "prettierd" },
+					css = { "prettierd" },
+					markdown = { "prettierd" },
+					html = { "prettierd" },
+					svelte = { "prettierd" },
+					lua = { "stylua" },
+					elixir = { "mix" },
+				},
+				format_on_save = {
+					-- These options will be passed to conform.format()
+					timeout_ms = 500,
+					lsp_format = "fallback",
+				},
 			})
 		end,
 	},

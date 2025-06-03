@@ -46,7 +46,7 @@
       			"node_modules",
       			"dist",
       			"_build",
-      			"coverage",
+      			"coverage"
       		]
       	},
       	"formatter": {
@@ -63,7 +63,7 @@
       			"suspicious": {
       				"noConsole": "error"
       			}
-      		},
+      		}
       	},
       	"javascript": {
       		"formatter": {
@@ -80,9 +80,5 @@
       	}
       }
     '';
-  };
-
-  programs.zsh.shellAliases = {
-    D = "echo -e '\n// Removing deps/';rm -rf deps/";
   };
 }
