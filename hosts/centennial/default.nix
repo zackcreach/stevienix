@@ -22,6 +22,8 @@
   };
 
   system = {
+    primaryUser = "zack";
+
     # Set Git commit hash for darwin-version.
     configurationRevision = self.rev or self.dirtyRev or null;
 
@@ -30,7 +32,7 @@
     stateVersion = 5;
 
     # https://medium.com/@zmre/nix-darwin-quick-tip-activate-your-preferences-f69942a93236
-    activationScripts.postUserActivation.text = ''
+    activationScripts.activeSettings.text = ''
       # Following line should allow us to avoid a logout/login cycle
       /System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u
     '';
