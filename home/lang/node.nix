@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   home.sessionVariables = {
     PRETTIERD_DEFAULT_CONFIG = "$HOME/prettier.config.js";
     BIOME_CONFIG_PATH = "$HOME/biome.json";
@@ -34,34 +35,42 @@
     '';
     "biome.json".text = ''
       {
-      	"$schema": "https://biomejs.dev/schemas/1.9.4/schema.json",
+      	"$schema": "https://biomejs.dev/schemas/2.0.0/schema.json",
       	"vcs": {
       		"enabled": false,
       		"clientKind": "git",
       		"useIgnoreFile": false
       	},
-      	"files": {
-      		"ignoreUnknown": true,
-      		"ignore": [
-      			"node_modules",
-      			"dist",
-      			"_build",
-      			"coverage"
-      		]
-      	},
       	"formatter": {
       		"enabled": true,
       		"indentStyle": "space"
       	},
-      	"organizeImports": {
-      		"enabled": true
-      	},
+      	"assist": { "actions": { "source": { "organizeImports": "on" } } },
       	"linter": {
       		"enabled": true,
       		"rules": {
       			"recommended": true,
       			"suspicious": {
       				"noConsole": "error"
+      			},
+      			"correctness": {
+      				"noUnusedVariables": "error",
+      				"noUnusedImports": {
+      					"level": "error",
+      					"fix": "safe"
+      				}
+      			},
+      			"style": {
+      				"noParameterAssign": "error",
+      				"useAsConstAssertion": "error",
+      				"useDefaultParameterLast": "error",
+      				"useEnumInitializers": "error",
+      				"useSelfClosingElements": "error",
+      				"useSingleVarDeclarator": "error",
+      				"noUnusedTemplateLiteral": "error",
+      				"useNumberNamespace": "error",
+      				"noInferrableTypes": "error",
+      				"noUselessElse": "error"
       			}
       		}
       	},

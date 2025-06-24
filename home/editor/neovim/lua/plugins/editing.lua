@@ -40,11 +40,14 @@ return {
 		event = { "VeryLazy" },
 		config = function()
 			require("conform").setup({
+				formatters = {
+					biome = { require_cwd = true },
+				},
 				formatters_by_ft = {
-					javascript = { "biome", "biome-organize-imports", "prettierd" },
-					javascriptreact = { "biome", "biome-organize-imports", "prettierd" },
-					typescript = { "biome", "biome-organize-imports", "prettierd" },
-					typescriptreact = { "biome", "biome-organize-imports", "prettierd" },
+					javascript = { "biome-check", "prettierd" },
+					javascriptreact = { "biome-check", "prettierd" },
+					typescript = { "biome-check", "prettierd" },
+					typescriptreact = { "biome-check", "prettierd" },
 					json = { "biome", "prettierd" },
 					css = { "prettierd" },
 					markdown = { "prettierd" },
