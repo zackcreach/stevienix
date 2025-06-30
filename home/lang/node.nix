@@ -2,7 +2,7 @@
 {
   home.sessionVariables = {
     PRETTIERD_DEFAULT_CONFIG = "$HOME/prettier.config.js";
-    BIOME_CONFIG_PATH = "$HOME/biome.json";
+    # BIOME_CONFIG_PATH = "$HOME/biome.json";
   };
 
   home.packages = with pkgs; [
@@ -46,34 +46,6 @@
       		"indentStyle": "space"
       	},
       	"assist": { "actions": { "source": { "organizeImports": "on" } } },
-      	"linter": {
-      		"enabled": true,
-      		"rules": {
-      			"recommended": true,
-      			"suspicious": {
-      				"noConsole": "error"
-      			},
-      			"correctness": {
-      				"noUnusedVariables": "error",
-      				"noUnusedImports": {
-      					"level": "error",
-      					"fix": "safe"
-      				}
-      			},
-      			"style": {
-      				"noParameterAssign": "error",
-      				"useAsConstAssertion": "error",
-      				"useDefaultParameterLast": "error",
-      				"useEnumInitializers": "error",
-      				"useSelfClosingElements": "error",
-      				"useSingleVarDeclarator": "error",
-      				"noUnusedTemplateLiteral": "error",
-      				"useNumberNamespace": "error",
-      				"noInferrableTypes": "error",
-      				"noUselessElse": "error"
-      			}
-      		}
-      	},
       	"javascript": {
       		"formatter": {
       			"quoteStyle": "single",
