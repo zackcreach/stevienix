@@ -1,6 +1,4 @@
 {
-  description = "Cool Beans";
-
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nix-darwin.url = "github:LnL7/nix-darwin";
@@ -14,13 +12,15 @@
   };
 
   outputs =
-    inputs @ { self
-    , nix-darwin
-    , home-manager
-    , nixpkgs
-    , NixOS-WSL
-    , ...
-    }: {
+    inputs@{
+      self,
+      nix-darwin,
+      home-manager,
+      nixpkgs,
+      NixOS-WSL,
+      ...
+    }:
+    {
       # Build darwin flake using:
       # $ darwin-rebuild build --flake .#centennial
       darwinConfigurations.centennial = nix-darwin.lib.darwinSystem {
@@ -75,20 +75,23 @@
         system = "x86_64-linux";
         modules = [
           "${nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix"
-          ({ pkgs, ... }: {
-            environment.systemPackages = with pkgs; [
-              neovim
-              git
-              networkmanager
-              gptfdisk
-            ];
+          (
+            { pkgs, ... }:
+            {
+              environment.systemPackages = with pkgs; [
+                neovim
+                git
+                networkmanager
+                gptfdisk
+              ];
 
-            systemd.services.sshd.wantedBy = pkgs.lib.mkForce [ "multi-user.target" ];
-            users.users.root.openssh.authorizedKeys.keys = [
-              # ssh-add -L
-              "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIP0PMZX36AvlE6+w7TWF0Nvg4QBl6rV+xuaffQDR6Mcs cardno:26_329_662"
-            ];
-          })
+              systemd.services.sshd.wantedBy = pkgs.lib.mkForce [ "multi-user.target" ];
+              users.users.root.openssh.authorizedKeys.keys = [
+                # ssh-add -L
+                "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIP0PMZX36AvlE6+w7TWF0Nvg4QBl6rV+xuaffQDR6Mcs cardno:26_329_662"
+              ];
+            }
+          )
         ];
       };
     };
