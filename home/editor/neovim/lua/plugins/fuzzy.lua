@@ -3,7 +3,7 @@ return {
 		"nvim-telescope/telescope.nvim",
 		cmd = { "Telescope find_files" },
 		dependencies = {
-			{ "nvim-lua/plenary.nvim", lazy = false },
+			"nvim-lua/plenary.nvim",
 			"nvim-tree/nvim-web-devicons",
 			"nvim-telescope/telescope-symbols.nvim",
 		},
