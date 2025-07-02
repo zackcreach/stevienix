@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   imports = [
     ./git
     ./editor
@@ -22,22 +23,21 @@
     hidden-bar
   ];
 
-  # TODO: until home manager supports gpg on MacOS, manually manage agent
-  # https://github.com/nix-community/home-manager/pull/5786
-  home.file.".gnupg/gpg-agent.conf".text = ''
-    ttyname $GPG_TTY
-    default-cache-ttl 60
-    max-cache-ttl 120
-    pinentry-program ${pkgs.pinentry_mac}/bin/pinentry-mac
-  '';
+  home.sessionVariables = {
+    GPG_TTY = "$(tty)";
+    SSH_AUTH_SOCK = "$(gpgconf --list-dirs agent-ssh-socket)";
+  };
 
-  home.file.".gnupg/sshcontrol".text = ''
-    EE40AB918DA8A265B8DC51B8CC6B29F7887FBC4F
-  '';
-
-  programs.home-manager.enable = true;
-
-  programs.zsh.shellAliases.stevie = "sudo darwin-rebuild switch --flake ~/.config/nixos";
+  services.gpg-agent = {
+    enable = true;
+    enableSshSupport = true;
+    pinentry.package = pkgs.pinentry_mac;
+    defaultCacheTtl = 60;
+    maxCacheTtl = 120;
+    sshKeys = [
+      "EE40AB918DA8A265B8DC51B8CC6B29F7887FBC4F"
+    ];
+  };
 
   programs.gpg = {
     enable = true;
@@ -48,4 +48,8 @@
       }
     ];
   };
+
+  programs.home-manager.enable = true;
+
+  programs.zsh.shellAliases.stevie = "sudo darwin-rebuild switch --flake ~/.config/nixos";
 }
