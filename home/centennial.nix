@@ -14,6 +14,7 @@
     ./kitty
     ./ghostty
     ./work
+    ./ai
   ];
 
   home.stateVersion = "24.05";
@@ -51,5 +52,8 @@
 
   programs.home-manager.enable = true;
 
-  programs.zsh.shellAliases.stevie = "sudo darwin-rebuild switch --flake ~/.config/nixos";
+  programs.zsh.shellAliases = {
+    stevie = "sudo darwin-rebuild switch --flake ~/.config/nixos";
+    srv = "stevie && nvim";
+  };
 }

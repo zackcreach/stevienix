@@ -26,6 +26,9 @@
       cmp-nvim-lua
       lspkind-nvim
 
+      # ai
+      codecompanion-nvim
+
       # database
       vim-dadbod
       vim-dadbod-ui

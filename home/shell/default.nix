@@ -56,30 +56,30 @@
       ignoreSpace = true;
     };
     initContent = ''
-      if [[ -n $SSH_CONNECTION ]]; then
-      export EDITOR='vim'
-      else
-      export EDITOR='nvim'
-      fi
+            if [[ -n $SSH_CONNECTION ]]; then
+            export EDITOR='vim'
+            else
+            export EDITOR='nvim'
+            fi
 
-      autoload -Uz edit-command-line
+            autoload -Uz edit-command-line
 
-      zle -N edit-command-line
+            zle -N edit-command-line
 
-      bindkey -M viins '^f' edit-command-line
+            bindkey -M viins '^f' edit-command-line
 
-      bindkey -M vicmd '^i' edit-command-line
+            bindkey -M vicmd '^i' edit-command-line
 
-      source ${pkgs.zsh-vi-mode}/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
+            source ${pkgs.zsh-vi-mode}/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
 
-      function zvm_after_init() {
-      	 zvm_bindkey viins '^R' fzf-history-widget
-      	 bindkey -M viins '^f' edit-command-line
-       }
+            function zvm_after_init() {
+            	 zvm_bindkey viins '^R' fzf-history-widget
+            	 bindkey -M viins '^f' edit-command-line
+             }
 
-			 function w() {
-					fd $1 | entr -c "''${@:2}"
-			}
+      			 function w() {
+      					fd $1 | entr -c "''${@:2}"
+      			}
     '';
   };
 
