@@ -1,8 +1,7 @@
 return {
 	{
-		"neovim/nvim-lspconfig",
-		-- after = "nvim-cmp",
-		config = function()
+		"nvim-lspconfig",
+		after = function()
 			local lsp_config = require("lspconfig")
 			local configs = require("lspconfig.configs")
 			local on_attach = function(client, buffer_nr)

@@ -1,11 +1,7 @@
 return {
 	{
-		"L3MON4D3/LuaSnip",
-		build = "make install_jsregexp",
-		dependencies = {
-			"saadparwaiz1/cmp_luasnip",
-		},
-		config = function()
+		"luasnip",
+		after = function()
 			-- all possible variables:
 			-- https://github.com/L3MON4D3/LuaSnip/blob/master/Examples/snippets.lua#L1
 			local ls = require("luasnip")

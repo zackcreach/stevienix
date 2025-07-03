@@ -1,13 +1,7 @@
 return {
 	{
-		"tpope/vim-fugitive",
-		dependencies = {
-			"tpope/vim-rhubarb",
-		},
-	},
-	{
-		"lewis6991/gitsigns.nvim",
-		config = function()
+		"gitsigns.nvim",
+		after = function()
 			local gitsigns = require("gitsigns")
 
 			function next_hunk()
@@ -47,8 +41,9 @@ return {
 			})
 		end,
 	},
+	{ "vim-fugitive" },
 	{
-		"rhysd/git-messenger.vim",
-		cmd = "GitMessenger",
+		"git-messenger-vim",
+		cmd = { "GitMessenger" },
 	},
 }

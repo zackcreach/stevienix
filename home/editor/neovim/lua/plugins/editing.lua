@@ -1,20 +1,10 @@
 return {
-	"tpope/vim-surround",
-	"tpope/vim-repeat",
+	{ "vim-surround" },
+	{ "vim-repeat" },
 	{
-		"ggandor/leap.nvim",
-		lazy = true,
-		event = { "VeryLazy" },
-		config = function()
-			local leap = require("leap")
-			leap.opts.safe_labels = {}
-			leap.add_default_mappings()
-		end,
-	},
-	{
-		"mattn/emmet-vim",
+		"emmet-vim",
 		ft = { "svelte", "html", "heex", "elixir", "javascript" },
-		init = function()
+		before = function()
 			vim.g.user_emmet_settings = {
 				["javascript.jsx"] = {
 					extends = "jsx",
@@ -34,27 +24,25 @@ return {
 	},
 	-- Auto formatting
 	{
-		"stevearc/conform.nvim",
-		opts = {},
-		lazy = true,
-		event = { "VeryLazy" },
-		config = function()
+		"conform.nvim",
+		after = function()
 			require("conform").setup({
 				formatters = {
 					biome = { require_cwd = true },
 				},
 				formatters_by_ft = {
+					css = { "prettierd" },
+					elixir = { "mix" },
+					html = { "prettierd" },
 					javascript = { "biome-check", "prettierd" },
 					javascriptreact = { "biome-check", "prettierd" },
+					json = { "biome", "prettierd" },
+					lua = { "stylua" },
+					markdown = { "prettierd" },
+					nix = { "nixpkgs_fmt" },
+					svelte = { "prettierd" },
 					typescript = { "biome-check", "prettierd" },
 					typescriptreact = { "biome-check", "prettierd" },
-					json = { "biome", "prettierd" },
-					css = { "prettierd" },
-					markdown = { "prettierd" },
-					html = { "prettierd" },
-					svelte = { "prettierd" },
-					lua = { "stylua" },
-					elixir = { "mix" },
 				},
 				format_on_save = {
 					-- These options will be passed to conform.format()
@@ -66,8 +54,8 @@ return {
 	},
 	-- Linter
 	{
-		"mfussenegger/nvim-lint",
-		config = function()
+		"nvim-lint",
+		after = function()
 			local lint = require("lint")
 
 			lint.linters_by_ft = {
@@ -90,69 +78,59 @@ return {
 		end,
 	},
 	{
-		"nvim-treesitter/nvim-treesitter",
-		dependencies = {
-			"nvim-treesitter/nvim-treesitter-textobjects",
-			"nvim-treesitter/playground",
-			"nvim-treesitter/playground",
-		},
-		lazy = true,
-		event = { "VeryLazy" },
-		build = ":TSUpdate",
-		opts = {
-			auto_install = false,
-			highlight = {
-				enable = true,
-			},
-			playground = { enable = true },
-			textobjects = {
-				select = {
+		"nvim-treesitter",
+		after = function()
+			require("nvim-treesitter.configs").setup({
+				auto_install = false,
+				highlight = {
 					enable = true,
-					keymaps = {
-						-- You can use the capture groups defined in textobjects.scm
-						["ia"] = "@attribute.inner",
-						["aa"] = "@attribute.outer",
-						["ic"] = "@comment.inner",
-						["ac"] = "@comment.outer",
-						["af"] = "@function.outer",
-						["if"] = "@function.inner",
-						["am"] = "@class.outer",
-						["im"] = "@class.inner",
-						["ib"] = "@block.inner",
-						["ab"] = "@block.outer",
+				},
+				textobjects = {
+					select = {
+						enable = true,
+						keymaps = {
+							-- You can use the capture groups defined in textobjects.scm
+							["ia"] = "@attribute.inner",
+							["aa"] = "@attribute.outer",
+							["ic"] = "@comment.inner",
+							["ac"] = "@comment.outer",
+							["af"] = "@function.outer",
+							["if"] = "@function.inner",
+							["am"] = "@class.outer",
+							["im"] = "@class.inner",
+							["ib"] = "@block.inner",
+							["ab"] = "@block.outer",
+						},
+					},
+					move = {
+						enable = true,
+						set_jumps = false,
+						goto_next_start = {
+							["]]"] = "@function.outer",
+						},
+						goto_next_end = {
+							["]["] = "@function.outer",
+						},
+						goto_previous_start = {
+							["[["] = "@function.outer",
+						},
+						goto_previous_end = {
+							["[]"] = "@function.outer",
+						},
 					},
 				},
-				move = {
-					enable = true,
-					set_jumps = false,
-					goto_next_start = {
-						["]]"] = "@function.outer",
-					},
-					goto_next_end = {
-						["]["] = "@function.outer",
-					},
-					goto_previous_start = {
-						["[["] = "@function.outer",
-					},
-					goto_previous_end = {
-						["[]"] = "@function.outer",
-					},
-				},
-			},
-		},
-		config = function(_plugin, opts)
-			require("nvim-treesitter.configs").setup(opts)
+			})
 		end,
 	},
 	{
-		"numToStr/Comment.nvim",
-		opts = {},
-		lazy = false,
+		"comment.nvim",
+		after = function()
+			require("comment").setup({})
+		end,
 	},
 	{
-		"Wansmer/treesj",
-		dependencies = { "nvim-treesitter/nvim-treesitter" },
-		config = function()
+		"treesj",
+		after = function()
 			local treesj = require("treesj")
 			local map = vim.keymap.set
 

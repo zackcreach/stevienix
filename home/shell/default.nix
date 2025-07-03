@@ -76,6 +76,10 @@
       	 zvm_bindkey viins '^R' fzf-history-widget
       	 bindkey -M viins '^f' edit-command-line
        }
+
+			 function w() {
+					fd $1 | entr -c "''${@:2}"
+			}
     '';
   };
 
