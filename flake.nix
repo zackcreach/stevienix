@@ -9,16 +9,19 @@
       url = "github:nix-community/NixOS-WSL";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    lz-n = {
+      url = "github:nvim-neorocks/lz.n";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
-    inputs@{
-      self,
-      nix-darwin,
-      home-manager,
-      nixpkgs,
-      NixOS-WSL,
-      ...
+    inputs@{ self
+    , nix-darwin
+    , home-manager
+    , nixpkgs
+    , NixOS-WSL
+    , ...
     }:
     {
       # Build darwin flake using:

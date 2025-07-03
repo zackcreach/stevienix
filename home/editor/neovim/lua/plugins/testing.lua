@@ -1,7 +1,7 @@
 return {
 	{
-		"tpope/vim-projectionist",
-		init = function()
+		"vim-projectionist",
+		before = function()
 			vim.g.projectionist_heuristics = {
 				["*"] = {
 					-- Elixir
@@ -72,15 +72,8 @@ return {
 		end,
 	},
 	{
-		"janko/vim-test",
-		lazy = true,
-		event = { "VeryLazy" },
-		dependencies = {
-			"tpope/vim-dispatch",
-			"preservim/vimux",
-			"telescope.nvim",
-		},
-		config = function()
+		"vim-test",
+		after = function()
 			local pickers = require("telescope.pickers")
 			local sorters = require("telescope.sorters")
 			local finders = require("telescope.finders")

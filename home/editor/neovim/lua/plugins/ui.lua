@@ -1,8 +1,8 @@
 return {
 	-- Color theme
 	{
-		"gbprod/nord.nvim",
-		config = function()
+		"gbprod-nord",
+		after = function()
 			vim.cmd("colorscheme nord")
 
 			-- Dump all highlight groups and links based on theme:
@@ -16,110 +16,90 @@ return {
 	},
 	-- Status line
 	{
-		"nvim-lualine/lualine.nvim",
-		dependencies = {
-			"kyazdani42/nvim-web-devicons",
-		},
-		opts = {
-			options = {
-				icons_enabled = true,
-				theme = "nord",
-				component_separators = { left = "", right = "" },
-				section_separators = { left = "", right = "" },
-				disabled_filetypes = {
-					statusline = {},
-					winbar = {},
+		"lualine.nvim",
+		after = function()
+			require("lualine").setup({
+				options = {
+					icons_enabled = true,
+					theme = "nord",
+					component_separators = { left = "", right = "" },
+					section_separators = { left = "", right = "" },
+					disabled_filetypes = {
+						statusline = {},
+						winbar = {},
+					},
+					ignore_focus = {},
+					always_divide_middle = true,
+					globalstatus = false,
+					refresh = {
+						statusline = 1000,
+						tabline = 1000,
+						winbar = 1000,
+					},
 				},
-				ignore_focus = {},
-				always_divide_middle = true,
-				globalstatus = false,
-				refresh = {
-					statusline = 1000,
-					tabline = 1000,
-					winbar = 1000,
+				sections = {
+					lualine_a = { "mode" },
+					lualine_b = { "diff", "diagnostics" },
+					lualine_c = { "filename" },
+					lualine_x = { "filetype" },
+					lualine_y = { "progress" },
+					lualine_z = { "location" },
 				},
-			},
-			sections = {
-				lualine_a = { "mode" },
-				lualine_b = { "diff", "diagnostics" },
-				lualine_c = { "filename" },
-				lualine_x = { "filetype" },
-				lualine_y = { "progress" },
-				lualine_z = { "location" },
-			},
-			inactive_sections = {
-				lualine_a = {},
-				lualine_b = {},
-				lualine_c = { "filename" },
-				lualine_x = { "filetype" },
-				lualine_y = {},
-				lualine_z = {},
-			},
-			tabline = {},
-			winbar = {},
-			inactive_winbar = {},
-			extensions = {},
-		},
-	},
-	{
-		"NvChad/nvim-colorizer.lua",
-		opts = {
-			user_default_options = {
-				filetypes = { "*" },
-				mode = "virtualtext",
-				virtualtext = "■",
-				names = false,
-				tailwind = true,
-			},
-		},
-	},
-	{
-		"rolv-apneseth/tfm.nvim",
-		config = function()
-			-- Set keymap so you can open the default terminal file manager (yazi)
-			vim.api.nvim_set_keymap("n", "<leader>E", "", {
-				noremap = true,
-				callback = function()
-					require("tfm").open(vim.fn.expand("%"))
-				end,
+				inactive_sections = {
+					lualine_a = {},
+					lualine_b = {},
+					lualine_c = { "filename" },
+					lualine_x = { "filetype" },
+					lualine_y = {},
+					lualine_z = {},
+				},
+				tabline = {},
+				winbar = {},
+				inactive_winbar = {},
+				extensions = {},
 			})
-
-			-- vim.api.nvim_set_keymap("n", "<leader>E", "", {
-			-- 	noremap = true,
-			-- 	callback = function()
-			-- 		require("tfm").open()
-			-- 	end,
-			-- })
 		end,
 	},
 	{
-		"nvim-tree/nvim-tree.lua",
-		opts = {
-			view = {
-				side = "right",
-				width = 35,
-			},
-			git = {
-				ignore = false,
-			},
-			renderer = {
-				indent_width = 1,
-			},
-		},
-		dependencies = {
-			"nvim-tree/nvim-web-devicons", -- optional, for file icons
-		},
+		"nvim-colorizer.lua",
+		after = function()
+			require("colorizer").setup({
+				user_default_options = {
+					filetypes = { "*" },
+					mode = "virtualtext",
+					virtualtext = "■",
+					names = false,
+					tailwind = true,
+				},
+			})
+		end,
+	},
+	{
+		"nvim-tree-lua",
+		after = function()
+			require("nvim-tree").setup({
+				view = {
+					side = "right",
+					width = 35,
+				},
+				git = {
+					ignore = false,
+				},
+				renderer = {
+					indent_width = 1,
+				},
+			})
+		end,
 		keys = {
 			{ "<leader>e", ":NvimTreeFindFile<cr>" },
 		},
-		lazy = true,
 	},
 	-- Smooth scroll
-	"psliwka/vim-smoothie",
+	{ "vim-smoothie" },
 	-- Tmux
 	{
-		"christoomey/vim-tmux-navigator",
-		init = function()
+		"vim-tmux-navigator",
+		before = function()
 			vim.g.tmux_navigator_disable_when_zoomed = true
 		end,
 	},

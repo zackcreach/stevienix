@@ -1,12 +1,7 @@
 return {
 	{
-		"nvim-telescope/telescope.nvim",
+		"telescope-nvim",
 		cmd = { "Telescope find_files" },
-		dependencies = {
-			"nvim-lua/plenary.nvim",
-			"nvim-tree/nvim-web-devicons",
-			"nvim-telescope/telescope-symbols.nvim",
-		},
 		keys = {
 			{ "<leader><leader>", ":Telescope find_files<CR>" },
 			{ "<leader><backspace>", ":Telescope buffers<CR>" },
@@ -21,45 +16,47 @@ return {
 			{ "<leader>fi", ":Telescope symbols<CR>" },
 			{ "<leader>fd", ":Telescope diagnostics<CR>" },
 		},
-		opts = {
-			defaults = {
-				sorting_strategy = "ascending",
-				layout_strategy = "flex",
-				layout_config = {
-					flip_columns = 190,
-					prompt_position = "top",
-					horizontal = {
-						width = 0.8,
+		after = function()
+			require("telescope").setup({
+				defaults = {
+					sorting_strategy = "ascending",
+					layout_strategy = "flex",
+					layout_config = {
+						flip_columns = 190,
+						prompt_position = "top",
+						horizontal = {
+							width = 0.8,
+						},
+						vertical = {
+							width = 0.9,
+							height = 0.9,
+							preview_height = 0.6,
+							mirror = true,
+						},
 					},
-					vertical = {
-						width = 0.9,
-						height = 0.9,
-						preview_height = 0.6,
-						mirror = true,
+					prompt_prefix = "󰱨 ",
+					selection_caret = "󰳟 ",
+				},
+				pickers = {
+					find_files = {
+						find_command = { "rg", "--files", "--hidden", "-g", "!.git" },
+					},
+					live_grep = {
+						vimgrep_arguments = {
+							"rg",
+							"-g",
+							"!.git",
+							"--hidden",
+							"--color=never",
+							"--no-heading",
+							"--with-filename",
+							"--line-number",
+							"--column",
+							"--smart-case",
+						},
 					},
 				},
-				prompt_prefix = "󰱨 ",
-				selection_caret = "󰳟 ",
-			},
-			pickers = {
-				find_files = {
-					find_command = { "rg", "--files", "--hidden", "-g", "!.git" },
-				},
-				live_grep = {
-					vimgrep_arguments = {
-						"rg",
-						"-g",
-						"!.git",
-						"--hidden",
-						"--color=never",
-						"--no-heading",
-						"--with-filename",
-						"--line-number",
-						"--column",
-						"--smart-case",
-					},
-				},
-			},
-		},
+			})
+		end,
 	},
 }

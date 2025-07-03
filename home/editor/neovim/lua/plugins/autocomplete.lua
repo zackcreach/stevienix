@@ -1,19 +1,7 @@
 return {
 	{
-		"hrsh7th/nvim-cmp",
-		lazy = true,
-		event = { "VeryLazy" },
-		dependencies = {
-			"Exafunction/codeium.nvim",
-			"nvim-lspconfig",
-			"hrsh7th/cmp-nvim-lsp",
-			"hrsh7th/cmp-buffer",
-			"hrsh7th/cmp-path",
-			"hrsh7th/cmp-cmdline",
-			"hrsh7th/cmp-nvim-lua",
-			"onsails/lspkind-nvim",
-		},
-		config = function()
+		"nvim-cmp",
+		after = function()
 			local cmp = require("cmp")
 			local lspkind = require("lspkind")
 			local luasnip = require("luasnip")
