@@ -46,7 +46,7 @@
       # window rules to force windows in certain areas
       # run hyprctl clients to see stats
       windowrulev2 = [
-        "workspace 2, class:firefox"
+        "workspace 2, class:vivaldi"
         "workspace 3, class:webcord"
       ];
 
@@ -56,7 +56,7 @@
         "waybar"
         "kitty rally"
         "nm-applet"
-        "[workspace 2 silent] firefox"
+        "[workspace 2 silent] vivaldi"
         "hyprctl setcursor Bibata-Modern-Ice 22"
         "[workspace 3 silent] webcord"
       ];

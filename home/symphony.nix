@@ -18,10 +18,11 @@
   home.packages = with pkgs; [
     webcord
     nautilus
+    vivaldi
   ];
 
   home.sessionVariables = {
-    "BROWSER" = "firefox";
+    "BROWSER" = "vivaldi";
   };
 
   programs.home-manager.enable = true;
