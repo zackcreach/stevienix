@@ -17,6 +17,7 @@
     pkgs.slurp
     pkgs.wl-clipboard
     pkgs.waypaper
+    pkgs.hyprland-qtutils
   ];
 
   services.cliphist.enable = true;
