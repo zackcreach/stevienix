@@ -29,6 +29,7 @@
   programs.zsh.shellAliases = {
     "gpg-refresh" = "gpg-connect-agent 'scd serialno' 'learn --force' /bye";
     stevie = "sudo nixos-rebuild switch";
+    srv = "stevie && nvim";
   };
 
   programs.gpg = {
