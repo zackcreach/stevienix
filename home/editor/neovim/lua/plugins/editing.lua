@@ -125,7 +125,7 @@ return {
 	{
 		"comment.nvim",
 		after = function()
-			require("comment").setup({})
+			require("Comment").setup({})
 		end,
 	},
 	{
