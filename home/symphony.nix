@@ -1,5 +1,6 @@
 { pkgs, ... }: {
   imports = [
+    ./ai
     ./git
     ./editor
     ./lang/elixir.nix
