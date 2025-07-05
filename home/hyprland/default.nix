@@ -118,7 +118,7 @@
 
         "ALT, Return, exec, kitty"
 
-        "ALT, d, exec, wofi --show drun -I"
+        "$mainMod, space, exec, wofi --show drun -I"
 
         "$mainMod, h, movefocus, l"
         "$mainMod, l, movefocus, r"
