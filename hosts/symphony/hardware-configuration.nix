@@ -11,7 +11,7 @@
 
   boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usbhid" "usb_storage" "sd_mod" ];
   boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ "kvm-amd" ];
+  boot.kernelModules = [ "kvm-amd" "nvidia" "nvidia_uvm" ];
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
@@ -30,10 +30,11 @@
   swapDevices = [ ];
 
   hardware.nvidia = {
+    package = config.boot.kernelPackages.nvidiaPackages.stable;
     modesetting.enable = true;
+    powerManagement.enable = false;
     open = false;
     nvidiaSettings = true;
-    package = config.boot.kernelPackages.nvidiaPackages.beta;
   };
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
