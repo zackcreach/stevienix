@@ -82,6 +82,13 @@ return {
 		after = function()
 			require("nvim-treesitter.configs").setup({
 				auto_install = false,
+				ensure_installed = {
+					"lua",
+					"typescript",
+					"javascript",
+					"elixir",
+					"yaml",
+				},
 				highlight = {
 					enable = true,
 				},
