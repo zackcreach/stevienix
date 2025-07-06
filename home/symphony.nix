@@ -1,6 +1,7 @@
 { pkgs, ... }: {
   imports = [
     ./ai/server.nix
+    ./containers
     ./credentials
     ./editor
     ./git
