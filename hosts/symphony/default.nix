@@ -128,6 +128,11 @@
     isNormalUser = true;
     extraGroups = [ "networkmanager" "wheel" ];
     shell = pkgs.zsh;
+    openssh.authorizedKeys.keys = [
+      # ssh-add -L
+      # we might need services.ssh.enable = true;
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIP0PMZX36AvlE6+w7TWF0Nvg4QBl6rV+xuaffQDR6Mcs cardno:26_329_662"
+    ];
   };
 
   # Install firefox.
@@ -162,7 +167,7 @@
     };
   };
   # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
+  networking.firewall.allowedTCPPorts = [ 22 ];
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
