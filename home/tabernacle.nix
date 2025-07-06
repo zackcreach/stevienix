@@ -1,11 +1,12 @@
 { ... }: {
   imports = [
-    ./git
+    ./ai/client.nix
     ./editor
+    ./git
     ./lang/elixir.nix
+    ./lang/lua.nix
     ./lang/nix.nix
     ./lang/node.nix
-    ./lang/lua.nix
     ./shell
     ./tmux
   ];

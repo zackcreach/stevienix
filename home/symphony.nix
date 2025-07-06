@@ -1,17 +1,17 @@
 { pkgs, ... }: {
   imports = [
-    ./ai
-    ./git
+    ./ai/server.nix
+    ./credentials
     ./editor
+    ./git
+    ./hyprland
+    ./kitty
     ./lang/elixir.nix
+    ./lang/lua.nix
     ./lang/nix.nix
     ./lang/node.nix
-    ./lang/lua.nix
     ./shell
     ./tmux
-    ./kitty
-    ./hyprland
-    ./security
   ];
 
   home.stateVersion = "24.05";
@@ -52,6 +52,18 @@
     defaultCacheTtl = 60;
     maxCacheTtl = 120;
     sshKeys = [ "EE40AB918DA8A265B8DC51B8CC6B29F7887FBC4F" ];
+  };
+
+  services.open-webui = {
+    enable = true;
+    # open-webui.openFirewall = true;
+    # open-webui.host = "0.0.0.0";
+    # open-webui.environment = {
+    #   WEBUI_AUTH = "False";
+    #   ANONYMIZED_TELEMETRY = "False";
+    #   DO_NOT_TRACK = "True";
+    #   SCARF_NO_ANALYTICS = "True";
+    # };
   };
 
   gtk = {

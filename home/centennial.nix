@@ -1,20 +1,19 @@
 { pkgs, ... }:
 {
   imports = [
-    ./git
+    ./ai/client.nix
+    ./cloud/gcloud.nix
     ./editor
+    ./ghostty
+    ./git
+    ./kitty
     ./lang/elixir.nix
+    ./lang/lua.nix
     ./lang/nix.nix
     ./lang/node.nix
-    ./lang/lua.nix
-    # ./aerospace
     ./shell
-    ./cloud/gcloud.nix
     ./tmux
-    ./kitty
-    ./ghostty
     ./work
-    ./ai
   ];
 
   home.stateVersion = "24.05";
