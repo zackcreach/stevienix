@@ -1,8 +1,4 @@
 { pkgs, ... }: {
-  home.packages = with pkgs; [
-    open-webui
-  ];
-
   programs.aichat = {
     enable = true;
   };
