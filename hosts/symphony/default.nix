@@ -10,8 +10,10 @@
       # Include the results of the hardware scan.
       ./hardware-configuration.nix
     ];
-  # Settings
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings = {
+    experimental-features = [ "nix-command" "flakes" ];
+    download-buffer-size = 524288000;
+  };
 
   nix.gc = {
     automatic = true;
