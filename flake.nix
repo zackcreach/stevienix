@@ -1,6 +1,7 @@
 {
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-25.05";
     nix-darwin.url = "github:LnL7/nix-darwin";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
     home-manager.url = "github:nix-community/home-manager";
@@ -20,6 +21,7 @@
     , nix-darwin
     , home-manager
     , nixpkgs
+    , nixpkgs-stable
     , NixOS-WSL
     , ...
     }:
@@ -34,7 +36,13 @@
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.users.zack = import ./home/centennial.nix;
-            home-manager.extraSpecialArgs = { inherit inputs; };
+            home-manager.extraSpecialArgs = {
+              inherit inputs;
+              pkgsStable = import nixpkgs-stable {
+                system = "aarch64-darwin";
+                config.allowUnfree = true;
+              };
+            };
           }
         ];
         specialArgs = { inherit inputs self; };
@@ -51,7 +59,13 @@
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.users.zack = import ./home/tabernacle.nix;
-            home-manager.extraSpecialArgs = { inherit inputs; };
+            home-manager.extraSpecialArgs = {
+              inherit inputs;
+              pkgsStable = import nixpkgs-stable {
+                system = "x86_64-linux";
+                config.allowUnfree = true;
+              };
+            };
           }
         ];
       };
@@ -66,7 +80,13 @@
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.users.zack = import ./home/symphony.nix;
-            home-manager.extraSpecialArgs = { inherit inputs; };
+            home-manager.extraSpecialArgs = {
+              inherit inputs;
+              pkgsStable = import nixpkgs-stable {
+                system = "x86_64-linux";
+                config.allowUnfree = true;
+              };
+            };
           }
         ];
       };
