@@ -55,18 +55,6 @@
     sshKeys = [ "EE40AB918DA8A265B8DC51B8CC6B29F7887FBC4F" ];
   };
 
-  services.open-webui = {
-    enable = true;
-    # open-webui.openFirewall = true;
-    # open-webui.host = "0.0.0.0";
-    # open-webui.environment = {
-    #   WEBUI_AUTH = "False";
-    #   ANONYMIZED_TELEMETRY = "False";
-    #   DO_NOT_TRACK = "True";
-    #   SCARF_NO_ANALYTICS = "True";
-    # };
-  };
-
   gtk = {
     enable = true;
 
