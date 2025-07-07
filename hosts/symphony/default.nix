@@ -126,7 +126,7 @@
   users.users.zack = {
     password = "temp";
     isNormalUser = true;
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" ];
     shell = pkgs.zsh;
     openssh.authorizedKeys.keys = [
       # ssh-add -L
@@ -134,6 +134,9 @@
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIP0PMZX36AvlE6+w7TWF0Nvg4QBl6rV+xuaffQDR6Mcs cardno:26_329_662"
     ];
   };
+
+  # Docker
+  virtualisation.docker.enable = true;
 
   # Install firefox.
   programs.firefox.enable = true;
