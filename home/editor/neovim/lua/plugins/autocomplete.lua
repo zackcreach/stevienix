@@ -1,148 +1,180 @@
+local source_icons = {
+	codecompanion = "󱚧",
+	codeium = "󰚩",
+	nvim_lsp = "󰡦",
+	lsp = "󰡦",
+	buffer = "",
+	luasnip = "",
+	snippets = "",
+	path = "",
+	git = "",
+	tags = "",
+	cmdline = "󰘳",
+	fallback = "",
+}
+
 return {
 	{
-		"nvim-cmp",
+		"blink-cmp",
+		event = "User DeferredUIEnter",
 		after = function()
-			local cmp = require("cmp")
-			local lspkind = require("lspkind")
-			local luasnip = require("luasnip")
-
 			require("codeium").setup({})
-
-			local has_words_before = function()
-				local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-				return col ~= 0
-					and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
-			end
-
-			local feedkey = function(key, mode)
-				vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(key, true, true, true), mode, true)
-			end
-
-			local kind_icons = {
-				Text = "",
-				Method = "󰆧",
-				Function = "λ",
-				Constructor = " ",
-				Field = "󰇽",
-				Variable = "󰂡",
-				Class = "󰫅 ",
-				Interface = "",
-				Module = "󰫈 ",
-				Property = "󰜢",
-				Unit = "",
-				Value = "󰎠",
-				Enum = " ",
-				Keyword = "󰌋",
-				Snippet = "",
-				Color = " ",
-				File = "󰈙",
-				Reference = "",
-				Folder = " ",
-				EnumMember = " ",
-				Constant = "󰏿",
-				Struct = "",
-				Event = "",
-				Operator = "󰆕",
-				TypeParameter = "󰅲",
-			}
-
-			cmp.setup({
-				snippet = {
-					expand = function(args)
-						luasnip.lsp_expand(args.body)
-					end,
+			require("blink.cmp").setup({
+				fuzzy = {
+					prebuilt_binaries = { download = false },
+					implementation = "rust",
 				},
-				formatting = {
-					fields = { "kind", "abbr", "menu" },
-					format = function(entry, vim_item)
-						-- Kind icons
-						vim_item.kind = kind_icons[vim_item.kind]
-						vim_item.menu = ({
-							codeium = "󰚩",
-							buffer = "",
-							nvim_lsp = "󰡦",
-							luasnip = "",
-							nvim_lua = "󰢱",
-							path = "",
-						})[entry.source.name]
-						return vim_item
-					end,
-				},
-				mapping = {
-					-- confirm snippets
-					["<Tab>"] = cmp.mapping.confirm({
-						behavior = cmp.ConfirmBehavior.Insert,
-						select = true,
-					}),
-					-- tab to move down list
-					["<c-n>"] = cmp.mapping(function(fallback)
-						if cmp.visible() then
-							cmp.select_next_item()
-						elseif luasnip.expand_or_jumpable() then
-							luasnip.expand_or_jump()
-						elseif has_words_before() then
-							cmp.complete()
-						else
-							fallback()
-						end
-					end, { "i", "s" }),
-					-- shift tab to move backwards
-					["<c-p>"] = cmp.mapping(function()
-						if luasnip.jumpable(-1) then
-							luasnip.jump(-1)
-						elseif cmp.visible() then
-							cmp.select_prev_item()
-						else
-							fallback()
-						end
-					end, { "i", "s" }),
-				},
-				sources = cmp.config.sources({
-					{ name = "codeium" },
-					{ name = "nvim_lsp" },
-					{
-						name = "luasnip",
-						priority = 10,
-						option = { show_autosnippets = true, use_show_condition = false },
+				completion = {
+					ghost_text = {
+						enabled = false,
+						show_without_selection = true,
 					},
-					{ name = "path" },
-					{ name = "buffer", keyword_length = 3 },
-				}),
-				experimental = {
-					native_menu = false,
-					ghost_text = true,
+					documentation = {
+						auto_show = true,
+					},
+					menu = {
+						auto_show = true,
+						draw = {
+							columns = {
+								{ "kind_icon", gap = 2 },
+								{ "label", "label_description", gap = 1 },
+								{ "source_icon" },
+							},
+							components = {
+								source_icon = {
+									ellipsis = false,
+									text = function(ctx)
+										return source_icons[ctx.source_name:lower()] or source_icons.fallback
+									end,
+									highlight = "BlinkCmpSource",
+								},
+							},
+						},
+					},
 				},
-			})
-
-			cmp.setup.cmdline("/", {
-				mapping = cmp.mapping.preset.cmdline(),
-				sources = cmp.config.sources({
-					{ name = "buffer", keyword_length = 3 },
-				}),
-			})
-
-			cmp.setup.cmdline(":", {
-				mapping = cmp.mapping.preset.cmdline(),
-				sources = cmp.config.sources({
-					{ name = "path" },
-				}, {
-					{ name = "cmdline", keyword_length = 3 },
-				}),
-			})
-
-			cmp.setup.filetype("plsql", {
-				sources = cmp.config.sources({
-					{ name = "vim-dadbod-completion" },
-					{ name = "buffer" },
-				}),
-			})
-
-			cmp.setup.filetype("sql", {
-				sources = cmp.config.sources({
-					{ name = "vim-dadbod-completion" },
-					{ name = "buffer" },
-				}),
+				sources = {
+					default = { "lsp", "path", "snippets", "buffer", "dadbod", "codeium" },
+					per_filetype = {
+						codecompanion = { "codecompanion" },
+					},
+					providers = {
+						dadbod = { name = "Dadbod", module = "vim_dadbod_completion.blink" },
+						codeium = { name = "Codeium", module = "codeium.blink", async = true },
+					},
+				},
+				snippets = { preset = "luasnip" },
+				appearance = {
+					use_nvim_cmp_as_default = true,
+					kind_icons = {
+						Text = "",
+						Method = "󰆧",
+						Function = "●",
+						Constructor = " ",
+						Field = "󰇽",
+						Variable = "󰂡",
+						Class = "󰫅 ",
+						Interface = "",
+						Module = "󰫈 ",
+						Property = "󰜢",
+						Unit = "",
+						Value = "󰎠",
+						Enum = " ",
+						Keyword = "󰌋",
+						Snippet = "",
+						Color = " ",
+						File = "󰈙",
+						Reference = "",
+						Folder = " ",
+						EnumMember = " ",
+						Constant = "󰏿",
+						Struct = "",
+						Event = "",
+						Operator = "󰆕",
+						TypeParameter = "󰅲",
+					},
+				},
 			})
 		end,
+	},
+	{
+		"codecompanion.nvim",
+		after = function()
+			local Job = require("plenary.job")
+			local credsfile = os.getenv("HOME") .. "/.config/sops-nix/secrets/ollama-api-creds"
+
+			local get_ollama_creds = function()
+				local first_line, second_line
+
+				Job:new({
+					command = "cat",
+					args = { credsfile },
+					on_stdout = function(_, line)
+						if first_line == nil then
+							first_line = line
+						elseif second_line == nil and line ~= "" then
+							second_line = line
+
+							-- stop when we have both lines
+							return false
+						end
+
+						return true
+					end,
+				}):sync()
+
+				return { first_line, second_line }
+			end
+
+			local creds = get_ollama_creds()
+
+			require("codecompanion").setup({
+				log_level = "DEBUG",
+				show_defaults = false,
+				strategies = {
+					chat = {
+						adapter = "ollama",
+					},
+					inline = {
+						adapter = "ollama",
+					},
+					cmd = {
+						adapter = "ollama",
+					},
+				},
+				adapters = {
+					ollama = function()
+						return require("codecompanion.adapters").extend("ollama", {
+							env = {
+								url = "https://ollama-api.zionlab.online",
+							},
+							headers = {
+								["Content-Type"] = "application/json",
+								["CF-Access-Client-Secret"] = creds[1],
+								["CF-Access-Client-Id"] = creds[2],
+							},
+							parameters = {
+								sync = true,
+							},
+							schema = {
+								model = {
+									default = "devstral:24b",
+									choices = { "devstral:24b", "gemma3:27b" },
+								},
+								num_ctx = {
+									default = 16384,
+								},
+								num_predict = {
+									default = -1,
+								},
+							},
+						})
+					end,
+				},
+			})
+		end,
+		cmd = { "CodeCompanionChat" },
+		keys = {
+			{ "<leader>a", "<CMD>CodeCompanionChat<CR>" },
+		},
 	},
 }
