@@ -17,14 +17,9 @@
 
       # autocomplete	
       nvim-cmp
+      blink-cmp
       windsurf-nvim
-      nvim-lspconfig
       cmp-nvim-lsp
-      cmp-buffer
-      cmp-path
-      cmp-cmdline
-      cmp-nvim-lua
-      lspkind-nvim
 
       # ai
       codecompanion-nvim
