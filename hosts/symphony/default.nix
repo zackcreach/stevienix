@@ -70,9 +70,15 @@
     videoDrivers = [ "nvidia" ];
   };
 
-  services.displayManager.gdm = {
-    enable = true;
-    wayland = true;
+  services.displayManager = {
+    autoLogin = {
+      enable = true;
+      user = "zack";
+    };
+    gdm = {
+      enable = true;
+      wayland = true;
+    };
   };
 
   services.dbus.packages = [
@@ -170,7 +176,7 @@
     };
   };
   # Open ports in the firewall.
-  networking.firewall.allowedTCPPorts = [ 22 ];
+  # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
