@@ -23,6 +23,8 @@
 
       # ai
       codecompanion-nvim
+      fidget-nvim
+      render-markdown-nvim
 
       # database
       vim-dadbod
