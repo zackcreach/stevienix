@@ -63,4 +63,48 @@ return {
 			})
 		end,
 	},
+	{
+		"render-markdown.nvim",
+		after = function()
+			require("render-markdown").setup({
+				file_types = { "markdown", "codecompanion" },
+				signs = { enabled = false },
+				heading = {
+					icons = { "󰎦  ", "󰎩 ", "󰎬 ", "󰎮 ", "󰎰 ", " 󰎵 " },
+					sign = false,
+					position = "inline",
+				},
+				link = {
+					custom = { youtube = { pattern = ".+youtu%.be.+", icon = " " } },
+				},
+				code = {
+					sign = false,
+					position = "right",
+					width = "block",
+					min_width = 80,
+					border = "thick",
+				},
+				bullet = {
+					icons = { "•", "∘" },
+				},
+				checkbox = {
+					bullet = true,
+					unchecked = {
+						icon = "󰄱 ",
+					},
+					checked = {
+						icon = "󰄲 ",
+					},
+					custom = {
+						migrated = { raw = "[>]", rendered = " ", highlight = "@string.special" },
+						logged = { raw = "[<]", rendered = " ", highlight = "@string.special" },
+						delegated = { raw = "[/]", rendered = " ", highlight = "@text.todo.unchecked" },
+						inspirational = { raw = "[!]", rendered = " ", highlight = "@string" },
+						priority = { raw = "[*]", rendered = " ", highlight = "@function" },
+					},
+				},
+			})
+		end,
+		ft = { "markdown", "codecompanion" },
+	},
 }
