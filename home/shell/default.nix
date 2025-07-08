@@ -44,9 +44,11 @@
     shellAliases = {
       v = "nvim";
       vi = "nvim";
-      grep = "history | grep --color=auto";
+      grep = "grep --color=auto";
       cat = "bat --paging=never";
       lg = "live-grep";
+      s = "stevie";
+      srv = "stevie && nvim";
     };
     history = {
       path = "${config.xdg.dataHome}/zsh/zsh_history";

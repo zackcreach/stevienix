@@ -1,6 +1,7 @@
 return {
 	{
 		"vim-projectionist",
+		event = "User DeferredUIEnter",
 		before = function()
 			vim.g.projectionist_heuristics = {
 				["*"] = {

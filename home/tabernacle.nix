@@ -20,6 +20,5 @@
   programs.home-manager.enable = true;
   programs.zsh.shellAliases = {
     stevie = "sudo nixos-rebuild switch";
-    srv = "stevie && nvim";
   };
 }

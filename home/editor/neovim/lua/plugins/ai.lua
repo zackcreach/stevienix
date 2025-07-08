@@ -1,9 +1,10 @@
 return {
 	{
 		"codecompanion.nvim",
-		cmd = { "CodeCompanionChat" },
+		event = "User DeferredUIEnter",
 		keys = {
-			{ "<leader>ai", "<CMD>CodeCompanionChat<CR>" },
+			{ "<leader>ai", "<CMD>CodeCompanionActions<CR>" },
+			{ "<leader>ac", "<CMD>CodeCompanionChat<CR>" },
 		},
 		after = function()
 			require("codecompanion").setup({
@@ -61,6 +62,10 @@ return {
 					end,
 				},
 			})
+
+			vim.api.nvim_create_user_command("CC", function()
+				vim.cmd("CodeCompanion")
+			end, {})
 		end,
 	},
 	{
