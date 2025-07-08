@@ -71,10 +71,10 @@
   };
 
   services.displayManager = {
-    autoLogin = {
-      enable = true;
-      user = "zack";
-    };
+    # autoLogin = {
+    #   enable = true;
+    #   user = "zack";
+    # };
     gdm = {
       enable = true;
       wayland = true;
@@ -176,7 +176,7 @@
     };
   };
   # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
+  networking.firewall.allowedTCPPorts = [ 11434 ];
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
@@ -188,5 +188,4 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "24.05"; # Did you read the comment?
-
 }
