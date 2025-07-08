@@ -53,6 +53,5 @@
 
   programs.zsh.shellAliases = {
     stevie = "sudo darwin-rebuild switch --flake ~/.config/nixos";
-    srv = "stevie && nvim";
   };
 }

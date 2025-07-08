@@ -1,6 +1,7 @@
 return {
 	{
 		"luasnip",
+		event = "User DeferredUIEnter",
 		after = function()
 			-- all possible variables:
 			-- https://github.com/L3MON4D3/LuaSnip/blob/master/Examples/snippets.lua#L1
