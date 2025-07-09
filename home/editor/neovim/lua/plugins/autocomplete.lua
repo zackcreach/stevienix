@@ -20,6 +20,17 @@ return {
 		after = function()
 			require("codeium").setup({})
 			require("blink.cmp").setup({
+				keymap = {
+					preset = "none",
+					["<C-space>"] = { "show", "show_documentation", "hide_documentation" },
+					["<Tab>"] = { "select_and_accept" },
+					["<C-p>"] = { "select_prev" },
+					["<C-n>"] = { "select_next" },
+					["<C-b>"] = { "scroll_documentation_up" },
+					["<C-f>"] = { "scroll_documentation_down" },
+					["<C-k>"] = { "show_signature", "hide_signature" },
+					["<C-e>"] = { "hide" },
+				},
 				fuzzy = {
 					prebuilt_binaries = { download = false },
 					implementation = "rust",

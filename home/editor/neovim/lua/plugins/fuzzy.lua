@@ -15,6 +15,7 @@ return {
 			{ "<leader>fo", ":Telescope lsp_document_symbols<CR>" },
 			{ "<leader>fi", ":Telescope symbols<CR>" },
 			{ "<leader>fd", ":Telescope diagnostics<CR>" },
+			{ "<leader>fk", ":Telescope keymaps<CR>" },
 		},
 		after = function()
 			require("telescope").setup({
