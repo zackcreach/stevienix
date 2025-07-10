@@ -3,6 +3,12 @@
   programs.neovim = {
     enable = true;
     extraLuaConfig = /* lua */ ''
+      -- nixos-specific tmp directory change
+      local cache_tmp = vim.fn.stdpath("cache") .. "/tmp"
+      vim.fn.mkdir(cache_tmp, "p", 493)
+      vim.env.TMPDIR = cache_tmp
+      vim.loop.os_setenv("TMPDIR", cache_tmp)
+
       require("options")
       require("lz.n").load("plugins")
     '';
