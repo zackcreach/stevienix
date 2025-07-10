@@ -7,8 +7,7 @@ return {
 
 			-- Dump all highlight groups and links based on theme:
 			-- so $VIMRUNTIME/syntax/hitest.vim
-			vim.cmd("hi! link NormalFloat Visual")
-			vim.cmd("hi! link CopilotSuggestion NotifyTRACEBorder")
+			-- vim.cmd("hi! link NormalFloat Visual")
 			vim.cmd("hi! link NvimTreeWindowPicker LeapLabelSecondary")
 			vim.cmd("hi! WinSeparator guifg=#67738C")
 			vim.cmd("hi! @error guibg=NONE gui=italic")
