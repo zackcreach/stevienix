@@ -1,7 +1,7 @@
 return {
 	{
 		"telescope-nvim",
-		cmd = { "Telescope find_files" },
+		event = "User DeferredUIEnter",
 		keys = {
 			{ "<leader><leader>", ":Telescope find_files<CR>" },
 			{ "<leader><backspace>", ":Telescope buffers<CR>" },
