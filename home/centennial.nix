@@ -2,7 +2,6 @@
 {
   imports = [
     ./ai/client.nix
-    ./cloud/gcloud.nix
     ./editor
     ./ghostty
     ./git
