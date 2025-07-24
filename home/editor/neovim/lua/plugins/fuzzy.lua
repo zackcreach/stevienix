@@ -57,6 +57,11 @@ return {
 						},
 					},
 				},
+				extensions = {
+					heading = {
+						treesitter = true,
+					},
+				},
 			})
 		end,
 	},

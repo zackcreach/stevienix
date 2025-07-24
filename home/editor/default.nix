@@ -43,10 +43,12 @@
       emmet-vim
       conform-nvim
       nvim-lint
-      nvim-treesitter
-      nvim-treesitter-textobjects
       comment-nvim
       treesj
+      (nvim-treesitter.withPlugins (plugins: nvim-treesitter.allGrammars))
+      nvim-treesitter-textobjects
+      nvim-treesitter-endwise
+      playground
 
       # fuzzy
       telescope-nvim
@@ -75,6 +77,7 @@
       nvim-tree-lua
       vim-smoothie
       vim-tmux-navigator
+      aerial-nvim
     ];
   };
 
