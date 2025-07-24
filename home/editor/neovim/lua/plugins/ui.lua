@@ -138,4 +138,18 @@ return {
 			vim.g.tmux_navigator_disable_when_zoomed = true
 		end,
 	},
+	{
+		"aerial.nvim",
+		cmd = "AerialToggle",
+		keys = {
+			{ "<leader>E", "<CMD>AerialToggle<CR>" },
+		},
+		after = function()
+			require("aerial").setup({
+				layout = {
+					min_width = 40,
+				},
+			})
+		end,
+	},
 }
