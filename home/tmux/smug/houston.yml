@@ -5,22 +5,14 @@ before_start:
   - task d:glogin
   - yes y | task kinit
 
-startup_window: ' '
-
 windows:
   - name: ' '
     commands:
       - nvim
   - name: ' '
+    selected: true
     commands:
-      - nvim creachignore/scratchpad.ex
-    panes:
-      - type: horizontal
-        commands:
-          - mdg && mem && ips
-  - name: '󰎙 '
-    commands:
-      - nvim creachignore/scratchpad.ts
+      - mdg && mem && ips
     panes:
       - type: horizontal
         commands:
