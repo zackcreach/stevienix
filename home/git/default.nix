@@ -63,7 +63,7 @@
       diff = { algorithm = "histogram"; };
       init = { defaultBranch = "main"; };
       merge = { conflictStyle = "diff3"; };
-      pull = { default = "current"; };
+      pull = { default = "current"; rebase = true; };
       push = { default = "current"; autoSetupRemote = true; };
       rebase = { autosquash = true; };
       rerere = { enabled = true; };
