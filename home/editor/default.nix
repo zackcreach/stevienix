@@ -3,11 +3,13 @@
   programs.neovim = {
     enable = true;
     extraLuaConfig = /* lua */ ''
-      -- nixos-specific tmp directory change
-      local cache_tmp = vim.fn.stdpath("cache") .. "/tmp"
-      vim.fn.mkdir(cache_tmp, "p", 493)
-      vim.env.TMPDIR = cache_tmp
-      vim.loop.os_setenv("TMPDIR", cache_tmp)
+      -- Suppress plenary messages
+      vim.notify = function(msg, level, opts)
+      	if msg:match("ENOENT: no such file or directory: /tmp/plenary_curl") then
+      		return
+      	end
+      	vim.api.nvim_echo({{msg}}, true, {})
+      end
 
       require("options")
       require("lz.n").load("plugins")
