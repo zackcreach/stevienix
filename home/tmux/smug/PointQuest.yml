@@ -9,6 +9,7 @@ stop:
 
 windows:
   - name: ' '
+    selected: true
     commands:
       - nvim
   - name: ' '

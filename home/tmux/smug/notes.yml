@@ -3,6 +3,7 @@ root: ~/dev/notes
 
 windows:
   - name: "Slides"
+    selected: true
     commands:
       - vi regex.md
     panes:

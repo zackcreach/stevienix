@@ -3,5 +3,6 @@ root: ${root}
 
 windows:
   - name: ' '
+    selected: true
     commands:
       - nvim

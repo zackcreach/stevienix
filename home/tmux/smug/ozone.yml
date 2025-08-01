@@ -3,6 +3,7 @@ root: ~/dev/ozone/
 
 windows:
   - name: ' '
+    selected: true
     commands:
       - nvim
   - name: ' '

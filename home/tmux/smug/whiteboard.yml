@@ -3,6 +3,7 @@ root: ~/dev/whiteboard/
 
 windows:
   - name: ' '
+    selected: true
     commands:
       - nvim
   - name: ' '
