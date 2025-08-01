@@ -3,8 +3,8 @@
   programs.neovim = {
     enable = true;
     extraLuaConfig = /* lua */ ''
-      -- Suppress plenary messages
       vim.notify = function(msg, level, opts)
+      -- Suppress plenary messages
       	if msg:match("ENOENT: no such file or directory: /tmp/plenary_curl") then
       		return
       	end

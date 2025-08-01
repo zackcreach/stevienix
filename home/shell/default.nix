@@ -34,7 +34,7 @@
     autosuggestion.enable = true;
     enableCompletion = true;
     defaultKeymap = "viins";
-    dotDir = ".config/zsh";
+    dotDir = "${config.xdg.configHome}/zsh";
     plugins = [
       {
         name = "fzf-tab";
