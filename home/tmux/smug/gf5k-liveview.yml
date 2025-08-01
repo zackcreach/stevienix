@@ -3,6 +3,7 @@ root: ~/dev/gf5k-liveview/
 
 windows:
   - name: ' '
+    selected: true
     commands:
       - nvim
   - name: ' '
