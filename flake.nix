@@ -48,6 +48,26 @@
         specialArgs = { inherit inputs self; };
       };
 
+      darwinConfigurations.promenade = nix-darwin.lib.darwinSystem {
+        modules = [
+          ./hosts/promenade
+          home-manager.darwinModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.zack = import ./home/promenade.nix;
+            home-manager.extraSpecialArgs = {
+              inherit inputs;
+              pkgsStable = import nixpkgs-stable {
+                system = "aarch64-darwin";
+                config.allowUnfree = true;
+              };
+            };
+          }
+        ];
+        specialArgs = { inherit inputs self; };
+      };
+
       nixosConfigurations.tabernacle = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = { inherit inputs; }; # pass custom arguments into sub module.
