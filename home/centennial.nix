@@ -19,7 +19,6 @@
 
   home.packages = with pkgs; [
     yubikey-manager
-    hidden-bar
   ];
 
   home.sessionVariables = {
