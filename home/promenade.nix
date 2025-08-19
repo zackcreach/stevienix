@@ -18,7 +18,7 @@
 
   home.packages = with pkgs; [
     yubikey-manager
-    hidden-bar
+    maccy
   ];
 
   home.sessionVariables = {

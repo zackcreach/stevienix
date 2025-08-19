@@ -3,7 +3,7 @@
   programs.git = {
     enable = true;
     userName = "Zack Creach";
-    userEmail = "zackcreach@gmail.com";
+    userEmail = "4227703+zackcreach@users.noreply.github.com";
 
     signing = {
       signByDefault = true;
