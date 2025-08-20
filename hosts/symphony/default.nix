@@ -27,12 +27,6 @@
     configurationLimit = 10;
   };
 
-  systemd.extraConfig = ''
-    		DefaultTimeoutStopSpec=10s
-    	'';
-
-  services.pcscd.enable = true;
-
   boot.loader.efi.canTouchEfiVariables = true;
 
   networking.hostName = "symphony"; # Define your hostname.
