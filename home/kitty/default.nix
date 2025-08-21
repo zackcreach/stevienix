@@ -27,6 +27,7 @@
     settings = {
       macos_titlebar_color = "background";
       macos_show_window_title_in = "none";
+      macos_option_as_alt = true;
       confirm_os_window_close = "0";
       sync_to_monitor = "no";
     };

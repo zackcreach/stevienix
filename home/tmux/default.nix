@@ -5,7 +5,7 @@
 }: {
   home.packages = [
     pkgs.smug
-    (import ./rally.nix { inherit pkgs; })
+    (pkgs.callPackage ./rally.nix { })
     (pkgs.callPackage ./tmux-file-paths.nix { })
   ];
 
@@ -65,13 +65,11 @@
       set -g menu-selected-style 'fg=#EBCB8B,bold'
 
       bind ! kill-server
-      bind ! kill-server
       bind | split-window -h
       bind - split-window -v
       bind BSpace switch-client -l
       bind > display-popup -E -w 80% -h 80%
       bind s display-popup -E -w 50% -h 50% rally
-      bind S display-popup -E -w 50% -h 50% 'tmux switch-client -t "$(tmux list-sessions -F "#{session_name}"| fzf)"'
       bind Escape copy-mode
       bind -n S-Left previous-window
       bind S-Tab previous-window
