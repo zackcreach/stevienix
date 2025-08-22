@@ -34,7 +34,7 @@
 
     font = {
       name = "JetBrains Mono Light";
-      size = 15.0;
+      size = 14.5;
     };
 
     shellIntegration.enableZshIntegration = true;
