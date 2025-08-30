@@ -38,16 +38,9 @@ return {
 							},
 							schema = {
 								model = {
-									default = "devstral:24b",
+									default = "Qwen3-Coder-30B-A3B",
 									choices = {
-										"codellama",
-										"llama3",
-										"llama3.1",
-										"deepseek-coder",
-										"qwen2.5-coder",
-										"mistral",
-										"phi3",
-										"devstral:24b",
+										"Qwen3-Coder-30B-A3B",
 										"gemma3:27b",
 									},
 								},
