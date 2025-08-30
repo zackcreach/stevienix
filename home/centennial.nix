@@ -52,4 +52,6 @@
   programs.zsh.shellAliases = {
     stevie = "sudo darwin-rebuild switch --flake ~/.config/nixos";
   };
+
+  xdg.enable = true;
 }
