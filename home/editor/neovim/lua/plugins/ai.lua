@@ -25,7 +25,7 @@ return {
 					ollama = function()
 						return require("codecompanion.adapters").extend("ollama", {
 							env = {
-								url = "http://192.168.1.200:11434",
+								url = "http://symphony:11434",
 							},
 							headers = {
 								["Content-Type"] = "application/json",

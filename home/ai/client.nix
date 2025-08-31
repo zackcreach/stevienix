@@ -12,7 +12,7 @@
         {
           type = "openai-compatible";
           name = "ollama";
-          api_base = "http://192.168.1.200:11434/v1";
+          api_base = "http://symphony:11434/v1";
           models = [
             { name = "Qwen3-Coder-30B-A3B"; }
             {
