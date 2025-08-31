@@ -40,7 +40,7 @@
       };
 
       monitor = [
-        "DP-1, 2560x1440@144, 0x0, 1, vrr, 1"
+        "DP-1, 2560x1707@60, 0x0, 1, vrr, 1"
       ];
 
       # window rules to force windows in certain areas

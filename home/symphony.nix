@@ -11,6 +11,7 @@
     ./lang/lua.nix
     ./lang/nix.nix
     ./lang/node.nix
+    ./network
     ./shell
     ./tmux
   ];
