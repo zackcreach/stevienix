@@ -160,6 +160,10 @@
     NIXOS_OZONE_WL = 1;
   };
 
+  services.tailscale = {
+    enable = true;
+  };
+
   # Enable the OpenSSH daemon.
   services.openssh = {
     enable = true;
