@@ -23,7 +23,7 @@ return {
 					sorting_strategy = "ascending",
 					layout_strategy = "flex",
 					layout_config = {
-						flip_columns = 170,
+						flip_columns = 160,
 						prompt_position = "top",
 						horizontal = {
 							width = 0.8,

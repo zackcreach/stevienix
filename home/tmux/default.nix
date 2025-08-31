@@ -63,6 +63,7 @@
       set -g menu-border-style 'fg=#67738C'
       set -g menu-border-lines rounded
       set -g menu-selected-style 'fg=#EBCB8B,bold'
+      set -g history-limit 10000
 
       bind ! kill-server
       bind | split-window -h
