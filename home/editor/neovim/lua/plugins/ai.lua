@@ -22,37 +22,39 @@ return {
 					},
 				},
 				adapters = {
-					ollama = function()
-						return require("codecompanion.adapters").extend("ollama", {
-							env = {
-								url = "http://symphony:11434",
-							},
-							headers = {
-								["Content-Type"] = "application/json",
-							},
-							parameters = {
-								sync = true,
-							},
-							opts = {
-								allow_insecure = true,
-							},
-							schema = {
-								model = {
-									default = "Qwen3-Coder-30B-A3B",
-									choices = {
-										"Qwen3-Coder-30B-A3B",
-										"gemma3:27b",
+					http = {
+						ollama = function()
+							return require("codecompanion.adapters").extend("ollama", {
+								env = {
+									url = "http://symphony:11434",
+								},
+								headers = {
+									["Content-Type"] = "application/json",
+								},
+								parameters = {
+									sync = true,
+								},
+								opts = {
+									allow_insecure = true,
+								},
+								schema = {
+									model = {
+										default = "Qwen3-Coder-30B-A3B",
+										choices = {
+											"Qwen3-Coder-30B-A3B",
+											"gemma3:27b",
+										},
+									},
+									num_ctx = {
+										default = 16384,
+									},
+									num_predict = {
+										default = -1,
 									},
 								},
-								num_ctx = {
-									default = 16384,
-								},
-								num_predict = {
-									default = -1,
-								},
-							},
-						})
-					end,
+							})
+						end,
+					},
 				},
 			})
 
