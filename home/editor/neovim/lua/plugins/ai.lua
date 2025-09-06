@@ -2,10 +2,6 @@ return {
 	{
 		"codecompanion.nvim",
 		event = "User DeferredUIEnter",
-		keys = {
-			{ "<leader>ai", "<CMD>CodeCompanionActions<CR>" },
-			{ "<leader>ac", "<CMD>CodeCompanionChat<CR>" },
-		},
 		after = function()
 			require("codecompanion").setup({
 				log_level = "DEBUG",

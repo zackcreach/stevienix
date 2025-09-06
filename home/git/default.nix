@@ -15,6 +15,7 @@
       "creachignore"
       ".direnv/*"
       ".envrc"
+      ".claude"
     ];
 
     aliases = {
