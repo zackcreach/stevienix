@@ -37,7 +37,6 @@ map("n", "<leader>c", "<CMD>let @+ = expand('%')<CR>")
 map("n", "<leader>C", "<CMD>let @+ = expand('%:p')<CR>")
 map("n", "<leader>b", "<CMD>bufdo bd<CR>")
 map("n", "<leader>>", "<CMD>Floaterminal<CR>")
-map("v", "<leader>Ag", "!aichat -r grammar<CR>")
 
 -- MacOS
 map("n", "<M-f>", ":silent grep ", { silent = false })
