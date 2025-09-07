@@ -22,7 +22,11 @@
   };
 
   # keep creachignore ignored in gitignore but un-ignored in rginore
-  home.file.".rgignore".text = "!creachignore";
+  home.file.".rgignore".text = ''
+    	!creachignore
+    	!.env
+    	!.direnv
+  '';
 
   programs.btop = {
     enable = true;

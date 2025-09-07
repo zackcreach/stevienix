@@ -7,14 +7,14 @@ local function open_split(program, args)
 		return
 	end
 
-	local command = string.format('tmux split-window -h "%s %s@%s"', program, args or "", relative_path)
+	local command = string.format('tmux split-window -h "%s %s @%s"', program, args or "", relative_path)
 	vim.fn.system(command)
 end
 
 map("v", "<leader>ag", "!aichat -r grammar<CR>")
 map("n", "<leader>ac", "<CMD>CodeCompanionChat<CR>")
 map("n", "<leader>ai", function()
-	open_split("claude")
+	open_split("claude", "--ide")
 end)
 map("n", "<leader>ao", function()
 	open_split("opencode")

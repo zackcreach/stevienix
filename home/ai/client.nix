@@ -1,7 +1,17 @@
-{ inputs, ... }: {
+{ inputs, pkgs, ... }: {
   home.sessionVariables = {
     ANTHROPIC_API_KEY = "op read op://Shared/claude-dwc/api_key";
+    SEMGREP_APP_TOKEN = "op read op://Shared/Semgrep/semgrep_app_token";
+    FIGMA_ACCESS_TOKEN = "op read op://Shared/Figma/figma_access_token";
+    REF_API_KEY = "op read op://Shared/Ref/ref_api_key";
   };
+
+  home.packages = with pkgs; [
+    python3
+    python3Packages.pipx
+  ];
+
+  home.file.".claude/CLAUDE.md".source = ./config/claude.md;
 
   programs = {
     claude-code = {
@@ -10,11 +20,16 @@
         includeCoAuthoredBy = false;
         permissions = {
           additionalDirectories = [
-            "./creachignore/"
+            "creachignore/"
           ];
           allow = [
+            "WebSearch"
             "Bash(git diff:*)"
+            "Bash(git status:*)"
+            "Bash(mix test:*)"
             "Edit"
+            "Read"
+            "Update"
           ];
           ask = [
             "Bash(git push:*)"
@@ -35,6 +50,15 @@
         };
         theme = "dark";
         vim = true;
+      };
+      mcpServers = {
+        ref = {
+          command = "npx";
+          args = [ "ref-tools-mcp@latest" ];
+          env = {
+            REF_API_KEY = "$REF_API_KEY";
+          };
+        };
       };
     };
     opencode = {
