@@ -33,9 +33,8 @@ map({ "n", "v" }, "<leader>gV", "<CMD>GBrowse!<CR>")
 map("n", "<leader>s", "<CMD>write<CR>")
 map("n", "<leader>S", "<CMD>noautocmd write<CR>")
 map("n", "<leader>w", "<CMD>q<CR>")
-map("n", "<leader>c", "<CMD>let @+ = expand('%')<CR>")
-map("n", "<leader>C", "<CMD>let @+ = expand('%:p')<CR>")
 map("n", "<leader>b", "<CMD>bufdo bd<CR>")
+map("n", "<leader>r", "<CMD>e!<CR>")
 map("n", "<leader>>", "<CMD>Floaterminal<CR>")
 
 -- MacOS
