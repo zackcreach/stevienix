@@ -19,6 +19,7 @@
   home.packages = with pkgs; [
     yubikey-manager
     maccy
+    gh-copilot
   ];
 
   home.sessionVariables = {

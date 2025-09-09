@@ -81,6 +81,16 @@ return {
 
 			local g = vim.g
 			local map = vim.keymap.set
+			local send_to_tmux = function()
+				-- yank text into v register
+				if vim.api.nvim_get_mode()["mode"] == "n" then
+					vim.cmd('normal vip"vy')
+				else
+					vim.cmd('normal "vy')
+				end
+				-- construct command with v register as command to send
+				vim.cmd("call VimuxRunCommand(@v)")
+			end
 
 			local function get_file_paths()
 				local picker = pickers.new({
@@ -145,6 +155,16 @@ return {
 			map("n", "<leader>ts", "<CMD>TestSuite -strategy=vimux_watch<CR>")
 			map("n", "<leader>tc", "<CMD>VimuxCloseRunner<CR>")
 			map("n", "<leader>tf", get_file_paths)
+			map({ "n", "v" }, "<C-c><C-c>", send_to_tmux)
+
+			map("n", "<leader>ru", function()
+				if vim.g.VimuxRunnerType == "window" then
+					vim.g.VimuxRunnerType = "pane"
+					vim.g.VimuxCloseOnExit = true
+				else
+					vim.g.VimuxRunnerType = "window"
+				end
+			end)
 		end,
 	},
 }
