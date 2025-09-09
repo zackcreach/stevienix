@@ -21,11 +21,12 @@
     ];
   };
 
-  # keep creachignore ignored in gitignore but un-ignored in rginore
+  # keep creachignore ignored in gitignore but un-ignored in rgignore
+  # be careful on indendation here, it can nullify lines
   home.file.".rgignore".text = ''
-    	!creachignore
-    	!.env
-    	!.direnv
+    !creachignore
+    !.env
+    !.direnv
   '';
 
   programs.btop = {

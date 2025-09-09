@@ -14,6 +14,7 @@
       ".DS_Store"
       "creachignore"
       ".direnv/*"
+      ".env"
       ".envrc"
       ".claude"
       "CLAUDE.md"
