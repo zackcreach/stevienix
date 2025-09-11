@@ -16,8 +16,6 @@
       ".direnv/*"
       ".env"
       ".envrc"
-      ".claude"
-      "CLAUDE.md"
     ];
 
     aliases = {
