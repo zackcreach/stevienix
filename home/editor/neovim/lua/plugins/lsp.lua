@@ -9,10 +9,20 @@ return {
 				vim.keymap.set("n", "<leader>aa", vim.lsp.buf.code_action, { buffer = buffer_nr })
 			end
 
+			-- original lexical
+			-- lsp_config.lexical.setup({
+			-- 	on_attach = on_attach,
+			-- 	capabilities = require("cmp_nvim_lsp").default_capabilities(),
+			-- 	cmd = { "lexical" },
+			-- })
+
+			-- expert
 			lsp_config.lexical.setup({
-				on_attach = on_attach,
-				capabilities = require("cmp_nvim_lsp").default_capabilities(),
-				cmd = { "lexical" },
+				cmd = { "/Users/zack/dev/expert/apps/expert/burrito_out/expert_darwin_arm64" },
+				root_dir = function(fname)
+					return require("lspconfig").util.root_pattern("mix.exs", ".git")(fname) or vim.loop.cwd()
+				end,
+				filetypes = { "elixir", "eelixir", "heex" },
 			})
 
 			lsp_config.tailwindcss.setup({

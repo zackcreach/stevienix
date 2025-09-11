@@ -13,6 +13,7 @@
 
   home.file.".claude/CLAUDE.md".source = ./config/claude.md;
 
+  programs.git.ignores = [ ".claude" "CLAUDE.md" ];
   programs = {
     claude-code = {
       enable = true;

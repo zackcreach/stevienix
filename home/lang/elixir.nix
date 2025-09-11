@@ -4,15 +4,16 @@
   };
 
   home.file.".iex.exs".text = ''
-    IEx.configure(
-            default_prompt:
-              "#{IO.ANSI.magenta} #{IO.ANSI.reset}(%counter) |",
-            continuation_prompt:
-              "#{IO.ANSI.magenta} #{IO.ANSI.reset}(.) |"
-          )
+        IEx.configure(
+                default_prompt:
+                  "#{IO.ANSI.magenta} #{IO.ANSI.reset}(%counter) |",
+                continuation_prompt:
+                  "#{IO.ANSI.magenta} #{IO.ANSI.reset}(.) |",
+    						inspect: [limit: :infinity, pretty: true]
+              )
   '';
 
-  programs.git.ignores = [ ".lexical" ".elixir-ls" ];
+  programs.git.ignores = [ ".lexical" ".elixir-ls" ".expert" ];
 
   home.packages = with pkgs; [
     postgresql_16
