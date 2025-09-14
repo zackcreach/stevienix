@@ -1,11 +1,4 @@
 { inputs, pkgs, ... }: {
-  home.sessionVariables = {
-    ANTHROPIC_API_KEY = "op read op://Shared/claude-dwc/api_key";
-    SEMGREP_APP_TOKEN = "op read op://Shared/Semgrep/semgrep_app_token";
-    FIGMA_ACCESS_TOKEN = "op read op://Shared/Figma/figma_access_token";
-    REF_API_KEY = "op read op://Shared/Ref/ref_api_key";
-  };
-
   home.packages = with pkgs; [
     python3
     python3Packages.pipx

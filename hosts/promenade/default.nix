@@ -1,5 +1,7 @@
 { self
 , pkgs
+, inputs
+, config
 , ...
 }: {
   # Necessary for using flakes on this system.
@@ -84,5 +86,26 @@
     options = "--delete-older-than 1w";
   };
 
-  environment.systemPackages = with pkgs; [ comma ];
+  environment.systemPackages = with pkgs; [
+    comma
+    inputs.opnix.packages.${system}.default
+  ];
+
+  # run `sudo opnix token set` to initialize secrets
+  services.onepassword-secrets = {
+    enable = true;
+    tokenFile = "/etc/opnix-token";
+    groupId = 600;
+
+    secrets = {
+      refApiKey = {
+        reference = "op://cli/ref/api_key";
+      };
+    };
+  };
+
+  environment.variables = {
+    # REF_API_KEY = "${builtins.readFile config.services.onepassword-secrets.secretPaths.refApiKey}";
+  };
 }
+

@@ -18,6 +18,7 @@
       url = "github:crabique/Nord-plist";
       flake = false;
     };
+    opnix.url = "github:brizzbuzz/opnix";
   };
 
   outputs =
@@ -27,6 +28,7 @@
     , nixpkgs
     , nixpkgs-stable
     , NixOS-WSL
+    , opnix
     , ...
     }:
     {
@@ -34,6 +36,7 @@
       # $ darwin-rebuild build --flake .#centennial
       darwinConfigurations.centennial = nix-darwin.lib.darwinSystem {
         modules = [
+          opnix.darwinModules.default
           ./hosts/centennial
           home-manager.darwinModules.home-manager
           {
@@ -54,6 +57,7 @@
 
       darwinConfigurations.promenade = nix-darwin.lib.darwinSystem {
         modules = [
+          opnix.darwinModules.default
           ./hosts/promenade
           home-manager.darwinModules.home-manager
           {
@@ -76,6 +80,7 @@
         system = "x86_64-linux";
         specialArgs = { inherit inputs; }; # pass custom arguments into sub module.
         modules = [
+          opnix.nixosModules.default
           ./hosts/tabernacle
           NixOS-WSL.nixosModules.wsl
           home-manager.nixosModules.home-manager
@@ -98,6 +103,7 @@
         system = "x86_64-linux";
         specialArgs = { inherit inputs; }; # pass custom arguments into sub module.
         modules = [
+          opnix.nixosModules.default
           ./hosts/symphony
           home-manager.nixosModules.home-manager
           {
