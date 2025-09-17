@@ -3,7 +3,7 @@ root: ~/dev/houston/
 
 before_start:
   - task d:glogin
-  - yes y | task kinit
+  - printf '%s\n' "y" "/Users/zack/ssh/id_rsa" | task kinit
 
 windows:
   - name: ' '
