@@ -1,9 +1,6 @@
 { inputs, pkgs, ... }: {
   home.sessionVariables = {
-    ANTHROPIC_API_KEY = "op read op://Shared/claude-dwc/api_key";
-    SEMGREP_APP_TOKEN = "op read op://Shared/Semgrep/semgrep_app_token";
-    FIGMA_ACCESS_TOKEN = "op read op://Shared/Figma/figma_access_token";
-    REF_API_KEY = "op read op://Shared/Ref/ref_api_key";
+    REF_API_KEY = "op read op://cli/ref/api_key";
   };
 
   home.packages = with pkgs; [
@@ -12,56 +9,174 @@
   ];
 
   home.file.".claude/CLAUDE.md".source = ./config/claude.md;
+  home.file.".claude/settings.json".text = ''
+    {
+    	"$schema": "https://json.schemastore.org/claude-code-settings.json",
+    	"includeCoAuthoredBy": false,
+    	"permissions": {
+    		"additionalDirectories": [
+    			"creachignore/"
+    		],
+    		"allow": [
+    			"WebSearch",
+    			"Bash(git diff:*)",
+    			"Bash(git status:*)",
+    			"Edit",
+    			"Read"
+    		],
+    		"ask": [
+    			"Bash(git push:*)"
+    		],
+    		"defaultMode": "plan",
+    		"deny": [
+    			"WebFetch",
+    			"Bash(curl:*)",
+    			"Read(./.env)",
+    			"Read(./secrets/**)"
+    		],
+    		"disableBypassPermissionsMode": "disable"
+    	},
+    	"statusLine": {
+    		"command": "input=$(cat); current_dir=\"$(echo \"$input\" | jq -r '.workspace.current_dir')\"; dir_name=\"$(basename \"$current_dir\")\"; model=\"$(echo \"$input\" | jq -r '.model.display_name')\"; if command -v git >/dev/null 2>&1 && git -C \"$current_dir\" rev-parse --is-inside-work-tree >/dev/null 2>&1; then branch=$(git -C \"$current_dir\" --no-optional-locks branch --show-current 2>/dev/null); git_info=\" on 󰊢 $branch\"; else git_info=\"\"; fi; printf \"%s%s [%s]\" \"$dir_name\" \"$git_info\" \"$model\"",
+    		"padding": 0,
+    		"type": "command"
+    	},
+    	"theme": "dark",
+    }
+  '';
 
   programs.git.ignores = [ ".claude" "CLAUDE.md" ];
   programs = {
-    claude-code = {
+    opencode = {
       enable = true;
       settings = {
-        includeCoAuthoredBy = false;
-        permissions = {
-          additionalDirectories = [
-            "creachignore/"
-          ];
-          allow = [
-            "WebSearch"
-            "Bash(git diff:*)"
-            "Bash(git status:*)"
-            "Bash(mix test:*)"
-            "Edit"
-            "Read"
-            "Update"
-          ];
-          ask = [
-            "Bash(git push:*)"
-          ];
-          defaultMode = "plan";
-          deny = [
-            "WebFetch"
-            "Bash(curl:*)"
-            "Read(./.env)"
-            "Read(./secrets/**)"
-          ];
-          disableBypassPermissionsMode = "disable";
+        model = "ollama/Qwen3-Coder-30B-A3B";
+        small_model = "ollama/gemma3:27b";
+        permission = {
+          "*" = "ask";
+          edit = "ask";
+          "git push" = "ask";
+          "git status" = "allow";
+          "git diff" = "allow";
+          "npm run build" = "allow";
+          ls = "allow";
+          pwd = "allow";
         };
-        statusLine = {
-          command = "input=$(cat); current_dir=\"$(echo \"$input\" | jq -r '.workspace.current_dir')\"; dir_name=\"$(basename \"$current_dir\")\"; model=\"$(echo \"$input\" | jq -r '.model.display_name')\"; if command -v git >/dev/null 2>&1 && git -C \"$current_dir\" rev-parse --is-inside-work-tree >/dev/null 2>&1; then branch=$(git -C \"$current_dir\" --no-optional-locks branch --show-current 2>/dev/null); git_info=\" on 󰊢 $branch\"; else git_info=\"\"; fi; printf \"%s%s [%s]\" \"$dir_name\" \"$git_info\" \"$model\"";
-          padding = 0;
-          type = "command";
-        };
-        theme = "dark";
-        vim = true;
-      };
-      mcpServers = {
-        ref = {
-          command = "npx";
-          args = [ "ref-tools-mcp@latest" ];
-          env = {
-            REF_API_KEY = "$REF_API_KEY";
+        theme = "nord";
+        provider = {
+          ollama = {
+            npm = "@ai-sdk/openai-compatible";
+            options = {
+              baseURL = "http://symphony:11434/v1";
+            };
+            models = {
+              "Qwen3-Coder-30B-A3B" = {
+                tools = true;
+                reasoning = false;
+                options = {
+                  num_ctx = 16534;
+                };
+              };
+              "gemma3:27b" = {
+                tools = false;
+                reasoning = false;
+                options = {
+                  num_ctx = 16534;
+                };
+              };
+            };
+          };
+          anthropic = {
+            npm = "@ai-sdk/anthropic";
+            options = {
+              apiKey = "$ANTHROPIC_API_KEY";
+            };
+            models = {
+              "claude-sonnet-4-20250514" = {
+                tools = true;
+                reasoning = true;
+                options = {
+                  temperature = 0.7;
+                };
+              };
+              "claude-3-5-haiku-latest" = {
+                tools = true;
+                reasoning = false;
+                options = {
+                  temperature = 0;
+                };
+              };
+            };
           };
         };
       };
     };
+    =======
+    opencode = {
+      enable = true;
+      settings = {
+        model = "ollama/Qwen3-Coder-30B-A3B";
+        small_model = "ollama/gemma3:27b";
+        permission = {
+          "*" = "ask";
+          edit = "ask";
+          "git push" = "ask";
+          "git status" = "allow";
+          "git diff" = "allow";
+          "npm run build" = "allow";
+          ls = "allow";
+          pwd = "allow";
+        };
+        theme = "nord";
+        provider = {
+          ollama = {
+            npm = "@ai-sdk/openai-compatible";
+            options = {
+              baseURL = "http://symphony:11434/v1";
+            };
+            models = {
+              "Qwen3-Coder-30B-A3B" = {
+                tools = true;
+                reasoning = false;
+                options = {
+                  num_ctx = 16534;
+                };
+              };
+              "gemma3:27b" = {
+                tools = false;
+                reasoning = false;
+                options = {
+                  num_ctx = 16534;
+                };
+              };
+            };
+          };
+          anthropic = {
+            npm = "@ai-sdk/anthropic";
+            options = {
+              apiKey = "$ANTHROPIC_API_KEY";
+            };
+            models = {
+              "claude-sonnet-4-20250514" = {
+                tools = true;
+                reasoning = true;
+                options = {
+                  temperature = 0.7;
+                };
+              };
+              "claude-3-5-haiku-latest" = {
+                tools = true;
+                reasoning = false;
+                options = {
+                  temperature = 0;
+                };
+              };
+            };
+          };
+        };
+      };
+    };
+    >>>>>>> 188e40a (small fixes)
     aichat = {
       enable = true;
       settings = {
