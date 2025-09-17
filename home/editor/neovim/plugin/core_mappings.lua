@@ -17,11 +17,6 @@ map("n", "<esc>", "<CMD>nohlsearch<CR>")
 
 map("t", "<ESC>", "<c-\\><c-n>", { silent = false })
 
--- 1-9 keys as tab hotkeys
-for i = 1, 9 do
-	map("n", tostring(i), ":tabn " .. i .. "<CR>", { silent = true })
-end
-
 -- Leader
 map("n", "<leader>_", ":silent grep ", { silent = false })
 map("n", "<leader>d", "<CMD>G<CR>")
@@ -41,6 +36,11 @@ map("n", "<leader>w", "<CMD>q<CR>")
 map("n", "<leader>b", "<CMD>bufdo bd<CR>")
 map("n", "<leader>r", "<CMD>e!<CR>")
 map("n", "<leader>>", "<CMD>Floaterminal<CR>")
+
+-- leader 1-9 keys as tab hotkeys
+for i = 1, 9 do
+	map("n", "<leader>" .. tostring(i), ":tabn " .. i .. "<CR>", { silent = true })
+end
 
 -- MacOS
 map("n", "<M-f>", ":silent grep ", { silent = false })
