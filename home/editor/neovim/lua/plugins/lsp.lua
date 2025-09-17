@@ -10,20 +10,20 @@ return {
 			end
 
 			-- original lexical
-			-- lsp_config.lexical.setup({
-			-- 	on_attach = on_attach,
-			-- 	capabilities = require("cmp_nvim_lsp").default_capabilities(),
-			-- 	cmd = { "lexical" },
-			-- })
+			lsp_config.lexical.setup({
+				on_attach = on_attach,
+				capabilities = require("cmp_nvim_lsp").default_capabilities(),
+				cmd = { "lexical" },
+			})
 
 			-- expert
-			lsp_config.lexical.setup({
-				cmd = { "/Users/zack/dev/expert/apps/expert/burrito_out/expert_darwin_arm64" },
-				root_dir = function(fname)
-					return require("lspconfig").util.root_pattern("mix.exs", ".git")(fname) or vim.loop.cwd()
-				end,
-				filetypes = { "elixir", "eelixir", "heex" },
-			})
+			-- lsp_config.lexical.setup({
+			-- 	cmd = { "/Users/zack/dev/expert/apps/expert/burrito_out/expert_darwin_arm64" },
+			-- 	root_dir = function(fname)
+			-- 		return require("lspconfig").util.root_pattern("mix.exs", ".git")(fname) or vim.loop.cwd()
+			-- 	end,
+			-- 	filetypes = { "elixir", "eelixir", "heex" },
+			-- })
 
 			lsp_config.tailwindcss.setup({
 				cmd = { "/opt/homebrew/bin/tailwindcss-language-server" },
