@@ -1,0 +1,24 @@
+{
+  "mcpServers": {
+    "Ref": {
+      "type": "http",
+      "url": "https://api.ref.tools/mcp",
+      "headers": {
+        "x-ref-api-key": "${REF_API_KEY}"
+      }
+    },
+    "playwright": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["@playwright/mcp@latest"]
+    },
+    "figma-remote-mcp": {
+      "type": "http",
+      "url": "https://mcp.figma.com/mcp"
+    },
+    "linear-server": {
+      "type": "sse",
+      "url": "https://mcp.linear.app/sse"
+    }
+  }
+}

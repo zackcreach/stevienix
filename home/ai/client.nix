@@ -8,42 +8,9 @@
     python3Packages.pipx
   ];
 
-  home.file.".claude/CLAUDE.md".source = ./config/claude.md;
-  home.file.".claude/settings.json".text = ''
-    {
-    	"$schema": "https://json.schemastore.org/claude-code-settings.json",
-    	"includeCoAuthoredBy": false,
-    	"permissions": {
-    		"additionalDirectories": [
-    			"creachignore/"
-    		],
-    		"allow": [
-    			"WebSearch",
-    			"Bash(git diff:*)",
-    			"Bash(git status:*)",
-    			"Edit",
-    			"Read"
-    		],
-    		"ask": [
-    			"Bash(git push:*)"
-    		],
-    		"defaultMode": "plan",
-    		"deny": [
-    			"WebFetch",
-    			"Bash(curl:*)",
-    			"Read(./.env)",
-    			"Read(./secrets/**)"
-    		],
-    		"disableBypassPermissionsMode": "disable"
-    	},
-    	"statusLine": {
-    		"command": "input=$(cat); current_dir=\"$(echo \"$input\" | jq -r '.workspace.current_dir')\"; dir_name=\"$(basename \"$current_dir\")\"; model=\"$(echo \"$input\" | jq -r '.model.display_name')\"; if command -v git >/dev/null 2>&1 && git -C \"$current_dir\" rev-parse --is-inside-work-tree >/dev/null 2>&1; then branch=$(git -C \"$current_dir\" --no-optional-locks branch --show-current 2>/dev/null); git_info=\" on 󰊢 $branch\"; else git_info=\"\"; fi; printf \"%s%s [%s]\" \"$dir_name\" \"$git_info\" \"$model\"",
-    		"padding": 0,
-    		"type": "command"
-    	},
-    	"theme": "dark",
-    }
-  '';
+  home.file.".claude/CLAUDE.md".source = ./config/instructions.md;
+  home.file.".claude/settings.json".source = ./config/settings.json;
+  # home.file.".claude.json".source = ./config/mcp_servers.json;
 
   programs.git.ignores = [ ".claude" "CLAUDE.md" ];
   programs = {

@@ -8,24 +8,26 @@ return {
 				show_defaults = false,
 				strategies = {
 					chat = {
-						adapter = "ollama",
+						adapter = "zionlab",
 					},
 					inline = {
-						adapter = "ollama",
+						adapter = "zionlab",
 					},
 					cmd = {
-						adapter = "ollama",
+						adapter = "zionlab",
 					},
 				},
 				adapters = {
 					http = {
-						ollama = function()
-							return require("codecompanion.adapters").extend("ollama", {
+						zionlab = function()
+							return require("codecompanion.adapters").extend("openai_compatible", {
 								env = {
-									url = "http://symphony:11434",
+									url = "https://ollama-api.zionlab.online",
 								},
 								headers = {
 									["Content-Type"] = "application/json",
+									["CF-Access-Client-Secret"] = "1173efff73f6ac66ea47915b60604b5818ec6a4057d2ab8819d801d3a279bbbe",
+									["CF-Access-Client-Id"] = "5cc18046a45d6d91b838654e25ac6993.access",
 								},
 								parameters = {
 									sync = true,
@@ -35,10 +37,10 @@ return {
 								},
 								schema = {
 									model = {
-										default = "Qwen3-Coder-30B-A3B",
+										default = "qwen3-coder:30b-a3b",
 										choices = {
-											"Qwen3-Coder-30B-A3B",
-											"gemma3:27b",
+											"qwen3-coder:30b-a3b",
+											"gpt-oss:120b",
 										},
 									},
 									num_ctx = {
