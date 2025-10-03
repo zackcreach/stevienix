@@ -1,7 +1,6 @@
 { pkgs, ... }:
 {
   home.sessionVariables = {
-    PRETTIERD_DEFAULT_CONFIG = "$HOME/prettier.config.js";
     NPM_CONFIG_PREFIX = "$HOME/.npm-packages";
     PATH = "$HOME/.npm-packages/bin:$PATH";
     # BIOME_CONFIG_PATH = "$HOME/biome.json";
@@ -10,7 +9,6 @@
   home.packages = with pkgs; [
     nodePackages_latest.typescript-language-server
     nodejs_22
-    prettierd
     eslint_d
     tailwindcss-language-server
     yarn
