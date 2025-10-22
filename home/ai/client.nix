@@ -12,7 +12,7 @@
   home.file.".claude/settings.json".source = ./config/settings.json;
   # home.file.".claude.json".source = ./config/mcp_servers.json;
 
-  programs.git.ignores = [ ".claude" "CLAUDE.md" ];
+  programs.git.ignores = [ ".claude" "CLAUDE.md" ".playwright-mcp" ];
   programs = {
     opencode = {
       enable = true;
@@ -38,7 +38,7 @@
           zionlab = {
             npm = "@ai-sdk/openai-compatible";
             options = {
-              baseURL = "https://ollama-api.zionlab.online/v1";
+              baseURL = "https://zaia.zionlab.online/v1";
               headers = {
                 CF-Access-Client-Secret = "{env:CF_ACCESS_CLIENT_SECRET}";
                 CF-Access-Client-Id = "{env:CF_ACCESS_CLIENT_ID}";

@@ -22,7 +22,7 @@ return {
 						zionlab = function()
 							return require("codecompanion.adapters").extend("openai_compatible", {
 								env = {
-									url = "https://ollama-api.zionlab.online",
+									url = "https://zaia.zionlab.online",
 								},
 								headers = {
 									["Content-Type"] = "application/json",

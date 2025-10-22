@@ -1,10 +1,6 @@
 session: HOUSTON
 root: ~/dev/houston/
 
-# before_start:
-#   - task d:glogin
-#   - printf '%s\n' "y" "/Users/zack/ssh/id_rsa" | task kinit
-
 windows:
   - name: ' '
     commands:
