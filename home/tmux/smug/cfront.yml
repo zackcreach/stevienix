@@ -1,5 +1,5 @@
 session: CFRONT
-root: ~/dev/cfront/
+root: ~/dev/cfront/classic_frontend/
 
 windows:
   - name: ' '
@@ -8,7 +8,7 @@ windows:
       - nvim
   - name: ' '
     commands:
-      - nvim creachignore/scratchpad.ex
+      - nvim ~/dev/cfront/classic_frontend/creachignore/scratchpad.ex
     panes:
       - type: horizontal
         commands:

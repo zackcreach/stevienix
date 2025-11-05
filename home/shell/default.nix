@@ -26,6 +26,7 @@
   home.file.".rgignore".text = ''
     !creachignore
     !.env
+    !.envrc
     !.direnv
   '';
 
