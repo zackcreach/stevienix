@@ -1,3 +1,9 @@
+## Planning
+
+- In plan mode, automatically generate a markdown plan file named the same name as the current branch as soon as a plan proposal has completed
+- Markdown plan files should have detailed checklists to keep track of changes
+- When working off of plan files, be sure to update the markdown checklist with what has been completed along with any notes on deviations to the plan
+
 ## Coding standards
 
 - Always prefer descriptive variable names instead of comments to keep the code readable and maintainable
