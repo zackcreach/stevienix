@@ -12,6 +12,10 @@
   home.file.".claude/settings.json".source = ./config/settings.json;
   # home.file.".claude.json".source = ./config/mcp_servers.json;
 
+  # sounds
+  home.file."sounds/waiting.mp3".source = ./sounds/waiting.mp3;
+  home.file."sounds/complete.mp3".source = ./sounds/complete.mp3;
+
   programs.git.ignores = [ ".claude" "CLAUDE.md" ".playwright-mcp" ];
   programs = {
     opencode = {

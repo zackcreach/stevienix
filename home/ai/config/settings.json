@@ -15,32 +15,28 @@
     "deny": ["WebFetch", "Bash(curl:*)", "Read(./.env)", "Read(./secrets/**)"],
     "disableBypassPermissionsMode": "disable"
   },
-  "statusLine": {
-    "command": "input=$(cat); current_dir=\"$(echo \"$input\" | jq -r '.workspace.current_dir')\"; dir_name=\"$(basename \"$current_dir\")\"; model=\"$(echo \"$input\" | jq -r '.model.display_name')\"; if command -v git >/dev/null 2>&1 && git -C \"$current_dir\" rev-parse --is-inside-work-tree >/dev/null 2>&1; then branch=$(git -C \"$current_dir\" --no-optional-locks branch --show-current 2>/dev/null); git_info=\" on 󰊢 $branch\"; else git_info=\"\"; fi; printf \"%s%s [%s]\" \"$dir_name\" \"$git_info\" \"$model\"",
-    "padding": 0,
-    "type": "command"
-  },
-  "theme": "dark",
-  "mcpServers": {
-    "Ref": {
-      "type": "http",
-      "url": "https://api.ref.tools/mcp",
-      "headers": {
-        "x-ref-api-key": "${REF_API_KEY}"
+  "hooks": {
+    "Notification": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "[ -f /Users/zack/sounds/waiting.mp3 ] && afplay /Users/zack/sounds/waiting.mp3 || true",
+            "timeout": 10
+          }
+        ]
       }
-    },
-    "playwright": {
-      "type": "stdio",
-      "command": "npx",
-      "args": ["@playwright/mcp@latest"]
-    },
-    "figma-remote-mcp": {
-      "type": "http",
-      "url": "https://mcp.figma.com/mcp"
-    },
-    "linear-server": {
-      "type": "sse",
-      "url": "https://mcp.linear.app/sse"
-    }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "[ -f /Users/zack/sounds/complete.mp3 ] && afplay /Users/zack/sounds/complete.mp3 || true",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
   }
 }
