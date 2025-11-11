@@ -1,4 +1,4 @@
-{ inputs, pkgs, ... }: {
+{ inputs, pkgs, config, ... }: {
   home.sessionVariables = {
     REF_API_KEY = "op read op://cli/ref/api_key";
   };
@@ -8,15 +8,16 @@
     python3Packages.pipx
   ];
 
-  home.file.".claude/CLAUDE.md".source = ./config/instructions.md;
-  home.file.".claude/settings.json".source = ./config/settings.json;
-  # home.file.".claude.json".source = ./config/mcp_servers.json;
+  home.sessionVariables = {
+    "CLAUDE_CONFIG_DIR" = "${config.xdg.configHome}/claude";
+  };
 
-  # sounds
-  home.file."sounds/waiting.mp3".source = ./sounds/waiting.mp3;
-  home.file."sounds/complete.mp3".source = ./sounds/complete.mp3;
+  xdg.configFile."claude" = {
+    source = ./config;
+    recursive = true;
+  };
 
-  programs.git.ignores = [ ".claude" "CLAUDE.md" ".playwright-mcp" ];
+  programs.git.ignores = [ ".claude" "CLAUDE.md" "!home/ai/config/CLAUDE.md" ".playwright-mcp" ];
   programs = {
     opencode = {
       enable = true;

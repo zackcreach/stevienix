@@ -21,7 +21,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "[ -f /Users/zack/sounds/waiting.mp3 ] && afplay /Users/zack/sounds/waiting.mp3 || true",
+            "command": "[ -f /Users/zack/.config/claude/sounds/waiting.mp3 ] && afplay /Users/zack/.config/claude/sounds/waiting.mp3 || true",
             "timeout": 10
           }
         ]
@@ -32,7 +32,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "[ -f /Users/zack/sounds/complete.mp3 ] && afplay /Users/zack/sounds/complete.mp3 || true",
+            "command": "[ -f /Users/zack/.config/claude/sounds/complete.mp3 ] && afplay /Users/zack/.config/claude/sounds/complete.mp3 || true",
             "timeout": 10
           }
         ]
