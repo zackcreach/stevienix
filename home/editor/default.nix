@@ -15,10 +15,11 @@
       vim-rhubarb
       git-messenger-vim
 
-      # autocomplete	
+      # autocomplete
       nvim-cmp
       blink-cmp
-      windsurf-nvim
+      blink-compat
+      minuet-ai-nvim
       cmp-nvim-lsp
 
       # ai
