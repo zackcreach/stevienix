@@ -1,17 +1,22 @@
 session: CFRONT
-root: ~/dev/cfront/classic_frontend/
+root: ~/dev/cfront
 
 windows:
   - name: ' '
     selected: true
     commands:
       - nvim
-  - name: ' '
-    commands:
-      - nvim ~/dev/cfront/classic_frontend/creachignore/scratchpad.ex
     panes:
       - type: horizontal
         commands:
+          - c
+  - name: ' '
+    commands:
+      - nvim ~/dev/cfront/creachignore/scratchpad.ex
+    panes:
+      - type: horizontal
+        commands:
+          - cd classic_frontend
           - ips
   - name: '󰪩 '
     commands:

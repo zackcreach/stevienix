@@ -5,6 +5,10 @@ windows:
   - name: ' '
     commands:
       - nvim
+    panes:
+      - type: horizontal
+        commands:
+          - cc
   - name: ' '
     selected: true
     commands:

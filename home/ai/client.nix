@@ -1,16 +1,23 @@
 { inputs, pkgs, config, ... }: {
   home.sessionVariables = {
     REF_API_KEY = "op read op://cli/ref/api_key";
+    CLAUDE_CONFIG_DIR = "${config.xdg.configHome}/claude";
   };
+
+  programs.zsh.shellAliases = {
+    c = "claude";
+    cc = "claude --continue";
+  };
+
+
+
 
   home.packages = with pkgs; [
     python3
     python3Packages.pipx
   ];
 
-  home.sessionVariables = {
-    "CLAUDE_CONFIG_DIR" = "${config.xdg.configHome}/claude";
-  };
+  home.sessionVariables = { };
 
   xdg.configFile."claude" = {
     source = ./config;
