@@ -65,7 +65,6 @@
       grep = "grep --color=auto";
       cat = "bat --paging=never";
       lg = "live-grep";
-      c = "claude";
       s = "stevie";
       srv = "stevie && nvim";
       reload = "source ${config.xdg.configHome}/zsh/.zshrc";
