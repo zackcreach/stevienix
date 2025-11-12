@@ -1,6 +1,6 @@
 local source_icons = {
 	codecompanion = "󱚧",
-	codeium = "󰚩",
+	minuet = "󰚩",
 	nvim_lsp = "󰡦",
 	lsp = "󰡦",
 	buffer = "",
@@ -16,9 +16,25 @@ local source_icons = {
 return {
 	{
 		"blink-cmp",
-		event = "User DeferredUIEnter",
+		event = "InsertEnter",
 		after = function()
-			require("codeium").setup({})
+			require("minuet").setup({
+				provider = "openai_fim_compatible",
+				n_completions = 1,
+				context_window = 2048,
+				provider_options = {
+					openai_fim_compatible = {
+						api_key = "TERM",
+						name = "Ollama",
+						end_point = "http://symphony:11434/v1/completions",
+						model = "qwen2.5-coder:7b",
+						optional = {
+							max_tokens = 128,
+							top_p = 0.9,
+						},
+					},
+				},
+			})
 			require("blink.cmp").setup({
 				keymap = {
 					preset = "none",
@@ -64,13 +80,19 @@ return {
 					},
 				},
 				sources = {
-					default = { "lsp", "path", "snippets", "buffer", "dadbod", "codeium" },
+					default = { "lsp", "path", "snippets", "buffer", "minuet", "dadbod" },
 					per_filetype = {
 						codecompanion = { "codecompanion" },
 					},
 					providers = {
+						minuet = {
+							name = "minuet",
+							module = "minuet.blink",
+							async = true,
+							timeout_ms = 5000,
+							score_offset = 50,
+						},
 						dadbod = { name = "Dadbod", module = "vim_dadbod_completion.blink" },
-						codeium = { name = "Codeium", module = "codeium.blink", async = true },
 					},
 				},
 				snippets = { preset = "luasnip" },
