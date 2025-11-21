@@ -145,8 +145,13 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
-  # GPU hardware excelleration
-  nixpkgs.config.cudaSupport = true;
+  # GPU hardware excelleration (slow to build)
+  # nixpkgs.config.cudaSupport = true;
+
+  # Webcord mostly
+  nixpkgs.config.permittedInsecurePackages = [
+    "electron-36.9.5"
+  ];
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -163,21 +168,6 @@
 
   services.tailscale = {
     enable = true;
-  };
-
-  services.open-webui = {
-    enable = false;
-    # Configure other options as needed.
-    # For example, to set the port:
-    # port = 8080;
-    # To configure environment variables:
-    # environment = {
-    #   OLLAMA_API_BASE_URL = "http://127.0.0.1:11434/api";
-    #   ANONYMIZED_TELEMETRY = "False";
-    # };
-    # If you need an unstable version for specific features,
-    # you can get the package from an unstable channel:
-    # package = pkgs.unstable.open-webui;
   };
 
   # Enable the OpenSSH daemon.

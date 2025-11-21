@@ -16,16 +16,22 @@
     ./tmux
   ];
 
-  home.stateVersion = "24.05";
+  home = {
+    stateVersion = "24.05";
+    username = "zack";
+    homeDirectory = "/home/zack";
+  };
 
   home.packages = with pkgs; [
     webcord
     nautilus
     vivaldi
+    claude-code
   ];
 
   home.sessionVariables = {
-    "BROWSER" = "vivaldi";
+    BROWSER = "vivaldi";
+    SSH_AUTH_SOCK = "$(gpgconf --list-dirs agent-ssh-socket)";
   };
 
   programs.home-manager.enable = true;

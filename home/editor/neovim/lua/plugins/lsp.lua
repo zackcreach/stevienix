@@ -2,78 +2,70 @@ return {
 	{
 		"nvim-lspconfig",
 		after = function()
-			local lsp_config = require("lspconfig")
 			local on_attach = function(_, buffer_nr)
 				vim.keymap.set("n", "<cr>", vim.lsp.buf.definition, { buffer = buffer_nr })
 				vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = buffer_nr })
 				vim.keymap.set("n", "<leader>aa", vim.lsp.buf.code_action, { buffer = buffer_nr })
 			end
 
-			-- original lexical
-			lsp_config.lexical.setup({
-				on_attach = on_attach,
-				capabilities = require("cmp_nvim_lsp").default_capabilities(),
+			local capabilities = require("cmp_nvim_lsp").default_capabilities()
+
+			vim.lsp.config.lexical = {
 				cmd = { "lexical" },
-			})
-
-			-- expert
-			-- lsp_config.lexical.setup({
-			-- 	cmd = { "/Users/zack/dev/expert/apps/expert/burrito_out/expert_darwin_arm64" },
-			-- 	root_dir = function(fname)
-			-- 		return require("lspconfig").util.root_pattern("mix.exs", ".git")(fname) or vim.loop.cwd()
-			-- 	end,
-			-- 	filetypes = { "elixir", "eelixir", "heex" },
-			-- })
-
-			-- lsp_config.tailwindcss.setup({
-			-- 	cmd = { "/opt/homebrew/bin/tailwindcss-language-server" },
-			-- 	on_attach = on_attach,
-			-- 	capabilities = require("cmp_nvim_lsp").default_capabilities(),
-			-- })
-
-			lsp_config.ts_ls.setup({
+				filetypes = { "elixir", "eelixir", "heex" },
+				root_markers = { "mix.exs", ".git" },
 				on_attach = on_attach,
-				capabilities = require("cmp_nvim_lsp").default_capabilities(),
-			})
+				capabilities = capabilities,
+			}
 
-			lsp_config.biome.setup({
+			vim.lsp.config.ts_ls = {
+				filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
+				root_markers = { "package.json", "tsconfig.json", ".git" },
 				on_attach = on_attach,
-				capabilities = require("cmp_nvim_lsp").default_capabilities(),
-			})
+				capabilities = capabilities,
+			}
 
-			lsp_config.nil_ls.setup({
+			vim.lsp.config.biome = {
+				filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact", "json", "jsonc" },
+				root_markers = { "biome.json", ".git" },
 				on_attach = on_attach,
-				capabilities = require("cmp_nvim_lsp").default_capabilities(),
-			})
+				capabilities = capabilities,
+			}
 
-			lsp_config.lua_ls.setup({
+			vim.lsp.config.nil_ls = {
+				filetypes = { "nix" },
+				root_markers = { "flake.nix", ".git" },
 				on_attach = on_attach,
-				capabilities = require("cmp_nvim_lsp").default_capabilities(),
+				capabilities = capabilities,
+			}
+
+			vim.lsp.config.lua_ls = {
+				filetypes = { "lua" },
+				root_markers = { ".git" },
+				on_attach = on_attach,
+				capabilities = capabilities,
 				settings = {
 					Lua = {
 						runtime = {
-							-- Tell the language server which version of Lua you're using
-							-- (most likely LuaJIT in the case of Neovim)
 							version = "LuaJIT",
 						},
 						diagnostics = {
-							-- Get the language server to recognize the `vim` global
 							globals = {
 								"vim",
 								"require",
 							},
 						},
 						workspace = {
-							-- Make the server aware of Neovim runtime files
 							library = vim.api.nvim_get_runtime_file("", true),
 						},
-						-- Do not send telemetry data containing a randomized but unique identifier
 						telemetry = {
 							enable = false,
 						},
 					},
 				},
-			})
+			}
+
+			vim.lsp.enable({ "lexical", "ts_ls", "biome", "nil_ls", "lua_ls" })
 		end,
 	},
 }
