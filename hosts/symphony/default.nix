@@ -15,6 +15,9 @@
 
       # Whiteboard auto-deploy service
       ./services/whiteboard-deploy.nix
+
+      # Whiteboard database backup service
+      ./services/whiteboard-backup.nix
     ];
 
   nix.settings = {

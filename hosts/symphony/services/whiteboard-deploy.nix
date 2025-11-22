@@ -12,6 +12,7 @@
       erlang
       nodejs
       tailwindcss_4
+      esbuild
       rsync
       coreutils
       gnugrep
