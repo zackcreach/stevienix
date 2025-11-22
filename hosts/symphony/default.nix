@@ -12,6 +12,9 @@
 
       # Whiteboard application service
       ./services/whiteboard.nix
+
+      # Whiteboard auto-deploy service
+      ./services/whiteboard-deploy.nix
     ];
 
   nix.settings = {
