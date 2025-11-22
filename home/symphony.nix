@@ -1,5 +1,6 @@
-{ pkgs, ... }: {
+{ pkgs, config, ... }: {
   imports = [
+    ./ai/client.nix
     ./ai/server.nix
     ./containers
     ./credentials
@@ -26,7 +27,6 @@
     webcord
     nautilus
     vivaldi
-    claude-code
   ];
 
   home.sessionVariables = {
@@ -86,5 +86,4 @@
     platformTheme.name = "gtk3";
     style.name = "adwaita-gtk";
   };
-
 }

@@ -2,9 +2,12 @@
 {
   home.sessionVariables = {
     NPM_CONFIG_PREFIX = "$HOME/.npm-packages";
-    PATH = "$HOME/.npm-packages/bin:$PATH";
     # BIOME_CONFIG_PATH = "$HOME/biome.json";
   };
+
+  home.sessionPath = [
+    "$HOME/.npm-packages/bin"
+  ];
 
   home.packages = with pkgs; [
     nodePackages_latest.typescript-language-server
