@@ -15,8 +15,8 @@
       Group = "users";
       WorkingDirectory = "/home/zack/dev/whiteboard";
 
-      ExecStart = "${pkgs.docker}/bin/docker compose up -d";
-      ExecStop = "${pkgs.docker}/bin/docker compose down";
+      ExecStart = "${pkgs.docker}/bin/docker compose -f docker-compose.yml up -d";
+      ExecStop = "${pkgs.docker}/bin/docker compose -f docker-compose.yml down";
 
       Restart = "on-failure";
       RestartSec = "5s";
