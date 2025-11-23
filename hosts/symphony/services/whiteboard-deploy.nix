@@ -11,6 +11,9 @@
       openssh
       docker
       elixir
+      gnumake
+      gcc
+      pkg-config
     ];
 
     environment = {

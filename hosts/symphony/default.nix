@@ -180,32 +180,33 @@
     enable = true;
   };
 
-  # PostgreSQL for Whiteboard application
-  services.postgresql = {
-    enable = true;
-    package = pkgs.postgresql_16;
-    enableTCPIP = true;
-    authentication = pkgs.lib.mkOverride 10 ''
-      # TYPE  DATABASE        USER            ADDRESS                 METHOD
-      local   all             all                                     peer
-      host    all             all             127.0.0.1/32            scram-sha-256
-      host    all             all             ::1/128                 scram-sha-256
-    '';
-    settings = {
-      # Basic performance tuning
-      shared_buffers = "256MB";
-      effective_cache_size = "1GB";
-      maintenance_work_mem = "64MB";
-      checkpoint_completion_target = 0.9;
-      wal_buffers = "16MB";
-      default_statistics_target = 100;
-      random_page_cost = 1.1;
-      effective_io_concurrency = 200;
-      work_mem = "4MB";
-      min_wal_size = "1GB";
-      max_wal_size = "4GB";
-    };
-  };
+  # PostgreSQL - Disabled (now using containerized PostgreSQL via Docker)
+  # Previously used for Whiteboard application
+  # services.postgresql = {
+  #   enable = true;
+  #   package = pkgs.postgresql_16;
+  #   enableTCPIP = true;
+  #   authentication = pkgs.lib.mkOverride 10 ''
+  #     # TYPE  DATABASE        USER            ADDRESS                 METHOD
+  #     local   all             all                                     peer
+  #     host    all             all             127.0.0.1/32            scram-sha-256
+  #     host    all             all             ::1/128                 scram-sha-256
+  #   '';
+  #   settings = {
+  #     # Basic performance tuning
+  #     shared_buffers = "256MB";
+  #     effective_cache_size = "1GB";
+  #     maintenance_work_mem = "64MB";
+  #     checkpoint_completion_target = 0.9;
+  #     wal_buffers = "16MB";
+  #     default_statistics_target = 100;
+  #     random_page_cost = 1.1;
+  #     effective_io_concurrency = 200;
+  #     work_mem = "4MB";
+  #     min_wal_size = "1GB";
+  #     max_wal_size = "4GB";
+  #   };
+  # };
 
   # Enable the OpenSSH daemon.
   services.openssh = {

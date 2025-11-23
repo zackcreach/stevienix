@@ -1,6 +1,12 @@
 session: WHITEBOARD
 root: ~/dev/whiteboard/
 
+on_project_start:
+  - docker compose up -d
+
+on_project_stop:
+  - docker compose down
+
 windows:
   - name: ' '
     selected: true
