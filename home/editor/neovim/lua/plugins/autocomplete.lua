@@ -22,6 +22,8 @@ return {
 				provider = "openai_fim_compatible",
 				n_completions = 1,
 				context_window = 2048,
+				notify = false,
+				request_timeout = 2,
 				provider_options = {
 					openai_fim_compatible = {
 						api_key = "TERM",
