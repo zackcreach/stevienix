@@ -21,6 +21,11 @@
     recursive = true;
   };
 
+  xdg.configFile."claude/statusline-command.sh" = {
+    source = ./statusline-command.sh;
+    executable = true;
+  };
+
   programs.git.ignores = [ ".claude" "CLAUDE.md" "!home/ai/config/CLAUDE.md" ".playwright-mcp" ];
   programs = {
     opencode = {

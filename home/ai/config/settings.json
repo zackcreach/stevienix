@@ -15,6 +15,11 @@
     "deny": ["WebFetch", "Bash(curl:*)", "Read(./.env)", "Read(./secrets/**)"],
     "disableBypassPermissionsMode": "disable"
   },
+  "statusLine": {
+    "type": "command",
+    "command": "/Users/zack/.config/claude/statusline-command.sh",
+    "padding": 0
+  },
   "hooks": {
     "Notification": [
       {

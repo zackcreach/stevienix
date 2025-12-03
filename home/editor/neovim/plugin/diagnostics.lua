@@ -5,15 +5,6 @@ vim.diagnostic.config({
 	virtual_text = {
 		prefix = " ",
 	},
-	signs = true,
-})
-
-map("n", "[d", vim.diagnostic.goto_prev)
-map("n", "]d", vim.diagnostic.goto_next)
-map("n", "<C-g>", vim.diagnostic.open_float)
-
--- Consigure signs
-vim.diagnostic.config({
 	signs = {
 		text = {
 			[vim.diagnostic.severity.ERROR] = " ",
@@ -29,3 +20,13 @@ vim.diagnostic.config({
 		},
 	},
 })
+
+map("n", "[d", function()
+	vim.diagnostic.jump({ count = -1, float = true })
+end)
+
+map("n", "]d", function()
+	vim.diagnostic.jump({ count = 1, float = true })
+end)
+
+map("n", "<C-g>", vim.diagnostic.open_float)

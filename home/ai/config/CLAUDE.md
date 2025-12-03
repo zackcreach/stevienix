@@ -1,3 +1,8 @@
+## Model preferences
+
+- In plan mode, use latest Opus until limit is reached, then Sonnet
+- In edit mode, use latest Sonnet by default
+
 ## Planning
 
 - In plan mode, automatically generate a markdown plan file named the same name as the current branch (unless already on main branch, then just pick a descriptive title) as soon as a plan proposal has completed
@@ -10,6 +15,10 @@
 - Always prefer descriptive variable names instead of comments to keep the code readable and maintainable
 - Do not abbreviate argument names (e.g. e for error). Always write out error
 - Use pattern matching as much as possible throughout variable declarations and functions, avoiding if statements whenever possible and favoring guard (when) clauses
+
+## Command line tool calls
+
+- Assume any sudo * commands will need my input. Plan to pause and request that I run sudo commands in order to provide passwords.
 
 ## Testing
 

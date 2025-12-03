@@ -13,12 +13,12 @@
               )
   '';
 
-  programs.git.ignores = [ ".lexical" ".elixir-ls" ".expert" ];
+  programs.git.ignores = [ ".lexical" ".elixir-ls" ".expert" ".next-ls" ".elixir-tools" ];
 
   home.packages = with pkgs; [
     postgresql_16
-    beam.packages.erlang_26.elixir_1_16
-    lexical
+    beam.packages.erlang_27.elixir_1_19
+    next-ls
   ];
 
   programs.zsh.shellAliases = {
