@@ -6,3 +6,7 @@ windows:
     selected: true
     commands:
       - nvim
+    panes:
+      - type: horizontal
+        commands:
+          - cc

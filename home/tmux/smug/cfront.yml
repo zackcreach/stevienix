@@ -9,7 +9,7 @@ windows:
     panes:
       - type: horizontal
         commands:
-          - c
+          - cc
   - name: ' '
     commands:
       - nvim ~/dev/cfront/creachignore/scratchpad.ex
