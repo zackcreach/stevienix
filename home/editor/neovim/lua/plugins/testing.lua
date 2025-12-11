@@ -138,11 +138,11 @@ return {
 			g["test#filename_modifier"] = ":p"
 			g["test#javascript#runner"] = "vitest"
 			g["test#javascript#project_root"] = "assets"
-			g["test#javascript#vitest#executable"] = "npm run --prefix assets env -- vitest"
+			g["test#javascript#vitest#executable"] = "pnpm --prefix assets exec vitest run"
 			g["test#custom_strategies"] = {
 				vimux_watch = function(args)
-					vim.cmd("call VimuxInterruptRunner()")
-					vim.cmd(string.format("call VimuxRunCommand('fd . | entr -c %s')", args))
+					vim.fn.VimuxInterruptRunner()
+					vim.fn.VimuxRunCommand(string.format("fd . | entr -c %s", args))
 				end,
 			}
 
