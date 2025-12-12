@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ pkgs, inputs, ... }: {
   home.sessionVariables = {
     ERL_AFLAGS = "-kernel shell_history enabled";
   };
@@ -18,7 +18,7 @@
   home.packages = with pkgs; [
     postgresql_16
     beam.packages.erlang_27.elixir_1_19
-    next-ls
+    inputs.expert.packages.${pkgs.system}.default
   ];
 
   programs.zsh.shellAliases = {

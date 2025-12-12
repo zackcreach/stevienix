@@ -9,24 +9,11 @@ return {
 				capabilities = capabilities,
 			})
 
-			-- Configure Next-LS
-			vim.lsp.config("nextls", {
-				cmd = { "nextls", "--stdio" },
+			-- Configure Expert (official Elixir LSP)
+			vim.lsp.config("expert", {
+				cmd = { "expert", "--stdio" },
 				filetypes = { "elixir", "eelixir", "heex", "surface" },
 				root_markers = { "mix.exs", ".git" },
-				init_options = {
-					elixir_runtime = "system",
-					extensions = {
-						credo = {
-							enable = true,
-						},
-					},
-					experimental = {
-						completions = {
-							enable = true,
-						},
-					},
-				},
 			})
 
 			-- Configure TypeScript
@@ -95,7 +82,7 @@ return {
 			})
 
 			-- Enable all servers
-			vim.lsp.enable("nextls")
+			vim.lsp.enable("expert")
 			vim.lsp.enable("ts_ls")
 			vim.lsp.enable("biome")
 			vim.lsp.enable("nil_ls")

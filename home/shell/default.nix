@@ -28,6 +28,7 @@
     !.env
     !.envrc
     !.direnv
+    !.claude
   '';
 
   programs.btop = {

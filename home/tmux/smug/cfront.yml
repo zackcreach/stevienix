@@ -1,9 +1,11 @@
 session: CFRONT
 root: ~/dev/cfront
 
+before_start: 
+  - ./creachignore/update-staging-ip.sh
+
 windows:
   - name: ' '
-    selected: true
     commands:
       - nvim
     panes:
@@ -11,6 +13,7 @@ windows:
         commands:
           - cc
   - name: ' '
+    selected: true
     commands:
       - nvim ~/dev/cfront/creachignore/scratchpad.ex
     panes:

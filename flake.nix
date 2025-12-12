@@ -14,6 +14,10 @@
       url = "github:nvim-neorocks/lz.n";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    expert = {
+      url = "github:elixir-lang/expert";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nord-tmtheme = {
       url = "github:crabique/Nord-plist";
       flake = false;

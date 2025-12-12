@@ -11,7 +11,7 @@
 
   home.packages = with pkgs; [
     nodePackages_latest.typescript-language-server
-    nodejs_22
+    nodejs_25
     eslint_d
     tailwindcss-language-server
     yarn
