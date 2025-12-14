@@ -18,7 +18,7 @@
   home.packages = with pkgs; [
     postgresql_16
     beam.packages.erlang_27.elixir_1_19
-    inputs.expert.packages.${pkgs.system}.default
+    inputs.expert.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
 
   programs.zsh.shellAliases = {

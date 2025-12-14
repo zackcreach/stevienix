@@ -54,7 +54,7 @@
 
   services.gpg-agent = {
     enable = true;
-    pinentry.package = pkgs.pinentry-gnome3;
+    pinentry.package = pkgs.pinentry-tty;
     enableScDaemon = true;
     enableSshSupport = true;
     defaultCacheTtl = 60;

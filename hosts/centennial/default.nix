@@ -68,20 +68,14 @@
     auth       sufficient     pam_tid.so
   '';
 
+  environment.etc."resolver/symphony".text = ''
+    nameserver 192.168.1.200
+    nameserver 100.118.24.86
+  '';
+
   programs.gnupg = {
     agent.enable = true;
     agent.enableSSHSupport = true;
-  };
-
-  # garbage collection
-  nix.gc = {
-    automatic = true;
-    interval = {
-      # 0 indexed from Sunday, 3 is Wednesday
-      Weekday = 3;
-      Hour = 11;
-    };
-    options = "--delete-older-than 1w";
   };
 
   environment.systemPackages = with pkgs; [ comma ];
