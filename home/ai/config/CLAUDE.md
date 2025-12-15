@@ -7,7 +7,8 @@
 
 - In plan mode, automatically generate a markdown plan file named the same name as the current branch (unless already on main branch, then just pick a descriptive title) as soon as a plan proposal has completed
 - Markdown plan files should have detailed checklists to keep track of changes
-- Save all markdown files to ./.claude/logs
+- Save all log files to ./.claude/logs with the same name as the branch name
+- Save all plan files (from planning mode) to ./.claude/plans with the same name as the branch name
 - When working off of plan files, be sure to update the markdown checklist with what has been completed along with any notes on deviations to the plan
 
 ## Coding standards
