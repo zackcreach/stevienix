@@ -51,7 +51,7 @@
   programs.home-manager.enable = true;
 
   programs.zsh.shellAliases = {
-    stevie = "sudo darwin-rebuild switch --flake ~/.config/nixos && nix-collect-garbage --delete-older-than 1w";
+    stevie = "sudo darwin-rebuild switch --flake ~/.config/nixos && nix-collect-garbage --delete-older-than 7d";
   };
 
   xdg.enable = true;

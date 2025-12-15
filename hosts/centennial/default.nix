@@ -68,11 +68,6 @@
     auth       sufficient     pam_tid.so
   '';
 
-  environment.etc."resolver/symphony".text = ''
-    nameserver 192.168.1.200
-    nameserver 100.118.24.86
-  '';
-
   programs.gnupg = {
     agent.enable = true;
     agent.enableSSHSupport = true;
