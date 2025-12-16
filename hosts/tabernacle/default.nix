@@ -18,7 +18,6 @@
     };
     defaultUser = "zack";
     startMenuLaunchers = true;
-    nativeSystemd = true;
   };
 
   users.users.zack = {
