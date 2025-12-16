@@ -1,21 +1,21 @@
 ## Model preferences
 
-- In plan mode, use latest Opus until limit is reached, then Sonnet
+- In planning mode, use latest Opus until limit is reached, then Sonnet
 - In edit mode, use latest Sonnet by default
 
 ## Planning
 
-- In plan mode, automatically generate a markdown plan file named the same name as the current branch (unless already on main branch, then just pick a descriptive title) as soon as a plan proposal has completed
-- Markdown plan files should have detailed checklists to keep track of changes
+- In planning mode, automatically generate a markdown file named the same name as the current branch (unless already on main branch, then just pick a descriptive title) as soon as a plan proposal has completed. Maintain it as you make changes
+- Markdown log files should have detailed checklists to keep track of changes
 - Save all log files to ./.claude/logs with the same name as the branch name
-- Save all plan files (from planning mode) to ./.claude/plans with the same name as the branch name
-- When working off of plan files, be sure to update the markdown checklist with what has been completed along with any notes on deviations to the plan
+- When working off of log files, be sure to update the markdown checklist with what has been completed along with any notes on deviations to the log
 
 ## Coding standards
 
 - Always prefer descriptive variable names instead of comments to keep the code readable and maintainable
 - Do not abbreviate argument names (e.g. e for error). Always write out error
 - Use pattern matching as much as possible throughout variable declarations and functions, avoiding if statements whenever possible and favoring guard (when) clauses
+- In elixir projects, always prefer atoms to strings especially for keys when possible, but only if it doesn't add complexity with needing to convert back and forth
 
 ## Command line tool calls
 

@@ -48,21 +48,23 @@ OUTPUT FORMAT:
 Output ONLY the PR description in this exact format (ready for copy/paste into GitHub):
 
 ```
-[1-2 sentence high-level overview of what this branch accomplishes and why]
+[1-2 sentence high-level overview - keep it general, no specific details]
 
-- [Key change 1: what file/area and why it was changed]
-- [Key change 2: what file/area and why it was changed]
-- [Additional bullet points as needed]
+- [Brief change: module/file name + general purpose in a few words]
+- [Brief change: module/file name + general purpose in a few words]
+- [Additional bullets as needed, keep each very short]
 ```
 
 GUIDELINES:
 
-- Keep the overview conversational and focused on the "what" and "why"
-- Bullet points should use `-` prefix (markdown style)
-- Each bullet should explain WHY the change was made, not just WHAT changed
-- Group related file changes into single bullets when appropriate
-- Omit implementation details - focus on high-level impact
-- Do not include code blocks, technical jargon, or file paths unless essential
-- The output should be immediately usable as a PR description
+- Keep everything extremely high-level and general
+- The overview should be broad and conversational - avoid specifics
+- Wrap module, file, or function names in backticks for markdown formatting
+- Bullet points can mention module/file names but should NOT explain details
+- Each bullet should be a short phrase, not a full sentence
+- Group related changes aggressively - fewer bullets is better
+- Omit implementation details, configuration values, and technical specifics
+- Think "what area changed" not "what specifically changed"
+- The reader should get the gist without understanding the codebase
 
 Start by using Glob to find matching log files in ./.claude/logs/, read them for context, then generate the PR description.
