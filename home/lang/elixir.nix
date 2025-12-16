@@ -11,7 +11,7 @@
               )
   '';
 
-  programs.git.ignores = [ ".lexical" ".elixir-ls" ".expert" ".next-ls" ".elixir-tools" ];
+  programs.git.ignores = [ ".lexical" ".elixir-ls" ".expert" ".next-ls" ".elixir-tools" "dumps" ];
 
   home.packages = with pkgs; [
     postgresql_16
