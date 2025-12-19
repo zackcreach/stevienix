@@ -29,6 +29,7 @@
     !.envrc
     !.direnv
     !.claude
+    !CLAUDE.md
   '';
 
   programs.btop = {
